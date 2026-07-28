@@ -848,5 +848,2721 @@
     }
   </script>
 
+<body>
+
+  <div id="loginScreen" class="login-screen show">
+
+    <div class="login-card">
+
+      <div class="login-logo">
+        🚛
+      </div>
+
+      <h1>AVT Parts Ready</h1>
+
+      <p>
+        Kies hieronder hoe je deze demonstratie wilt bekijken.
+      </p>
+
+      <div class="login-options">
+
+        <button
+          class="login-option"
+          onclick="loginAsEmployee()"
+        >
+          <div class="login-option-icon">
+            👷
+          </div>
+
+          <div>
+            <strong>Inloggen als medewerker</strong>
+            <span>Bekijk leren, onderdelen en jouw zone</span>
+          </div>
+        </button>
+
+        <button
+          class="login-option"
+          onclick="loginAsManager()"
+        >
+          <div class="login-option-icon">
+            📊
+          </div>
+
+          <div>
+            <strong>Inloggen als manager</strong>
+            <span>Bekijk voortgang en verbeterideeën</span>
+          </div>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <main class="app-shell">
+
+    <section
+      id="homeScreen"
+      class="screen active"
+    >
+
+      <header class="home-header">
+
+        <div class="home-top-row">
+
+          <div class="brand">
+
+            <div class="brand-logo">
+              🚛
+            </div>
+
+            <div class="brand-copy">
+              <strong>AVT Parts Ready</strong>
+              <span>KENNIS OP DE WERKVLOER</span>
+            </div>
+
+          </div>
+
+          <button
+            class="avatar-button"
+            onclick="openScreen('profileScreen')"
+          >
+            K
+          </button>
+
+        </div>
+
+        <div class="welcome-block">
+
+          <p id="welcomeLabel">
+            Goedemorgen
+          </p>
+
+          <h1 id="welcomeName">
+            Kevin
+          </h1>
+
+          <div class="welcome-zone">
+            📦 Zone Remmen & wielonderdelen
+          </div>
+
+        </div>
+
+        <div class="level-card">
+
+          <div class="level-top">
+
+            <span
+              id="levelName"
+              class="level-name"
+            >
+              Level 2 · Parts Handler
+            </span>
+
+            <span
+              id="headerXP"
+              class="level-xp"
+            >
+              420 XP
+            </span>
+
+          </div>
+
+          <div class="progress-track">
+
+            <div
+              id="headerXPBar"
+              class="progress-fill"
+              style="width: 68%;"
+            ></div>
+
+          </div>
+
+          <div class="level-bottom">
+
+            <span id="currentXPLabel">
+              420 XP
+            </span>
+
+            <span id="nextLevelLabel">
+              Nog 80 XP tot level 3
+            </span>
+
+          </div>
+
+        </div>
+
+      </header>
+
+      <div class="home-content">
+
+        <div class="daily-card">
+
+          <div class="daily-card-header">
+
+            <div>
+              <h2>Jouw doel vandaag</h2>
+              <p>
+                Korte taken die direct toepasbaar zijn.
+              </p>
+            </div>
+
+            <div class="streak-pill">
+              🔥 5 dagen
+            </div>
+
+          </div>
+
+          <div class="daily-progress">
+
+            <div class="daily-progress-top">
+
+              <span>Dagvoortgang</span>
+
+              <span id="dailyProgressLabel">
+                67%
+              </span>
+
+            </div>
+
+            <div class="progress-track">
+
+              <div
+                id="dailyProgressBar"
+                class="progress-fill"
+                style="width: 67%;"
+              ></div>
+
+            </div>
+
+          </div>
+
+          <div class="goal-list">
+
+            <button
+              id="goalLearn"
+              class="goal-item completed"
+              onclick="openScreen('learningScreen')"
+            >
+
+              <div class="goal-check">
+                ✓
+              </div>
+
+              <div class="goal-copy">
+                <strong>Bekijk één nieuw onderdeel</strong>
+                <span>Dagelijkse kennisopdracht</span>
+              </div>
+
+              <div class="goal-arrow">
+                ›
+              </div>
+
+            </button>
+
+            <button
+              id="goalQuiz"
+              class="goal-item completed"
+              onclick="openScreen('learningScreen')"
+            >
+
+              <div class="goal-check">
+                ✓
+              </div>
+
+              <div class="goal-copy">
+                <strong>Beantwoord één quizvraag</strong>
+                <span>Test wat je hebt geleerd</span>
+              </div>
+
+              <div class="goal-arrow">
+                ›
+              </div>
+
+            </button>
+
+            <button
+              id="goalScan"
+              class="goal-item"
+              onclick="openScreen('searchScreen')"
+            >
+
+              <div class="goal-check">
+                3
+              </div>
+
+              <div class="goal-copy">
+                <strong>Zoek drie onderdelen</strong>
+                <span id="scanGoalLabel">0 van 3 voltooid</span>
+              </div>
+
+              <div class="goal-arrow">
+                ›
+              </div>
+
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="section-heading">
+
+          <h2>Onderdeel van vandaag</h2>
+
+          <button onclick="openScreen('learningScreen')">
+            Bekijken
+          </button>
+
+        </div>
+
+        <div class="part-of-day-card">
+
+          <div class="part-of-day-top">
+
+            <div class="part-visual">
+              🛞
+            </div>
+
+            <div class="part-of-day-copy">
+
+              <span class="tag tag-blue">
+                Remmen
+              </span>
+
+              <h3>Remschijf</h3>
+
+              <p>
+                Leer waarop je moet letten bij het
+                herkennen en controleren.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="meta-row">
+
+            <div class="meta-chip">
+              ⏱ 45 seconden
+            </div>
+
+            <div class="meta-chip">
+              ⭐ +15 XP
+            </div>
+
+            <div class="meta-chip">
+              ❓ 1 vraag
+            </div>
+
+          </div>
+
+          <button
+            class="primary-button"
+            onclick="openScreen('learningScreen')"
+          >
+            Start dagelijkse les
+          </button>
+
+        </div>
+
+        <div class="section-heading">
+          <h2>Wat wil je doen?</h2>
+        </div>
+
+        <div class="action-grid">
+
+          <button
+            class="action-card"
+            onclick="openScreen('searchScreen')"
+          >
+
+            <div class="action-icon">
+              🔍
+            </div>
+
+            <h3>Zoek onderdeel</h3>
+
+            <p>
+              Zoek op artikelnummer en bekijk
+              belangrijke productinformatie.
+            </p>
+
+          </button>
+
+          <button
+            class="action-card"
+            onclick="openScreen('zoneScreen')"
+          >
+
+            <div class="action-icon">
+              📦
+            </div>
+
+            <h3>Mijn zone</h3>
+
+            <p>
+              Bekijk jouw verantwoordelijkheden en
+              aandachtspunten.
+            </p>
+
+          </button>
+
+          <button
+            class="action-card"
+            onclick="openScreen('learningScreen')"
+          >
+
+            <div class="action-icon">
+              🎯
+            </div>
+
+            <h3>Vandaag leren</h3>
+
+            <p>
+              Leer in minder dan één minuut iets
+              nieuws.
+            </p>
+
+          </button>
+
+          <button
+            class="action-card"
+            onclick="openScreen('ideaScreen')"
+          >
+
+            <div class="action-icon">
+              💡
+            </div>
+
+            <h3>Verbeteridee</h3>
+
+            <p>
+              Deel een idee en volg wat ermee
+              gebeurt.
+            </p>
+
+          </button>
+
+        </div>
+
+        <div class="screen-time-note">
+
+          <div class="screen-time-icon">
+            ⏱️
+          </div>
+
+          <div class="screen-time-copy">
+
+            <h4>Ontworpen voor kort gebruik</h4>
+
+            <p>
+              Geen eindeloze feed of chat. Alleen
+              snelle ondersteuning op geschikte
+              momenten tijdens het werk.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section
+      id="searchScreen"
+      class="screen"
+    >
+
+      <header class="page-header">
+
+        <button
+          class="back-button"
+          onclick="goHome()"
+        >
+          ←
+        </button>
+
+        <div class="page-header-copy">
+
+          <h1>Zoek onderdeel</h1>
+
+          <p>
+            Vind snel wat je nodig hebt
+          </p>
+
+        </div>
+
+      </header>
+
+      <div class="page-content">
+
+        <div class="search-panel">
+
+          <h2>Artikel zoeken</h2>
+
+          <p>
+            Vul een artikelnummer in of gebruik één
+            van de demonstratieartikelen.
+          </p>
+
+          <div class="search-box">
+
+            <input
+              id="articleInput"
+              type="text"
+              inputmode="numeric"
+              placeholder="Bijvoorbeeld 1001"
+              onkeydown="handleSearchEnter(event)"
+            >
+
+            <button
+              class="search-submit"
+              onclick="searchProduct()"
+            >
+              🔍
+            </button>
+
+          </div>
+
+          <div class="demo-chip-row">
+
+            <button
+              class="demo-chip"
+              onclick="searchDemoProduct('1001')"
+            >
+              1001
+            </button>
+
+            <button
+              class="demo-chip"
+              onclick="searchDemoProduct('1002')"
+            >
+              1002
+            </button>
+
+            <button
+              class="demo-chip"
+              onclick="searchDemoProduct('1003')"
+            >
+              1003
+            </button>
+
+            <button
+              class="demo-chip"
+              onclick="searchDemoProduct('1004')"
+            >
+              1004
+            </button>
+
+          </div>
+
+          <button
+            class="secondary-button scan-button"
+            onclick="openScannerModal()"
+          >
+            📷 Barcode scannen
+          </button>
+
+          <div class="scan-info-box">
+
+            <span>ℹ️</span>
+
+            <p>
+              In deze demo wordt de camera nog niet
+              echt geopend. De knop laat zien hoe de
+              scanner later werkt.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div
+          id="productResult"
+          class="product-result"
+        >
+
+          <div
+            id="productImage"
+            class="product-image"
+          >
+            ⚙️
+          </div>
+
+          <div class="card product-card">
+
+            <div class="product-title-row">
+
+              <div>
+
+                <h2 id="productName">
+                  Productnaam
+                </h2>
+
+                <div
+                  id="productCategory"
+                  class="product-category"
+                >
+                  Productcategorie
+                </div>
+
+              </div>
+
+              <div
+                id="productCode"
+                class="article-code"
+              >
+                ART. 0000
+              </div>
+
+            </div>
+
+            <p
+              id="productDescription"
+              class="product-description"
+            ></p>
+
+            <div class="detail-list">
+
+              <div class="detail-item">
+
+                <strong>
+                  📍 Waar zit dit onderdeel?
+                </strong>
+
+                <p id="productLocation"></p>
+
+              </div>
+
+              <div class="detail-item">
+
+                <strong>
+                  🚛 Waarom is het belangrijk?
+                </strong>
+
+                <p id="productImportance"></p>
+
+              </div>
+
+              <div class="detail-item">
+
+                <strong>
+                  ⚠️ Veelgemaakte fout
+                </strong>
+
+                <p id="productWarning"></p>
+
+              </div>
+
+              <div class="detail-item">
+
+                <strong>
+                  🔗 Hoort vaak bij
+                </strong>
+
+                <p id="productRelated"></p>
+
+              </div>
+
+              <div class="detail-item">
+
+                <strong>
+                  📦 Magazijnlocatie
+                </strong>
+
+                <p id="warehouseLocation"></p>
+
+              </div>
+
+            </div>
+
+            <div class="video-placeholder">
+
+              <button
+                class="play-button"
+                onclick="showToast('In een volgende versie wordt hier een instructievideo afgespeeld.')"
+              >
+                ▶
+              </button>
+
+              <div class="video-label">
+                Korte productuitleg
+              </div>
+
+            </div>
+
+            <button
+              id="learnProductButton"
+              class="primary-button"
+              style="margin-top: 14px;"
+              onclick="markProductAsLearned()"
+            >
+              ✓ Markeer als geleerd · +10 XP
+            </button>
+
+            <div
+              id="productSuccess"
+              class="success-message"
+            >
+              Onderdeel toegevoegd aan jouw
+              kennisvoortgang. Je hebt 10 XP verdiend.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section
+      id="zoneScreen"
+      class="screen"
+    >
+
+      <header class="page-header">
+
+        <button
+          class="back-button"
+          onclick="goHome()"
+        >
+          ←
+        </button>
+
+        <div class="page-header-copy">
+
+          <h1>Mijn zone</h1>
+
+          <p>
+            Remmen & wielonderdelen
+          </p>
+
+        </div>
+
+      </header>
+
+      <div class="page-content">
+
+        <div class="card zone-hero">
+
+          <span class="tag tag-green">
+            Zone Specialist
+          </span>
+
+          <h2>
+            Remmen & wielonderdelen
+          </h2>
+
+          <p>
+            Jij helpt mee om deze zone veilig,
+            overzichtelijk en betrouwbaar te houden.
+          </p>
+
+          <div class="zone-stat-grid">
+
+            <div class="zone-stat">
+
+              <strong>48</strong>
+
+              <span>
+                Foutloze picks deze week
+              </span>
+
+            </div>
+
+            <div class="zone-stat">
+
+              <strong id="zoneLearnedCount">
+                4
+              </strong>
+
+              <span>
+                Onderdelen geleerd
+              </span>
+
+            </div>
+
+            <div class="zone-stat">
+
+              <strong>97%</strong>
+
+              <span>
+                Nauwkeurigheid
+              </span>
+
+            </div>
+
+            <div class="zone-stat">
+
+              <strong id="zoneIdeaCount">
+                1
+              </strong>
+
+              <span>
+                Verbeteridee ingediend
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <h2>Jouw verantwoordelijkheden</h2>
+
+          <p>
+            Dit zijn de belangrijkste verwachtingen
+            binnen jouw zone.
+          </p>
+
+          <div class="responsibility-list">
+
+            <div class="responsibility-item">
+
+              <div class="responsibility-icon">
+                ✓
+              </div>
+
+              <div class="responsibility-copy">
+
+                <strong>
+                  Juiste magazijnlocatie
+                </strong>
+
+                <p>
+                  Producten staan op de afgesproken
+                  plek en zijn goed bereikbaar.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="responsibility-item">
+
+              <div class="responsibility-icon">
+                ✓
+              </div>
+
+              <div class="responsibility-copy">
+
+                <strong>
+                  Duidelijke labels
+                </strong>
+
+                <p>
+                  Artikelnummers en locaties zijn
+                  duidelijk leesbaar.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="responsibility-item">
+
+              <div class="responsibility-icon">
+                ✓
+              </div>
+
+              <div class="responsibility-copy">
+
+                <strong>
+                  Afwijkingen melden
+                </strong>
+
+                <p>
+                  Beschadigingen of verkeerde
+                  voorraden worden direct gemeld.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="responsibility-item">
+
+              <div class="responsibility-icon">
+                ✓
+              </div>
+
+              <div class="responsibility-copy">
+
+                <strong>
+                  Nieuwe collega helpen
+                </strong>
+
+                <p>
+                  Deel jouw kennis en wijs iemand de
+                  juiste werkwijze.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card zone-task-card">
+
+          <span class="tag tag-orange">
+            Aandachtspunt
+          </span>
+
+          <h3>
+            Controleer de labels bij remschijven
+          </h3>
+
+          <p>
+            Verschillende remschijven lijken sterk
+            op elkaar. Controleer of diameter,
+            dikte en artikelnummer goed zichtbaar
+            zijn.
+          </p>
+
+          <button
+            class="primary-button"
+            onclick="openScreen('ideaScreen')"
+          >
+            Verbeteridee indienen
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section
+      id="learningScreen"
+      class="screen"
+    >
+
+      <header class="page-header">
+
+        <button
+          class="back-button"
+          onclick="goHome()"
+        >
+          ←
+        </button>
+
+        <div class="page-header-copy">
+
+          <h1>Vandaag leren</h1>
+
+          <p>
+            Eén onderwerp in minder dan één minuut
+          </p>
+
+        </div>
+
+      </header>
+
+      <div class="page-content">
+
+        <div class="card lesson-card">
+
+          <div class="lesson-visual">
+            🛞
+          </div>
+
+          <span class="tag tag-blue">
+            Onderdeel van vandaag
+          </span>
+
+          <h2>
+            Waarom is een remschijf belangrijk?
+          </h2>
+
+          <div class="meta-row">
+
+            <div class="meta-chip">
+              ⏱ 45 seconden
+            </div>
+
+            <div class="meta-chip">
+              ⭐ +15 XP
+            </div>
+
+          </div>
+
+          <p>
+            De remblokken drukken tegen de
+            remschijf. Door de wrijving wordt de
+            truck of trailer afgeremd.
+          </p>
+
+          <p>
+            Een verkeerde of beschadigde remschijf
+            kan leiden tot extra slijtage,
+            trillingen, een langere remweg en
+            stilstand van het voertuig.
+          </p>
+
+          <div class="remember-box">
+
+            <strong>
+              Onthoud dit
+            </strong>
+
+            <p>
+              Controleer altijd diameter, dikte,
+              hoogte en aantal boutgaten.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <h2>Quizvraag</h2>
+
+          <p>
+            Welke controle is bij een remschijf het
+            belangrijkst?
+          </p>
+
+          <div class="quiz-options">
+
+            <button
+              class="quiz-option"
+              onclick="checkQuizAnswer(this, false)"
+            >
+              Alleen controleren of de verpakking
+              onbeschadigd is.
+            </button>
+
+            <button
+              class="quiz-option"
+              onclick="checkQuizAnswer(this, true)"
+            >
+              Diameter, dikte en aantal boutgaten
+              controleren.
+            </button>
+
+            <button
+              class="quiz-option"
+              onclick="checkQuizAnswer(this, false)"
+            >
+              Alleen controleren of het onderdeel
+              zwaar genoeg is.
+            </button>
+
+          </div>
+
+          <div
+            id="quizSuccess"
+            class="success-message"
+          ></div>
+
+          <div
+            id="quizWarning"
+            class="warning-message"
+          ></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section
+      id="ideaScreen"
+      class="screen"
+    >
+
+      <header class="page-header">
+
+        <button
+          class="back-button"
+          onclick="goHome()"
+        >
+          ←
+        </button>
+
+        <div class="page-header-copy">
+
+          <h1>Verbeterideeën</h1>
+
+          <p>
+            Laat zien wat er slimmer kan
+          </p>
+
+        </div>
+
+      </header>
+
+      <div class="page-content">
+
+        <div class="card">
+
+          <h2>Nieuw verbeteridee</h2>
+
+          <p>
+            Beschrijf kort het probleem en jouw
+            voorgestelde oplossing.
+          </p>
+
+          <div class="form-group">
+
+            <label
+              class="form-label"
+              for="ideaTitle"
+            >
+              Onderwerp
+            </label>
+
+            <input
+              id="ideaTitle"
+              class="form-input"
+              type="text"
+              placeholder="Bijvoorbeeld: grotere labels"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label
+              class="form-label"
+              for="ideaCategory"
+            >
+              Categorie
+            </label>
+
+            <select
+              id="ideaCategory"
+              class="form-select"
+            >
+
+              <option value="Magazijn">
+                Magazijn
+              </option>
+
+              <option value="Veiligheid">
+                Veiligheid
+              </option>
+
+              <option value="Kwaliteit">
+                Kwaliteit
+              </option>
+
+              <option value="Proces">
+                Proces
+              </option>
+
+              <option value="Productkennis">
+                Productkennis
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+
+            <label
+              class="form-label"
+              for="ideaProblem"
+            >
+              Wat gaat er nu mis?
+            </label>
+
+            <textarea
+              id="ideaProblem"
+              class="form-textarea"
+              placeholder="Beschrijf het probleem..."
+            ></textarea>
+
+          </div>
+
+          <div class="form-group">
+
+            <label
+              class="form-label"
+              for="ideaSolution"
+            >
+              Wat is jouw oplossing?
+            </label>
+
+            <textarea
+              id="ideaSolution"
+              class="form-textarea"
+              placeholder="Beschrijf jouw voorstel..."
+            ></textarea>
+
+          </div>
+
+          <button
+            class="primary-button"
+            style="margin-top: 15px;"
+            onclick="submitIdea()"
+          >
+            💡 Idee indienen
+          </button>
+
+          <div
+            id="ideaSuccess"
+            class="success-message"
+          >
+            Bedankt. Jouw idee is toegevoegd met de
+            status Nieuw.
+          </div>
+
+        </div>
+
+        <div class="section-heading">
+          <h2>Mijn ideeën</h2>
+        </div>
+
+        <div
+          id="ideaList"
+          class="idea-list"
+        >
+
+          <div class="idea-card">
+
+            <div class="idea-card-top">
+
+              <div>
+
+                <h3>
+                  Grotere labels bij remschijven
+                </h3>
+
+                <p>
+                  Artikelnummer en diameter groter
+                  afdrukken zodat fouten worden
+                  voorkomen.
+                </p>
+
+              </div>
+
+              <span class="tag tag-orange">
+                In behandeling
+              </span>
+
+            </div>
+
+            <div class="idea-meta-grid">
+
+              <div class="idea-meta">
+
+                <strong>Eigenaar</strong>
+
+                <span>Danny de Vos</span>
+
+              </div>
+
+              <div class="idea-meta">
+
+                <strong>Huidige stap</strong>
+
+                <span>Nieuwe labels testen</span>
+
+              </div>
+
+              <div class="idea-meta">
+
+                <strong>Categorie</strong>
+
+                <span>Magazijn</span>
+
+              </div>
+
+              <div class="idea-meta">
+
+                <strong>Verwachte update</strong>
+
+                <span>Volgende week</span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section
+      id="profileScreen"
+      class="screen"
+    >
+
+      <header class="page-header">
+
+        <button
+          class="back-button"
+          onclick="goHome()"
+        >
+          ←
+        </button>
+
+        <div class="page-header-copy">
+
+          <h1>Mijn profiel</h1>
+
+          <p>
+            Voortgang, kennis en erkenning
+          </p>
+
+        </div>
+
+      </header>
+
+      <div class="page-content">
+
+        <div class="card profile-hero">
+
+          <div class="profile-avatar">
+            K
+          </div>
+
+          <h2>Kevin</h2>
+
+          <p>
+            Magazijnmedewerker · Zone Remmen
+          </p>
+
+          <div class="profile-stat-grid">
+
+            <div class="profile-stat">
+
+              <strong id="profileXP">
+                420
+              </strong>
+
+              <span>XP verdiend</span>
+
+            </div>
+
+            <div class="profile-stat">
+
+              <strong id="profileLearned">
+                4
+              </strong>
+
+              <span>Onderdelen geleerd</span>
+
+            </div>
+
+            <div class="profile-stat">
+
+              <strong id="profileIdeas">
+                1
+              </strong>
+
+              <span>Verbeterideeën</span>
+
+            </div>
+
+            <div class="profile-stat">
+
+              <strong>5</strong>
+
+              <span>Dagen actief</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <h2>Kennisniveau per onderwerp</h2>
+
+          <div class="knowledge-item">
+
+            <div class="knowledge-top">
+
+              <span>Remmen</span>
+
+              <span>72%</span>
+
+            </div>
+
+            <div class="progress-track">
+
+              <div
+                class="progress-fill"
+                style="width: 72%;"
+              ></div>
+
+            </div>
+
+          </div>
+
+          <div class="knowledge-item">
+
+            <div class="knowledge-top">
+
+              <span>Luchtvering</span>
+
+              <span>45%</span>
+
+            </div>
+
+            <div class="progress-track">
+
+              <div
+                class="progress-fill"
+                style="width: 45%;"
+              ></div>
+
+            </div>
+
+          </div>
+
+          <div class="knowledge-item">
+
+            <div class="knowledge-top">
+
+              <span>Hydrauliek</span>
+
+              <span>30%</span>
+
+            </div>
+
+            <div class="progress-track">
+
+              <div
+                class="progress-fill"
+                style="width: 30%;"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <h2>Mijn badges</h2>
+
+          <p>
+            Badges geven erkenning voor kennis,
+            inzet en verantwoordelijkheid.
+          </p>
+
+          <div class="badge-grid">
+
+            <div class="badge-card">
+
+              <div class="badge-icon">
+                🥉
+              </div>
+
+              <strong>Eerste scan</strong>
+
+              <span>Behaald</span>
+
+            </div>
+
+            <div class="badge-card">
+
+              <div class="badge-icon">
+                ⭐
+              </div>
+
+              <strong>Eerste idee</strong>
+
+              <span>Behaald</span>
+
+            </div>
+
+            <div class="badge-card">
+
+              <div class="badge-icon">
+                🔥
+              </div>
+
+              <strong>5 dagen actief</strong>
+
+              <span>Behaald</span>
+
+            </div>
+
+            <div class="badge-card">
+
+              <div class="badge-icon">
+                🏆
+              </div>
+
+              <strong>Zone Specialist</strong>
+
+              <span>Behaald</span>
+
+            </div>
+
+            <div class="badge-card locked">
+
+              <div class="badge-icon">
+                🧠
+              </div>
+
+              <strong>100 geleerd</strong>
+
+              <span>Nog niet behaald</span>
+
+            </div>
+
+            <div class="badge-card locked">
+
+              <div class="badge-icon">
+                🥇
+              </div>
+
+              <strong>Parts Expert</strong>
+
+              <span>Nog niet behaald</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <button
+          class="secondary-button"
+          onclick="logout()"
+        >
+          Uitloggen
+        </button>
+
+        <button
+          class="danger-button"
+          style="margin-top: 10px;"
+          onclick="resetDemo()"
+        >
+          Demonstratie resetten
+        </button>
+
+      </div>
+
+    </section>
+
+    <section
+      id="managerScreen"
+      class="screen"
+    >
+
+      <header class="page-header">
+
+        <button
+          class="back-button"
+          onclick="goHome()"
+        >
+          ←
+        </button>
+
+        <div class="page-header-copy">
+
+          <h1>Managerdashboard</h1>
+
+          <p>
+            Inzicht in leren en verbeteren
+          </p>
+
+        </div>
+
+      </header>
+
+      <div class="page-content">
+
+        <div class="card">
+
+          <div class="card-title-row">
+
+            <div>
+
+              <h2>
+                Teamoverzicht
+              </h2>
+
+              <p>
+                Voortgang van medewerkers in de
+                demonstratie.
+              </p>
+
+            </div>
+
+            <span class="tag tag-purple">
+              Manager
+            </span>
+
+          </div>
+
+          <div class="manager-kpi-grid">
+
+            <div class="manager-kpi">
+
+              <strong>84%</strong>
+
+              <span>
+                Actieve medewerkers
+              </span>
+
+            </div>
+
+            <div class="manager-kpi">
+
+              <strong>63%</strong>
+
+              <span>
+                Gemiddeld kennisniveau
+              </span>
+
+            </div>
+
+            <div class="manager-kpi">
+
+              <strong>12</strong>
+
+              <span>
+                Ideeën deze maand
+              </span>
+
+            </div>
+
+            <div class="manager-kpi">
+
+              <strong>4</strong>
+
+              <span>
+                Ideeën uitgevoerd
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <h2>Medewerkers</h2>
+
+          <div class="employee-list">
+
+            <div class="employee-row">
+
+              <div class="employee-avatar">
+                K
+              </div>
+
+              <div class="employee-copy">
+
+                <strong>Kevin</strong>
+
+                <span>
+                  Remmen · 5 dagen actief
+                </span>
+
+              </div>
+
+              <div class="employee-score">
+                72%
+              </div>
+
+            </div>
+
+            <div class="employee-row">
+
+              <div class="employee-avatar">
+                M
+              </div>
+
+              <div class="employee-copy">
+
+                <strong>Mohammed</strong>
+
+                <span>
+                  Luchtvering · 3 dagen actief
+                </span>
+
+              </div>
+
+              <div class="employee-score">
+                61%
+              </div>
+
+            </div>
+
+            <div class="employee-row">
+
+              <div class="employee-avatar">
+                T
+              </div>
+
+              <div class="employee-copy">
+
+                <strong>Thomas</strong>
+
+                <span>
+                  Hydrauliek · 6 dagen actief
+                </span>
+
+              </div>
+
+              <div class="employee-score">
+                78%
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <h2>Openstaande verbeterideeën</h2>
+
+          <p>
+            Ideeën die nog een eigenaar of volgende
+            stap nodig hebben.
+          </p>
+
+          <div class="idea-list">
+
+            <div class="idea-card">
+
+              <div class="idea-card-top">
+
+                <div>
+
+                  <h3>
+                    Locatiecodes groter afdrukken
+                  </h3>
+
+                  <p>
+                    Medewerkers lezen de codes op
+                    afstand niet goed.
+                  </p>
+
+                </div>
+
+                <span class="tag tag-blue">
+                  Nieuw
+                </span>
+
+              </div>
+
+            </div>
+
+            <div class="idea-card">
+
+              <div class="idea-card-top">
+
+                <div>
+
+                  <h3>
+                    Foto toevoegen aan pickscherm
+                  </h3>
+
+                  <p>
+                    Een productfoto kan verwisselingen
+                    voorkomen.
+                  </p>
+
+                </div>
+
+                <span class="tag tag-orange">
+                  Onderzoek
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <nav class="bottom-nav">
+
+      <button
+        id="navHome"
+        class="nav-item active"
+        onclick="goHome()"
+      >
+
+        <div class="nav-icon-wrap">
+          🏠
+        </div>
+
+        <span>Home</span>
+
+      </button>
+
+      <button
+        id="navSearch"
+        class="nav-item"
+        onclick="openScreen('searchScreen')"
+      >
+
+        <div class="nav-icon-wrap">
+          🔍
+        </div>
+
+        <span>Zoeken</span>
+
+      </button>
+
+      <button
+        id="navLearn"
+        class="nav-item"
+        onclick="openScreen('learningScreen')"
+      >
+
+        <div class="nav-icon-wrap">
+          🎯
+        </div>
+
+        <span>Leren</span>
+
+      </button>
+
+      <button
+        id="navProfile"
+        class="nav-item"
+        onclick="openScreen('profileScreen')"
+      >
+
+        <div class="nav-icon-wrap">
+          👤
+        </div>
+
+        <span>Profiel</span>
+
+      </button>
+
+    </nav>
+
+  </main>
+
+  <div
+    id="toast"
+    class="toast"
+  ></div>
+
+  <div
+    id="scannerModal"
+    class="modal-backdrop"
+    onclick="closeScannerModalFromBackdrop(event)"
+  >
+
+    <div class="modal-sheet">
+
+      <div class="modal-handle"></div>
+
+      <h2>Barcode scannen</h2>
+
+      <p>
+        In de uiteindelijke versie opent hier de
+        camera van de telefoon. Voor deze demo kun
+        je een voorbeeldscan simuleren.
+      </p>
+
+      <div
+        class="product-image"
+        style="margin-top: 16px; min-height: 190px;"
+      >
+        📷
+      </div>
+
+      <button
+        class="primary-button"
+        style="margin-top: 15px;"
+        onclick="simulateBarcodeScan()"
+      >
+        Simuleer scan van artikel 1001
+      </button>
+
+      <button
+        class="secondary-button"
+        style="margin-top: 10px;"
+        onclick="closeScannerModal()"
+      >
+        Sluiten
+      </button>
+
+    </div>
+
+  </div>
+
+  <script>
+    const products = {
+      "1001": {
+        name: "Remschijf",
+        category: "Remmen & wielonderdelen",
+        emoji: "🛞",
+        description:
+          "Een metalen schijf waarop de remblokken drukken om een truck of trailer veilig af te remmen.",
+        location:
+          "Bij het wiel, gemonteerd aan de wielnaaf van een truck of trailer.",
+        importance:
+          "De remschijf zet de druk van de remblokken om in remkracht en heeft direct invloed op de remweg.",
+        warning:
+          "Controleer altijd diameter, dikte, hoogte en het aantal boutgaten. Producten kunnen sterk op elkaar lijken.",
+        related:
+          "Remblokken, remklauw, wielnaaf en bevestigingsmateriaal.",
+        warehouse:
+          "Stelling B-04 · Niveau 2"
+      },
+
+      "1002": {
+        name: "Luchtveerbalg",
+        category: "Luchtvering",
+        emoji: "🎈",
+        description:
+          "Een rubberen balg die met perslucht wordt gevuld en onderdeel is van de luchtvering.",
+        location:
+          "Tussen het chassis en de as van een truck of trailer.",
+        importance:
+          "Zorgt voor comfort, stabiliteit en een gelijkmatige verdeling van de belasting.",
+        warning:
+          "Controleer hoogte, aansluitingen, voetplaat en bevestigingspunten.",
+        related:
+          "Schokdemper, hoogteregelventiel, luchtleiding en bevestigingsplaat.",
+        warehouse:
+          "Stelling D-02 · Niveau 1"
+      },
+
+      "1003": {
+        name: "Luchtdrogerpatroon",
+        category: "Luchtremsysteem",
+        emoji: "🔧",
+        description:
+          "Een filterpatroon dat vocht en vervuiling uit het persluchtsysteem verwijdert.",
+        location:
+          "In de luchtdroger van het pneumatische remsysteem.",
+        importance:
+          "Beschermt het luchtsysteem tegen vocht, corrosie, verstopping en bevriezing.",
+        warning:
+          "Let goed op merk, schroefdraad, diameter en de juiste toepassing.",
+        related:
+          "Luchtdroger, compressor, luchtketel en drukregelaar.",
+        warehouse:
+          "Stelling C-08 · Niveau 3"
+      },
+
+      "1004": {
+        name: "Remblokset",
+        category: "Remmen & wielonderdelen",
+        emoji: "🧱",
+        description:
+          "Remblokken zorgen door wrijving tegen de remschijf voor het afremmen van het voertuig.",
+        location:
+          "In de remklauw, aan beide zijden van de remschijf.",
+        importance:
+          "Heeft directe invloed op remweg, veiligheid, geluid en slijtage.",
+        warning:
+          "Controleer vorm, afmetingen, slijtage-indicator en toepassing.",
+        related:
+          "Remschijf, remklauw, montageset en slijtage-indicator.",
+        warehouse:
+          "Stelling B-06 · Niveau 2"
+      }
+    };
+
+    let appState = {
+      xp: 420,
+      learnedProducts: [],
+      ideas: [],
+      searches: 0,
+      quizCompleted: false,
+      userRole: "employee"
+    };
+
+    let selectedProductCode = null;
+    let toastTimer = null;
+
+    function loadState() {
+      const savedState =
+        localStorage.getItem("avtPartsReadyState");
+
+      if (savedState) {
+        try {
+          const parsedState =
+            JSON.parse(savedState);
+
+          appState = {
+            ...appState,
+            ...parsedState
+          };
+        } catch (error) {
+          console.error(
+            "Opgeslagen gegevens konden niet worden geladen.",
+            error
+          );
+        }
+      }
+
+      updateInterface();
+      renderSavedIdeas();
+    }
+
+    function saveState() {
+      localStorage.setItem(
+        "avtPartsReadyState",
+        JSON.stringify(appState)
+      );
+    }
+
+    function loginAsEmployee() {
+      appState.userRole = "employee";
+
+      document
+        .getElementById("loginScreen")
+        .classList.remove("show");
+
+      document.getElementById("welcomeName").textContent =
+        "Kevin";
+
+      document.getElementById("welcomeLabel").textContent =
+        getGreeting();
+
+      goHome();
+      saveState();
+    }
+
+    function loginAsManager() {
+      appState.userRole = "manager";
+
+      document
+        .getElementById("loginScreen")
+        .classList.remove("show");
+
+      document.getElementById("welcomeName").textContent =
+        "Danny";
+
+      document.getElementById("welcomeLabel").textContent =
+        "Managerdashboard";
+
+      openScreen("managerScreen");
+      saveState();
+    }
+
+    function logout() {
+      document
+        .getElementById("loginScreen")
+        .classList.add("show");
+    }
+
+    function getGreeting() {
+      const currentHour =
+        new Date().getHours();
+
+      if (currentHour < 12) {
+        return "Goedemorgen";
+      }
+
+      if (currentHour < 18) {
+        return "Goedemiddag";
+      }
+
+      return "Goedenavond";
+    }
+
+    function openScreen(screenId) {
+      document
+        .querySelectorAll(".screen")
+        .forEach(function(screen) {
+          screen.classList.remove("active");
+        });
+
+      const selectedScreen =
+        document.getElementById(screenId);
+
+      if (!selectedScreen) {
+        return;
+      }
+
+      selectedScreen.classList.add("active");
+
+      updateNavigation(screenId);
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    function goHome() {
+      if (appState.userRole === "manager") {
+        openScreen("managerScreen");
+        return;
+      }
+
+      openScreen("homeScreen");
+    }
+
+    function updateNavigation(screenId) {
+      document
+        .querySelectorAll(".nav-item")
+        .forEach(function(navItem) {
+          navItem.classList.remove("active");
+        });
+
+      if (screenId === "homeScreen") {
+        document
+          .getElementById("navHome")
+          .classList.add("active");
+      }
+
+      if (screenId === "searchScreen") {
+        document
+          .getElementById("navSearch")
+          .classList.add("active");
+      }
+
+      if (screenId === "learningScreen") {
+        document
+          .getElementById("navLearn")
+          .classList.add("active");
+      }
+
+      if (screenId === "profileScreen") {
+        document
+          .getElementById("navProfile")
+          .classList.add("active");
+      }
+    }
+
+    function handleSearchEnter(event) {
+      if (event.key === "Enter") {
+        searchProduct();
+      }
+    }
+
+    function searchDemoProduct(code) {
+      document.getElementById("articleInput").value =
+        code;
+
+      searchProduct();
+    }
+
+    function searchProduct() {
+      const articleCode =
+        document
+          .getElementById("articleInput")
+          .value
+          .trim();
+
+      const product =
+        products[articleCode];
+
+      if (!product) {
+        document
+          .getElementById("productResult")
+          .classList.remove("show");
+
+        showToast(
+          "Artikel niet gevonden. Gebruik 1001, 1002, 1003 of 1004."
+        );
+
+        return;
+      }
+
+      selectedProductCode =
+        articleCode;
+
+      document.getElementById("productImage").textContent =
+        product.emoji;
+
+      document.getElementById("productName").textContent =
+        product.name;
+
+      document.getElementById("productCategory").textContent =
+        product.category;
+
+      document.getElementById("productCode").textContent =
+        "ART. " + articleCode;
+
+      document.getElementById("productDescription").textContent =
+        product.description;
+
+      document.getElementById("productLocation").textContent =
+        product.location;
+
+      document.getElementById("productImportance").textContent =
+        product.importance;
+
+      document.getElementById("productWarning").textContent =
+        product.warning;
+
+      document.getElementById("productRelated").textContent =
+        product.related;
+
+      document.getElementById("warehouseLocation").textContent =
+        product.warehouse;
+
+      document
+        .getElementById("productSuccess")
+        .classList.remove("show");
+
+      updateProductButton();
+
+      document
+        .getElementById("productResult")
+        .classList.add("show");
+
+      appState.searches += 1;
+
+      if (appState.searches > 3) {
+        appState.searches = 3;
+      }
+
+      saveState();
+      updateInterface();
+
+      setTimeout(function() {
+        document
+          .getElementById("productResult")
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+      }, 100);
+    }
+
+    function updateProductButton() {
+      const button =
+        document.getElementById("learnProductButton");
+
+      const isLearned =
+        appState.learnedProducts.includes(
+          selectedProductCode
+        );
+
+      if (isLearned) {
+        button.textContent =
+          "✓ Dit onderdeel is al geleerd";
+
+        button.disabled = true;
+        button.style.opacity = "0.6";
+      } else {
+        button.textContent =
+          "✓ Markeer als geleerd · +10 XP";
+
+        button.disabled = false;
+        button.style.opacity = "1";
+      }
+    }
+
+    function markProductAsLearned() {
+      if (!selectedProductCode) {
+        return;
+      }
+
+      if (
+        appState.learnedProducts.includes(
+          selectedProductCode
+        )
+      ) {
+        showToast(
+          "Dit onderdeel staat al in jouw voortgang."
+        );
+
+        return;
+      }
+
+      appState.learnedProducts.push(
+        selectedProductCode
+      );
+
+      addXP(10);
+
+      document
+        .getElementById("productSuccess")
+        .classList.add("show");
+
+      updateProductButton();
+      updateInterface();
+      saveState();
+    }
+
+    function checkQuizAnswer(button, isCorrect) {
+      document
+        .querySelectorAll(".quiz-option")
+        .forEach(function(option) {
+          option.classList.remove(
+            "correct",
+            "wrong"
+          );
+        });
+
+      const successMessage =
+        document.getElementById("quizSuccess");
+
+      const warningMessage =
+        document.getElementById("quizWarning");
+
+      successMessage.classList.remove("show");
+      warningMessage.classList.remove("show");
+
+      if (isCorrect) {
+        button.classList.add("correct");
+
+        successMessage.textContent =
+          "Goed antwoord. Controleer diameter, dikte en aantal boutgaten.";
+
+        successMessage.classList.add("show");
+
+        if (!appState.quizCompleted) {
+          appState.quizCompleted = true;
+          addXP(15);
+          saveState();
+        }
+      } else {
+        button.classList.add("wrong");
+
+        warningMessage.textContent =
+          "Niet helemaal. Bekijk het onthoudblok nog een keer.";
+
+        warningMessage.classList.add("show");
+      }
+
+      updateInterface();
+    }
+
+    function submitIdea() {
+      const title =
+        document
+          .getElementById("ideaTitle")
+          .value
+          .trim();
+
+      const category =
+        document
+          .getElementById("ideaCategory")
+          .value;
+
+      const problem =
+        document
+          .getElementById("ideaProblem")
+          .value
+          .trim();
+
+      const solution =
+        document
+          .getElementById("ideaSolution")
+          .value
+          .trim();
+
+      if (
+        !title ||
+        !problem ||
+        !solution
+      ) {
+        showToast(
+          "Vul het onderwerp, probleem en de oplossing in."
+        );
+
+        return;
+      }
+
+      const idea = {
+        id: Date.now(),
+        title: title,
+        category: category,
+        problem: problem,
+        solution: solution,
+        status: "Nieuw",
+        owner: "Nog toewijzen"
+      };
+
+      appState.ideas.unshift(idea);
+
+      addXP(20);
+      saveState();
+      renderSavedIdeas();
+      updateInterface();
+
+      document.getElementById("ideaTitle").value =
+        "";
+
+      document.getElementById("ideaProblem").value =
+        "";
+
+      document.getElementById("ideaSolution").value =
+        "";
+
+      document
+        .getElementById("ideaSuccess")
+        .classList.add("show");
+
+      setTimeout(function() {
+        document
+          .getElementById("ideaSuccess")
+          .classList.remove("show");
+      }, 4000);
+    }
+
+    function renderSavedIdeas() {
+      const ideaList =
+        document.getElementById("ideaList");
+
+      if (!ideaList) {
+        return;
+      }
+
+      ideaList
+        .querySelectorAll(".saved-idea")
+        .forEach(function(savedIdea) {
+          savedIdea.remove();
+        });
+
+      appState.ideas.forEach(function(idea) {
+        const ideaCard =
+          document.createElement("div");
+
+        ideaCard.className =
+          "idea-card saved-idea";
+
+        ideaCard.innerHTML = `
+          <div class="idea-card-top">
+            <div>
+              <h3>${escapeHTML(idea.title)}</h3>
+              <p>${escapeHTML(idea.solution)}</p>
+            </div>
+            <span class="tag tag-blue">
+              ${escapeHTML(idea.status)}
+            </span>
+          </div>
+
+          <div class="idea-meta-grid">
+            <div class="idea-meta">
+              <strong>Eigenaar</strong>
+              <span>${escapeHTML(idea.owner)}</span>
+            </div>
+
+            <div class="idea-meta">
+              <strong>Categorie</strong>
+              <span>${escapeHTML(idea.category)}</span>
+            </div>
+
+            <div class="idea-meta">
+              <strong>Probleem</strong>
+              <span>${escapeHTML(idea.problem)}</span>
+            </div>
+
+            <div class="idea-meta">
+              <strong>Huidige stap</strong>
+              <span>Nog beoordelen</span>
+            </div>
+          </div>
+        `;
+
+        ideaList.prepend(ideaCard);
+      });
+    }
+
+    function escapeHTML(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function addXP(amount) {
+      appState.xp += amount;
+
+      updateInterface();
+
+      showToast(
+        "+" + amount + " XP verdiend"
+      );
+
+      saveState();
+    }
+
+    function getLevelData() {
+      const xp =
+        appState.xp;
+
+      if (xp < 200) {
+        return {
+          level: 1,
+          name: "Starter",
+          start: 0,
+          next: 200
+        };
+      }
+
+      if (xp < 500) {
+        return {
+          level: 2,
+          name: "Parts Handler",
+          start: 200,
+          next: 500
+        };
+      }
+
+      if (xp < 900) {
+        return {
+          level: 3,
+          name: "Zone Specialist",
+          start: 500,
+          next: 900
+        };
+      }
+
+      return {
+        level: 4,
+        name: "Parts Expert",
+        start: 900,
+        next: 1400
+      };
+    }
+
+    function updateInterface() {
+      const levelData =
+        getLevelData();
+
+      const levelRange =
+        levelData.next - levelData.start;
+
+      const levelProgress =
+        Math.min(
+          100,
+          Math.max(
+            0,
+            (
+              (
+                appState.xp -
+                levelData.start
+              ) /
+              levelRange
+            ) *
+            100
+          )
+        );
+
+      document.getElementById("headerXP").textContent =
+        appState.xp + " XP";
+
+      document.getElementById("currentXPLabel").textContent =
+        appState.xp + " XP";
+
+      document.getElementById("levelName").textContent =
+        "Level " +
+        levelData.level +
+        " · " +
+        levelData.name;
+
+      document.getElementById("nextLevelLabel").textContent =
+        "Nog " +
+        Math.max(
+          0,
+          levelData.next - appState.xp
+        ) +
+        " XP tot level " +
+        (
+          levelData.level +
+          1
+        );
+
+      document.getElementById("headerXPBar").style.width =
+        levelProgress + "%";
+
+      document.getElementById("profileXP").textContent =
+        appState.xp;
+
+      document.getElementById("profileLearned").textContent =
+        4 +
+        appState.learnedProducts.length;
+
+      document.getElementById("zoneLearnedCount").textContent =
+        4 +
+        appState.learnedProducts.length;
+
+      document.getElementById("profileIdeas").textContent =
+        1 +
+        appState.ideas.length;
+
+      document.getElementById("zoneIdeaCount").textContent =
+        1 +
+        appState.ideas.length;
+
+      document.getElementById("scanGoalLabel").textContent =
+        appState.searches +
+        " van 3 voltooid";
+
+      const scanGoal =
+        document.getElementById("goalScan");
+
+      if (appState.searches >= 3) {
+        scanGoal.classList.add("completed");
+
+        scanGoal
+          .querySelector(".goal-check")
+          .textContent = "✓";
+      } else {
+        scanGoal.classList.remove("completed");
+
+        scanGoal
+          .querySelector(".goal-check")
+          .textContent =
+            3 - appState.searches;
+      }
+
+      let completedGoals = 2;
+
+      if (appState.searches >= 3) {
+        completedGoals += 1;
+      }
+
+      const dailyProgress =
+        Math.round(
+          completedGoals /
+          3 *
+          100
+        );
+
+      document.getElementById("dailyProgressLabel").textContent =
+        dailyProgress + "%";
+
+      document.getElementById("dailyProgressBar").style.width =
+        dailyProgress + "%";
+    }
+
+    function openScannerModal() {
+      document
+        .getElementById("scannerModal")
+        .classList.add("show");
+
+      document.body.classList.add("modal-open");
+    }
+
+    function closeScannerModal() {
+      document
+        .getElementById("scannerModal")
+        .classList.remove("show");
+
+      document.body.classList.remove("modal-open");
+    }
+
+    function closeScannerModalFromBackdrop(event) {
+      if (
+        event.target.id === "scannerModal"
+      ) {
+        closeScannerModal();
+      }
+    }
+
+    function simulateBarcodeScan() {
+      closeScannerModal();
+
+      document.getElementById("articleInput").value =
+        "1001";
+
+      searchProduct();
+
+      showToast(
+        "Barcode 1001 succesvol gescand"
+      );
+    }
+
+    function showToast(message) {
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent =
+        message;
+
+      toast.classList.add("show");
+
+      clearTimeout(toastTimer);
+
+      toastTimer =
+        setTimeout(function() {
+          toast.classList.remove("show");
+        }, 3000);
+    }
+
+    function resetDemo() {
+      const confirmed =
+        confirm(
+          "Weet je zeker dat je alle opgeslagen voortgang wilt verwijderen?"
+        );
+
+      if (!confirmed) {
+        return;
+      }
+
+      localStorage.removeItem(
+        "avtPartsReadyState"
+      );
+
+      appState = {
+        xp: 420,
+        learnedProducts: [],
+        ideas: [],
+        searches: 0,
+        quizCompleted: false,
+        userRole: "employee"
+      };
+
+      selectedProductCode =
+        null;
+
+      document
+        .getElementById("productResult")
+        .classList.remove("show");
+
+      document.getElementById("articleInput").value =
+        "";
+
+      document
+        .querySelectorAll(".saved-idea")
+        .forEach(function(savedIdea) {
+          savedIdea.remove();
+        });
+
+      updateInterface();
+
+      showToast(
+        "De demonstratie is gereset"
+      );
+
+      goHome();
+    }
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function() {
+        loadState();
+
+        document.getElementById("welcomeLabel").textContent =
+          getGreeting();
+      }
+    );
+  </script>
+
 </body>
 </html>
+
