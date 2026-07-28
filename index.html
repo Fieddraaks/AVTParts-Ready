@@ -4048,7 +4048,8 @@
     </div>
 
   </div>
-
+<script src="https://unpkg.com/html5-qrcode"></script>
+    
   <script>
     const products = {
       "1001": {
@@ -5029,59 +5030,174 @@
       }
     }
 
-    function openScannerModal() {
-      openModal(`
-        <h2>Barcode scannen</h2>
+    let html5QrCode = null;
+let scannerRunning = false;
 
-        <p>
-          In een definitieve versie opent hier de
-          camera van de telefoon. Voor deze demo kun
-          je een voorbeeldscan uitvoeren.
-        </p>
+function openScannerModal() {
+  openModal(`
+    <h2>Barcode scannen</h2>
 
-        <div
-          style="
-            min-height: 220px;
-            display: grid;
-            place-items: center;
-            margin-top: 16px;
-            border-radius: 18px;
-            background: #17394f;
-            color: white;
-            font-size: 55px;
-          "
-        >
-          ▦
-        </div>
+    <p>
+      Geef toestemming voor de camera en richt de
+      barcode binnen het kader.
+    </p>
 
-        <button
-          class="primary-button"
-          style="margin-top: 15px;"
-          onclick="simulateScan()"
-        >
-          Voorbeeldbarcode scannen
-        </button>
+    <div
+      id="barcodeReader"
+      style="
+        width: 100%;
+        min-height: 250px;
+        margin-top: 16px;
+        overflow: hidden;
+        border-radius: 18px;
+        background: #17394f;
+      "
+    ></div>
 
-        <button
-          class="secondary-button"
-          style="margin-top: 9px;"
-          onclick="closeModal()"
-        >
-          Annuleren
-        </button>
-      `);
+    <p
+      id="scannerStatus"
+      style="
+        margin-top: 12px;
+        color: #657f91;
+        font-size: 11px;
+        line-height: 1.5;
+        text-align: center;
+      "
+    >
+      Camera wordt gestart...
+    </p>
+
+    <button
+      class="secondary-button"
+      style="margin-top: 14px;"
+      onclick="stopScannerAndClose()"
+    >
+      Scanner sluiten
+    </button>
+  `);
+
+  setTimeout(startBarcodeScanner, 300);
+}
+
+async function startBarcodeScanner() {
+  const statusElement =
+    document.getElementById("scannerStatus");
+
+  try {
+    html5QrCode =
+      new Html5Qrcode("barcodeReader");
+
+    const cameras =
+      await Html5Qrcode.getCameras();
+
+    if (!cameras || cameras.length === 0) {
+      throw new Error("Geen camera gevonden.");
     }
 
-    function simulateScan() {
-      closeModal();
+    let selectedCamera =
+      cameras[0].id;
 
-      document.getElementById(
-        "searchInput"
-      ).value =
-        "1001";
+    const backCamera =
+      cameras.find(camera => {
+        const label =
+          camera.label.toLowerCase();
 
-      searchProduct();
+        return (
+          label.includes("back") ||
+          label.includes("rear") ||
+          label.includes("environment") ||
+          label.includes("achter")
+        );
+      });
+
+    if (backCamera) {
+      selectedCamera =
+        backCamera.id;
     }
+
+    scannerRunning = true;
+
+    if (statusElement) {
+      statusElement.textContent =
+        "Richt de barcode binnen het kader.";
+    }
+
+    await html5QrCode.start(
+      selectedCamera,
+      {
+        fps: 10,
+        qrbox: {
+          width: 260,
+          height: 140
+        }
+      },
+      handleSuccessfulScan,
+      () => {}
+    );
+  } catch (error) {
+    scannerRunning = false;
+
+    console.error(error);
+
+    if (statusElement) {
+      statusElement.textContent =
+        "De camera kon niet worden geopend. Controleer de cameratoestemming.";
+    }
+
+    showToast(
+      "Camera kon niet worden geopend."
+    );
+  }
+}
+
+async function handleSuccessfulScan(decodedText) {
+  if (!scannerRunning) {
+    return;
+  }
+
+  scannerRunning = false;
+
+  const scannedCode =
+    decodedText.trim();
+
+  await stopBarcodeScanner();
+
+  closeModal();
+
+  document.getElementById(
+    "searchInput"
+  ).value =
+    scannedCode;
+
+  searchProduct();
+}
+
+async function stopBarcodeScanner() {
+  if (!html5QrCode) {
+    scannerRunning = false;
+    return;
+  }
+
+  try {
+    await html5QrCode.stop();
+  } catch (error) {
+    console.warn(error);
+  }
+
+  try {
+    html5QrCode.clear();
+  } catch (error) {
+    console.warn(error);
+  }
+
+  html5QrCode = null;
+  scannerRunning = false;
+}
+
+async function stopScannerAndClose() {
+  await stopBarcodeScanner();
+  closeModal();
+}
 
     function openSearchHelp() {
       openModal(`
