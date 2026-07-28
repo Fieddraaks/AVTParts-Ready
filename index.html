@@ -2553,7 +2553,7 @@
 <button
   class="secondary-button scan-button"
   style="margin-top:12px;"
-  onclick="openAIDemo()"
+  onclick="openAICamera()"
 >
   ✨ Herken onderdeel met AI
 </button>
@@ -5132,6 +5132,39 @@ function startAIDemo() {
     `;
 
   },2000);
+
+}
+ function openAICamera() {
+
+  const input = document.createElement("input");
+
+  input.type = "file";
+  input.accept = "image/*";
+  input.capture = "environment";
+
+  input.onchange = function () {
+
+    if (!input.files.length) return;
+
+    openModal(`
+      <div style="text-align:center;padding:40px 20px;">
+        <div style="font-size:70px;">🤖</div>
+        <h2>AI analyseert onderdeel...</h2>
+        <p>Onderdeel wordt herkend.</p>
+      </div>
+    `);
+
+    setTimeout(() => {
+
+      closeModal();
+
+      startAIDemo();
+
+    }, 2500);
+
+  };
+
+  input.click();
 
 }
     
