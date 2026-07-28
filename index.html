@@ -1,1 +1,5242 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="description"
+    content="AVT Parts Ready helpt magazijnmedewerkers sneller onderdelen herkennen, kennis opbouwen en verbeteringen doorgeven."
+  >
+
+  <meta name="theme-color" content="#0a6fa4">
+
+  <title>AVT Parts Ready</title>
+
+  <style>
+    :root {
+      --primary: #118dc2;
+      --primary-dark: #086895;
+      --primary-deep: #064e73;
+      --primary-light: #dff5ff;
+      --primary-extra-light: #f1fbff;
+
+      --background: #edf7fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fcfe;
+      --surface-blue: #eaf8ff;
+
+      --text: #15364d;
+      --text-soft: #657f91;
+      --text-light: #89a0ae;
+
+      --border: #d8eaf3;
+      --border-dark: #bedce9;
+
+      --success: #23865c;
+      --success-bg: #dff5e9;
+
+      --warning: #a66c12;
+      --warning-bg: #fff1d5;
+
+      --danger: #bd4c4c;
+      --danger-bg: #ffe7e7;
+
+      --purple: #6c63b8;
+      --purple-bg: #efedff;
+
+      --shadow-small:
+        0 5px 16px rgba(30, 85, 116, 0.07);
+
+      --shadow-medium:
+        0 10px 28px rgba(30, 85, 116, 0.11);
+
+      --shadow-large:
+        0 18px 45px rgba(30, 85, 116, 0.16);
+
+      --radius-xs: 8px;
+      --radius-small: 12px;
+      --radius-medium: 16px;
+      --radius-large: 22px;
+      --radius-extra-large: 30px;
+
+      --bottom-nav-height: 78px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--background);
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 20% 0%,
+          rgba(17, 141, 194, 0.12),
+          transparent 35%
+        ),
+        var(--background);
+
+      color: var(--text);
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      overscroll-behavior-y: none;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    input,
+    textarea,
+    select {
+      font-size: 16px;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .app-shell {
+      width: 100%;
+      max-width: 460px;
+      min-height: 100vh;
+      margin: 0 auto;
+      position: relative;
+      background: var(--surface-soft);
+      box-shadow:
+        0 0 45px rgba(29, 78, 108, 0.15);
+      overflow-x: hidden;
+      padding-bottom:
+        calc(
+          var(--bottom-nav-height) +
+          env(safe-area-inset-bottom)
+        );
+    }
+
+    .screen {
+      display: none;
+      min-height:
+        calc(
+          100vh -
+          var(--bottom-nav-height)
+        );
+    }
+
+    .screen.active {
+      display: block;
+      animation: screenFade 0.2s ease;
+    }
+
+    @keyframes screenFade {
+      from {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .page-content {
+      padding: 20px;
+    }
+
+    .page-header {
+      position: sticky;
+      top: 0;
+      z-index: 15;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-height: 76px;
+      padding:
+        calc(15px + env(safe-area-inset-top))
+        20px
+        15px;
+      background:
+        rgba(248, 252, 254, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom:
+        1px solid rgba(216, 234, 243, 0.9);
+    }
+
+    .page-header-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .page-header-copy h1 {
+      font-size: 21px;
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+    }
+
+    .page-header-copy p {
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .back-button,
+    .icon-button {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border: none;
+      border-radius: 14px;
+      background: var(--surface-blue);
+      color: var(--primary-dark);
+      font-size: 20px;
+    }
+
+    .back-button:active,
+    .icon-button:active {
+      transform: scale(0.96);
+    }
+
+    .card {
+      position: relative;
+      margin-bottom: 16px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-large);
+      background: var(--surface);
+      box-shadow: var(--shadow-small);
+    }
+
+    .card:last-child {
+      margin-bottom: 0;
+    }
+
+    .card-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .card h2 {
+      font-size: 18px;
+      line-height: 1.25;
+      letter-spacing: -0.2px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .card p {
+      color: var(--text-soft);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .card h2 + p,
+    .card h3 + p {
+      margin-top: 6px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 24px 1px 13px;
+    }
+
+    .section-heading h2 {
+      font-size: 18px;
+      letter-spacing: -0.2px;
+    }
+
+    .section-heading button {
+      border: none;
+      background: transparent;
+      color: var(--primary-dark);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .section-description {
+      margin: -6px 1px 14px;
+      color: var(--text-soft);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .primary-button,
+    .secondary-button,
+    .danger-button {
+      width: 100%;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 15px;
+      padding: 13px 16px;
+      font-weight: 800;
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .primary-button {
+      border: none;
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+      color: white;
+      box-shadow:
+        0 9px 20px rgba(17, 141, 194, 0.23);
+    }
+
+    .secondary-button {
+      border: 1px solid var(--border-dark);
+      background: var(--surface);
+      color: var(--primary-dark);
+    }
+
+    .danger-button {
+      border: 1px solid #efb7b7;
+      background: var(--danger-bg);
+      color: var(--danger);
+    }
+
+    .primary-button:active,
+    .secondary-button:active,
+    .danger-button:active {
+      transform: scale(0.98);
+    }
+
+    .button-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .button-row .primary-button,
+    .button-row .secondary-button {
+      margin-top: 0;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 28px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 800;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .tag-blue {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    .tag-green {
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .tag-orange {
+      background: var(--warning-bg);
+      color: var(--warning);
+    }
+
+    .tag-red {
+      background: var(--danger-bg);
+      color: var(--danger);
+    }
+
+    .tag-purple {
+      background: var(--purple-bg);
+      color: var(--purple);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .divider {
+      height: 1px;
+      margin: 17px 0;
+      background: var(--border);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .muted {
+      color: var(--text-soft);
+    }
+
+    .strong {
+      font-weight: 800;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .home-header {
+      position: relative;
+      overflow: hidden;
+      padding:
+        calc(22px + env(safe-area-inset-top))
+        20px
+        27px;
+      background:
+        radial-gradient(
+          circle at 85% 5%,
+          rgba(255, 255, 255, 0.85),
+          transparent 30%
+        ),
+        linear-gradient(
+          145deg,
+          #72c6ed,
+          #bce9fb 58%,
+          #e4f7ff
+        );
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+    }
+
+    .home-header::before {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      right: -75px;
+      top: 75px;
+      border-radius: 50%;
+      background:
+        rgba(255, 255, 255, 0.23);
+    }
+
+    .home-top-row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 47px;
+      height: 47px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.91);
+      box-shadow:
+        0 9px 20px rgba(30, 91, 124, 0.13);
+      font-size: 25px;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 3px;
+      color: #426b82;
+      font-size: 10px;
+      letter-spacing: 0.3px;
+    }
+
+    .avatar-button {
+      width: 46px;
+      height: 46px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border: 3px solid rgba(255, 255, 255, 0.65);
+      border-radius: 50%;
+      background: white;
+      color: var(--primary-dark);
+      font-size: 15px;
+      font-weight: 900;
+      box-shadow:
+        0 9px 20px rgba(30, 91, 124, 0.14);
+    }
+
+    .welcome-block {
+      position: relative;
+      z-index: 1;
+      margin-top: 24px;
+    }
+
+    .welcome-block p {
+      color: #486f86;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .welcome-block h1 {
+      margin-top: 4px;
+      font-size: 27px;
+      line-height: 1.1;
+      letter-spacing: -0.6px;
+    }
+
+    .welcome-zone {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.65);
+      color: #3f6b84;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .level-card {
+      position: relative;
+      z-index: 1;
+      margin-top: 19px;
+      padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 19px;
+      background: rgba(255, 255, 255, 0.77);
+      backdrop-filter: blur(9px);
+    }
+
+    .level-top,
+    .level-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .level-top {
+      margin-bottom: 11px;
+    }
+
+    .level-name {
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .level-xp {
+      color: #466d83;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 9px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #d7ebf4;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background:
+        linear-gradient(
+          90deg,
+          var(--primary),
+          #56bce6
+        );
+      transition: width 0.35s ease;
+    }
+
+    .level-bottom {
+      margin-top: 8px;
+      color: #617e8f;
+      font-size: 10px;
+    }
+
+    .home-content {
+      padding: 20px;
+    }
+
+    .daily-card {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-large);
+      background: white;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .daily-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 13px;
+    }
+
+    .daily-card-header h2 {
+      font-size: 17px;
+    }
+
+    .daily-card-header p {
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .streak-pill {
+      flex: 0 0 auto;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--warning-bg);
+      color: var(--warning);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .daily-progress {
+      margin-top: 16px;
+    }
+
+    .daily-progress-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .goal-list {
+      display: grid;
+      gap: 9px;
+      margin-top: 15px;
+    }
+
+    .goal-item {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface-soft);
+      color: var(--text);
+      text-align: left;
+    }
+
+    .goal-item:active {
+      transform: scale(0.99);
+    }
+
+    .goal-check {
+      width: 25px;
+      height: 25px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border: 2px solid #b9d7e4;
+      border-radius: 8px;
+      color: white;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .goal-item.completed .goal-check {
+      border-color: var(--success);
+      background: var(--success);
+    }
+
+    .goal-item.completed .goal-copy strong {
+      color: var(--text-light);
+      text-decoration: line-through;
+    }
+
+    .goal-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .goal-copy strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .goal-copy span {
+      display: block;
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 10px;
+    }
+
+    .goal-arrow {
+      color: var(--text-light);
+      font-size: 16px;
+    }
+
+    .part-of-day-card {
+      position: relative;
+      overflow: hidden;
+      padding: 19px;
+      border: 1px solid #c8e8f6;
+      border-radius: var(--radius-large);
+      background:
+        radial-gradient(
+          circle at 90% 10%,
+          rgba(255, 255, 255, 0.95),
+          transparent 35%
+        ),
+        linear-gradient(
+          135deg,
+          #d8f3ff,
+          #f3fbff
+        );
+      box-shadow: var(--shadow-medium);
+    }
+
+    .part-of-day-card::after {
+      content: "";
+      position: absolute;
+      right: -55px;
+      bottom: -70px;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: rgba(17, 141, 194, 0.08);
+    }
+
+    .part-of-day-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .part-visual {
+      width: 77px;
+      height: 77px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(203, 232, 244, 0.9);
+      border-radius: 21px;
+      background: white;
+      box-shadow: var(--shadow-small);
+      font-size: 41px;
+    }
+
+    .part-of-day-copy {
+      min-width: 0;
+    }
+
+    .part-of-day-copy h3 {
+      margin-top: 8px;
+      font-size: 20px;
+      letter-spacing: -0.3px;
+    }
+
+    .part-of-day-copy p {
+      margin-top: 5px;
+      color: var(--text-soft);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .meta-row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 15px;
+    }
+
+    .meta-chip {
+      padding: 7px 9px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.85);
+      color: #567488;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .part-of-day-card .primary-button {
+      position: relative;
+      z-index: 1;
+      margin-top: 15px;
+    }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .action-card {
+      min-height: 150px;
+      padding: 16px 14px;
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      background: white;
+      color: var(--text);
+      text-align: left;
+      box-shadow: var(--shadow-small);
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+    }
+
+    .action-card:active {
+      transform: scale(0.97);
+      box-shadow: none;
+    }
+
+    .action-icon {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 13px;
+      border-radius: 14px;
+      background: var(--primary-light);
+      font-size: 23px;
+    }
+
+    .action-card:nth-child(2) .action-icon {
+      background: var(--success-bg);
+    }
+
+    .action-card:nth-child(3) .action-icon {
+      background: var(--purple-bg);
+    }
+
+    .action-card:nth-child(4) .action-icon {
+      background: var(--warning-bg);
+    }
+
+    .action-card h3 {
+      font-size: 14px;
+    }
+
+    .action-card p {
+      margin-top: 5px;
+      color: var(--text-soft);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .screen-time-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      margin-top: 18px;
+      padding: 14px;
+      border: 1px solid #cde8f5;
+      border-radius: 17px;
+      background: #e9f8ff;
+    }
+
+    .screen-time-icon {
+      font-size: 21px;
+    }
+
+    .screen-time-copy h4 {
+      font-size: 12px;
+    }
+
+    .screen-time-copy p {
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .search-panel {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-large);
+      background: white;
+      box-shadow: var(--shadow-small);
+    }
+
+    .search-panel h2 {
+      font-size: 18px;
+    }
+
+    .search-panel > p {
+      margin-top: 6px;
+      color: var(--text-soft);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .search-box {
+      position: relative;
+      margin-top: 15px;
+    }
+
+    .search-box input {
+      width: 100%;
+      min-height: 52px;
+      padding: 14px 54px 14px 15px;
+      border: 1px solid var(--border-dark);
+      border-radius: 15px;
+      background: var(--surface);
+      color: var(--text);
+      outline: none;
+    }
+
+    .search-box input:focus {
+      border-color: var(--primary);
+      box-shadow:
+        0 0 0 3px rgba(17, 141, 194, 0.11);
+    }
+
+    .search-submit {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: none;
+      border-radius: 12px;
+      background: var(--primary);
+      color: white;
+      font-size: 18px;
+    }
+
+    .demo-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .demo-chip {
+      padding: 8px 10px;
+      border: none;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .scan-button {
+      margin-top: 12px;
+    }
+
+    .scan-info-box {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 13px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--surface-blue);
+    }
+
+    .scan-info-box span:first-child {
+      font-size: 19px;
+    }
+
+    .scan-info-box p {
+      color: var(--text-soft);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .product-result {
+      display: none;
+      margin-top: 16px;
+    }
+
+    .product-result.show {
+      display: block;
+      animation: resultAppear 0.25s ease;
+    }
+
+    @keyframes resultAppear {
+      from {
+        opacity: 0;
+        transform: translateY(7px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .product-image {
+      min-height: 175px;
+      display: grid;
+      place-items: center;
+      border: 1px solid #cfe7f2;
+      border-radius: var(--radius-large);
+      background:
+        radial-gradient(
+          circle at 50% 40%,
+          #ffffff,
+          #e3f6ff
+        );
+      font-size: 80px;
+      box-shadow: var(--shadow-small);
+    }
+
+    .product-card {
+      margin-top: 13px;
+    }
+
+    .product-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .product-title-row h2 {
+      font-size: 21px;
+    }
+
+    .product-category {
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 11px;
+    }
+
+    .article-code {
+      flex: 0 0 auto;
+      padding: 7px 9px;
+      border-radius: 999px;
+      background: var(--surface-blue);
+      color: var(--primary-dark);
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .product-description {
+      margin-top: 12px;
+      color: var(--text-soft);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .detail-item {
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface-soft);
+    }
+
+    .detail-item strong {
+      display: block;
+      font-size: 11px;
+    }
+
+    .detail-item p {
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .video-placeholder {
+      position: relative;
+      min-height: 145px;
+      display: grid;
+      place-items: center;
+      margin-top: 14px;
+      overflow: hidden;
+      border-radius: 17px;
+      background:
+        linear-gradient(
+          135deg,
+          #15364d,
+          #27789e
+        );
+      color: white;
+    }
+
+    .video-placeholder::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(
+          circle at 75% 20%,
+          rgba(255, 255, 255, 0.18),
+          transparent 35%
+        );
+    }
+
+    .play-button {
+      position: relative;
+      z-index: 1;
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--primary-dark);
+      font-size: 21px;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .video-label {
+      position: absolute;
+      left: 13px;
+      bottom: 12px;
+      z-index: 1;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .success-message,
+    .warning-message {
+      display: none;
+      margin-top: 13px;
+      padding: 12px;
+      border-radius: 13px;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .success-message.show,
+    .warning-message.show {
+      display: block;
+    }
+
+    .success-message {
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .warning-message {
+      background: var(--warning-bg);
+      color: var(--warning);
+    }
+
+    .zone-hero {
+      overflow: hidden;
+      background:
+        radial-gradient(
+          circle at 90% 5%,
+          rgba(255, 255, 255, 0.95),
+          transparent 33%
+        ),
+        linear-gradient(
+          135deg,
+          #dff5ff,
+          #f7fdff
+        );
+    }
+
+    .zone-hero h2 {
+      margin-top: 13px;
+      font-size: 21px;
+    }
+
+    .zone-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .zone-stat {
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .zone-stat strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 21px;
+      letter-spacing: -0.3px;
+    }
+
+    .zone-stat span {
+      display: block;
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.35;
+    }
+
+    .responsibility-list {
+      display: grid;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .responsibility-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 11px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface-soft);
+    }
+
+    .responsibility-icon {
+      width: 29px;
+      height: 29px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: var(--success-bg);
+      color: var(--success);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .responsibility-copy strong {
+      display: block;
+      font-size: 11px;
+    }
+
+    .responsibility-copy p {
+      margin-top: 3px;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    .zone-task-card {
+      border-left: 5px solid var(--warning);
+    }
+
+    .zone-task-card h3 {
+      margin-top: 11px;
+    }
+
+    .zone-task-card .primary-button {
+      margin-top: 14px;
+    }
+
+    .lesson-visual {
+      min-height: 178px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      border: 1px solid #cee7f2;
+      border-radius: 20px;
+      background:
+        radial-gradient(
+          circle at 50% 40%,
+          white,
+          #e2f6ff
+        );
+      font-size: 80px;
+    }
+
+    .lesson-card h2 {
+      margin-top: 12px;
+    }
+
+    .lesson-card > p {
+      margin-top: 11px;
+    }
+
+    .remember-box {
+      margin-top: 14px;
+      padding: 13px;
+      border-left: 4px solid var(--primary);
+      border-radius: 0 14px 14px 0;
+      background: var(--primary-extra-light);
+    }
+
+    .remember-box strong {
+      font-size: 11px;
+    }
+
+    .remember-box p {
+      margin-top: 4px;
+      font-size: 11px;
+    }
+
+    .quiz-options {
+      display: grid;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .quiz-option {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: white;
+      color: var(--text);
+      text-align: left;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .quiz-option.correct {
+      border-color: #77c29c;
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .quiz-option.wrong {
+      border-color: #e4a0a0;
+      background: var(--danger-bg);
+      color: var(--danger);
+    }
+
+    .form-group {
+      margin-top: 15px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .form-help {
+      display: block;
+      margin-top: 5px;
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.4;
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      border: 1px solid var(--border-dark);
+      border-radius: 14px;
+      padding: 13px 14px;
+      background: white;
+      color: var(--text);
+      outline: none;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      border-color: var(--primary);
+      box-shadow:
+        0 0 0 3px rgba(17, 141, 194, 0.1);
+    }
+
+    .form-textarea {
+      min-height: 105px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .idea-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .idea-card {
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: white;
+      box-shadow: var(--shadow-small);
+    }
+
+    .idea-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 11px;
+    }
+
+    .idea-card h3 {
+      font-size: 14px;
+    }
+
+    .idea-card p {
+      margin-top: 5px;
+      color: var(--text-soft);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .idea-meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 13px;
+    }
+
+    .idea-meta {
+      padding: 10px;
+      border-radius: 12px;
+      background: var(--surface-soft);
+    }
+
+    .idea-meta strong {
+      display: block;
+      font-size: 9px;
+    }
+
+    .idea-meta span {
+      display: block;
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.35;
+    }
+
+    .profile-hero {
+      text-align: center;
+    }
+
+    .profile-avatar {
+      width: 80px;
+      height: 80px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 12px;
+      border: 5px solid var(--primary-light);
+      border-radius: 50%;
+      background: white;
+      color: var(--primary-dark);
+      font-size: 26px;
+      font-weight: 900;
+      box-shadow: var(--shadow-small);
+    }
+
+    .profile-hero h2 {
+      font-size: 21px;
+    }
+
+    .profile-hero p {
+      margin-top: 4px;
+      font-size: 11px;
+    }
+
+    .profile-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+      margin-top: 16px;
+    }
+
+    .profile-stat {
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface-soft);
+      text-align: left;
+    }
+
+    .profile-stat strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 20px;
+    }
+
+    .profile-stat span {
+      display: block;
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.35;
+    }
+
+    .knowledge-item {
+      margin-top: 15px;
+    }
+
+    .knowledge-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 7px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .badge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .badge-card {
+      min-height: 135px;
+      padding: 15px 10px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface-soft);
+      text-align: center;
+    }
+
+    .badge-card.locked {
+      opacity: 0.45;
+      filter: grayscale(1);
+    }
+
+    .badge-icon {
+      font-size: 31px;
+    }
+
+    .badge-card strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 11px;
+    }
+
+    .badge-card span {
+      display: block;
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.35;
+    }
+
+    .manager-kpi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .manager-kpi {
+      padding: 14px;
+      border-radius: 15px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+    }
+
+    .manager-kpi strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 21px;
+    }
+
+    .manager-kpi span {
+      display: block;
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.35;
+    }
+
+    .employee-list {
+      display: grid;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .employee-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface-soft);
+    }
+
+    .employee-avatar {
+      width: 37px;
+      height: 37px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .employee-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .employee-copy strong {
+      display: block;
+      font-size: 11px;
+    }
+
+    .employee-copy span {
+      display: block;
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 9px;
+    }
+
+    .employee-score {
+      flex: 0 0 auto;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      left: 50%;
+      bottom: 0;
+      z-index: 50;
+      width: 100%;
+      max-width: 460px;
+      min-height:
+        calc(
+          var(--bottom-nav-height) +
+          env(safe-area-inset-bottom)
+        );
+      transform: translateX(-50%);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-around;
+      padding:
+        10px
+        8px
+        calc(8px + env(safe-area-inset-bottom));
+      border-top: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-item {
+      min-width: 61px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      border: none;
+      background: transparent;
+      color: #8ba2b0;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .nav-icon-wrap {
+      width: 38px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      font-size: 20px;
+    }
+
+    .nav-item.active {
+      color: var(--primary-dark);
+    }
+
+    .nav-item.active .nav-icon-wrap {
+      background: var(--primary-light);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom:
+        calc(
+          var(--bottom-nav-height) +
+          env(safe-area-inset-bottom) +
+          13px
+        );
+      z-index: 100;
+      width: calc(100% - 38px);
+      max-width: 420px;
+      transform:
+        translate(-50%, 20px);
+      padding: 13px 15px;
+      border-radius: 15px;
+      background: #17394f;
+      color: white;
+      box-shadow: var(--shadow-large);
+      font-size: 11px;
+      line-height: 1.4;
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 15px;
+      background: rgba(10, 36, 52, 0.55);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+    }
+
+    .modal-sheet {
+      width: 100%;
+      max-width: 440px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 19px;
+      border-radius: 24px 24px 18px 18px;
+      background: white;
+      box-shadow: var(--shadow-large);
+      animation: modalUp 0.24s ease;
+    }
+
+    @keyframes modalUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .modal-handle {
+      width: 45px;
+      height: 5px;
+      margin: 0 auto 16px;
+      border-radius: 999px;
+      background: #d7e3e9;
+    }
+
+    .modal-sheet h2 {
+      font-size: 19px;
+    }
+
+    .modal-sheet > p {
+      margin-top: 7px;
+      color: var(--text-soft);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .login-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background:
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(255, 255, 255, 0.7),
+          transparent 30%
+        ),
+        linear-gradient(
+          145deg,
+          #7ac9ec,
+          #dff6ff
+        );
+    }
+
+    .login-screen.show {
+      display: flex;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 390px;
+      padding: 23px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 27px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-large);
+    }
+
+    .login-logo {
+      width: 67px;
+      height: 67px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto;
+      border-radius: 20px;
+      background: white;
+      font-size: 35px;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .login-card h1 {
+      margin-top: 17px;
+      text-align: center;
+      font-size: 24px;
+      letter-spacing: -0.4px;
+    }
+
+    .login-card > p {
+      margin-top: 7px;
+      color: var(--text-soft);
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .login-options {
+      display: grid;
+      gap: 9px;
+      margin-top: 19px;
+    }
+
+    .login-option {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: white;
+      color: var(--text);
+      text-align: left;
+    }
+
+    .login-option-icon {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 12px;
+      background: var(--primary-light);
+      font-size: 20px;
+    }
+
+    .login-option strong {
+      display: block;
+      font-size: 11px;
+    }
+
+    .login-option span {
+      display: block;
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 9px;
+    }
+
+    @media (min-width: 720px) {
+      body {
+        padding: 24px 0;
+      }
+
+      .app-shell {
+        min-height: calc(100vh - 48px);
+        border-radius: 32px;
+        overflow: hidden;
+      }
+
+      .bottom-nav {
+        bottom: 24px;
+        border-bottom-left-radius: 32px;
+        border-bottom-right-radius: 32px;
+      }
+
+      .toast {
+        bottom:
+          calc(
+            24px +
+            var(--bottom-nav-height) +
+            13px
+          );
+      }
+    }
+  </style>
+</head>
+  <body>
+
+  <div
+    id="loginScreen"
+    class="login-screen show"
+  >
+
+    <div class="login-card">
+
+      <div class="login-logo">
+        🚛
+      </div>
+
+      <h1>AVT Parts Ready</h1>
+
+      <p>
+        Een praktisch hulpmiddel voor productkennis,
+        eigenaarschap en verbeteren op de werkvloer.
+      </p>
+
+      <div class="login-options">
+
+        <button
+          class="login-option"
+          onclick="loginAsEmployee()"
+        >
+
+          <div class="login-option-icon">
+            👷
+          </div>
+
+          <div>
+            <strong>Inloggen als medewerker</strong>
+
+            <span>
+              Open het persoonlijke dashboard van Kevin.
+            </span>
+          </div>
+
+        </button>
+
+        <button
+          class="login-option"
+          onclick="loginAsManager()"
+        >
+
+          <div class="login-option-icon">
+            📊
+          </div>
+
+          <div>
+            <strong>Demo voor leidinggevende</strong>
+
+            <span>
+              Bekijk teamvoortgang en verbeterideeën.
+            </span>
+          </div>
+
+        </button>
+
+      </div>
+
+      <p style="margin-top: 16px;">
+        Dit is een werkend prototype. Er worden nog geen
+        echte personeelsgegevens gebruikt.
+      </p>
+
+    </div>
+
+  </div>
+
+  <main class="app-shell">
+
+    <!-- HOME -->
+
+    <section
+      id="homeScreen"
+      class="screen active"
+    >
+
+      <header class="home-header">
+
+        <div class="home-top-row">
+
+          <div class="brand">
+
+            <div class="brand-logo">
+              🚛
+            </div>
+
+            <div class="brand-copy">
+
+              <strong>
+                AVT Parts Ready
+              </strong>
+
+              <span>
+                KENNIS · EIGENAARSCHAP · VERBETEREN
+              </span>
+
+            </div>
+
+          </div>
+
+          <button
+            class="avatar-button"
+            onclick="openScreen('profileScreen')"
+            aria-label="Open profiel"
+          >
+            K
+          </button>
+
+        </div>
+
+        <div class="welcome-block">
+
+          <p id="greetingText">
+            Goedemorgen,
+          </p>
+
+          <h1>
+            Kevin
+          </h1>
+
+          <div class="welcome-zone">
+            📦 Zone Remmen & wielonderdelen
+          </div>
+
+        </div>
+
+        <div class="level-card">
+
+          <div class="level-top">
+
+            <span
+              id="homeLevelName"
+              class="level-name"
+            >
+              Level 2 · Parts Handler
+            </span>
+
+            <span
+              id="homeXP"
+              class="level-xp"
+            >
+              420 XP
+            </span>
+
+          </div>
+
+          <div class="progress-track">
+
+            <div
+              id="homeXPBar"
+              class="progress-fill"
+              style="width: 68%;"
+            ></div>
+
+          </div>
+
+          <div class="level-bottom">
+
+            <span id="levelStartText">
+              300 XP
+            </span>
+
+            <span id="nextLevelText">
+              Nog 80 XP tot level 3
+            </span>
+
+          </div>
+
+        </div>
+
+      </header>
+
+      <div class="home-content">
+
+        <div class="daily-card">
+
+          <div class="daily-card-header">
+
+            <div>
+
+              <h2>
+                Jouw doel vandaag
+              </h2>
+
+              <p>
+                Korte acties die direct bijdragen aan
+                kennis en kwaliteit.
+              </p>
+
+            </div>
+
+            <div class="streak-pill">
+              🔥 5 dagen
+            </div>
+
+          </div>
+
+          <div class="daily-progress">
+
+            <div class="daily-progress-top">
+
+              <span>
+                Dagvoortgang
+              </span>
+
+              <span id="dailyProgressText">
+                0 van 3
+              </span>
+
+            </div>
+
+            <div class="progress-track">
+
+              <div
+                id="dailyProgressBar"
+                class="progress-fill"
+                style="width: 0%;"
+              ></div>
+
+            </div>
+
+          </div>
+
+          <div class="goal-list">
+
+            <button
+              id="goalLearn"
+              class="goal-item"
+              onclick="openScreen('learningScreen')"
+            >
+
+              <div class="goal-check">
+                ✓
+              </div>
+
+              <div class="goal-copy">
+
+                <strong>
+                  Leer het onderdeel van vandaag
+                </strong>
+
+                <span>
+                  Ongeveer 45 seconden
+                </span>
+
+              </div>
+
+              <div class="goal-arrow">
+                ›
+              </div>
+
+            </button>
+
+            <button
+              id="goalQuiz"
+              class="goal-item"
+              onclick="openScreen('learningScreen')"
+            >
+
+              <div class="goal-check">
+                ✓
+              </div>
+
+              <div class="goal-copy">
+
+                <strong>
+                  Beantwoord de quizvraag
+                </strong>
+
+                <span>
+                  Test direct wat je hebt onthouden
+                </span>
+
+              </div>
+
+              <div class="goal-arrow">
+                ›
+              </div>
+
+            </button>
+
+            <button
+              id="goalScan"
+              class="goal-item"
+              onclick="openScreen('searchScreen')"
+            >
+
+              <div class="goal-check">
+                ✓
+              </div>
+
+              <div class="goal-copy">
+
+                <strong>
+                  Zoek of scan een onderdeel
+                </strong>
+
+                <span>
+                  Bekijk minimaal één product
+                </span>
+
+              </div>
+
+              <div class="goal-arrow">
+                ›
+              </div>
+
+            </button>
+
+          </div>
+
+        </div>
+
+        <div class="section-heading">
+
+          <h2>
+            Onderdeel van vandaag
+          </h2>
+
+          <button
+            onclick="openScreen('learningScreen')"
+          >
+            Bekijken
+          </button>
+
+        </div>
+
+        <article class="part-of-day-card">
+
+          <div class="part-of-day-top">
+
+            <div class="part-visual">
+              🛞
+            </div>
+
+            <div class="part-of-day-copy">
+
+              <span class="tag tag-blue">
+                Vandaag leren
+              </span>
+
+              <h3>
+                Remschijf
+              </h3>
+
+              <p>
+                Herken de belangrijkste verschillen
+                en voorkom een verkeerde pick.
+              </p>
+
+            </div>
+
+          </div>
+
+          <div class="meta-row">
+
+            <div class="meta-chip">
+              ⏱ 45 seconden
+            </div>
+
+            <div class="meta-chip">
+              ⭐ +15 XP
+            </div>
+
+            <div class="meta-chip">
+              ❓ 1 vraag
+            </div>
+
+          </div>
+
+          <button
+            class="primary-button"
+            onclick="openScreen('learningScreen')"
+          >
+            Start leermoment
+            <span>→</span>
+          </button>
+
+        </article>
+
+        <div class="section-heading">
+
+          <h2>
+            Wat wil je doen?
+          </h2>
+
+        </div>
+
+        <div class="action-grid">
+
+          <button
+            class="action-card"
+            onclick="openScreen('searchScreen')"
+          >
+
+            <div class="action-icon">
+              🔍
+            </div>
+
+            <h3>
+              Onderdeel zoeken
+            </h3>
+
+            <p>
+              Zoek op artikelnummer en bekijk
+              direct productinformatie.
+            </p>
+
+          </button>
+
+          <button
+            class="action-card"
+            onclick="openScreen('zoneScreen')"
+          >
+
+            <div class="action-icon">
+              📦
+            </div>
+
+            <h3>
+              Mijn zone
+            </h3>
+
+            <p>
+              Bekijk verantwoordelijkheden,
+              resultaten en aandachtspunten.
+            </p>
+
+          </button>
+
+          <button
+            class="action-card"
+            onclick="openScreen('learningScreen')"
+          >
+
+            <div class="action-icon">
+              🎯
+            </div>
+
+            <h3>
+              Vandaag leren
+            </h3>
+
+            <p>
+              Bouw productkennis op met
+              korte dagelijkse lessen.
+            </p>
+
+          </button>
+
+          <button
+            class="action-card"
+            onclick="openScreen('ideaScreen')"
+          >
+
+            <div class="action-icon">
+              💡
+            </div>
+
+            <h3>
+              Verbeteridee
+            </h3>
+
+            <p>
+              Meld wat slimmer, veiliger of
+              duidelijker kan.
+            </p>
+
+          </button>
+
+        </div>
+
+        <div class="screen-time-note">
+
+          <div class="screen-time-icon">
+            ⏱️
+          </div>
+
+          <div class="screen-time-copy">
+
+            <h4>
+              Gemaakt voor kort en doelgericht gebruik
+            </h4>
+
+            <p>
+              Geen eindeloze feed of chat. De app ondersteunt
+              het werk en vervangt het werk niet.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ZOEKEN -->
+
+    <section
+      id="searchScreen"
+      class="screen"
+    >
+
+      <header class="page-header">
+
+        <button
+          class="back-button"
+          onclick="goHome()"
+        >
+          ←
+        </button>
+
+        <div class="page-header-copy">
+
+          <h1>
+            Onderdeel zoeken
+          </h1>
+
+          <p>
+            Zoek op artikelnummer of scan een code
+          </p>
+
+        </div>
+
+        <button
+          class="icon-button"
+          onclick="openSearchHelp()"
+        >
+          ?
+        </button>
+
+      </header>
+
+      <div class="page-content">
+
+        <div class="search-panel">
+
+          <h2>
+            Wat zoek je?
+          </h2>
+
+          <p>
+            Vul een artikelnummer in of gebruik
+            een van de demo-artikelen.
+          </p>
+
+          <div class="search-box">
+
+            <input
+              id="searchInput"
+              type="search"
+              inputmode="numeric"
+              placeholder="Bijvoorbeeld 1001"
+              onkeydown="handleSearchEnter(event)"
+            >
+
+            <button
+              class="search-submit"
+              onclick="searchProduct()"
+            >
+              🔍
+            </button>
+
+          </div>
+
+          <div class="demo-chip-row">
+
+            <button
+              class="demo-chip"
+              onclick="quickSearch('1001')"
+            >
+              1001
+            </button>
+
+            <button
+              class="demo-chip"
+              onclick="quickSearch('1002')"
+            >
+              1002
+            </button>
+
+            <button
+              class="demo-chip"
+              onclick="quickSearch('1003')"
+            >
+              1003
+            </button>
+
+            <button
+              class="demo-chip"
+              onclick="quickSearch('1004')"
+            >
+              1004
+            </button>
+
+          </div>
+
+          <button
+            class="secondary-button scan-button"
+            onclick="openScannerModal()"
+          >
+            📷 Barcode scannen
+          </button>
+
+          <div class="scan-info-box">
+
+            <span>
+              ℹ️
+            </span>
+
+            <p>
+              De scanner is in deze versie een demonstratie.
+              In een echte versie kan de telefooncamera worden
+              gekoppeld aan de productdatabase.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div
+          id="productResult"
+          class="product-result"
+        >
+
+          <div
+            id="productImage"
+            class="product-image"
+          >
+            ⚙️
+          </div>
+
+          <article class="card product-card">
+
+            <div class="product-title-row">
+
+              <div>
+
+                <h2 id="productName">
+                  Productnaam
+                </h2>
+
+                <div
+                  id="productCategory"
+                  class="product-category"
+                >
+                  Productcategorie
+                </div>
+
+              </div>
+
+              <div
+                id="productArticle"
+                class="article-code"
+              >
+                ART. 1001
+              </div>
+
+            </div>
+
+            <p
+              id="productDescription"
+              class="product-description"
+            ></p>
+
+            <div class="detail-list">
+
+              <div class="detail-item">
+
+                <strong>
+                  📍 Magazijnlocatie
+                </strong>
+
+                <p id="productWarehouse"></p>
+
+              </div>
+
+              <div class="detail-item">
+
+                <strong>
+                  🚛 Functie
+                </strong>
+
+                <p id="productFunction"></p>
+
+              </div>
+
+              <div class="detail-item">
+
+                <strong>
+                  ⚠️ Veelgemaakte fout
+                </strong>
+
+                <p id="productWarning"></p>
+
+              </div>
+
+              <div class="detail-item">
+
+                <strong>
+                  🔗 Hoort vaak bij
+                </strong>
+
+                <p id="productRelated"></p>
+
+              </div>
+
+            </div>
+
+            <div class="video-placeholder">
+
+              <button
+                class="play-button"
+                onclick="showToast('In een volgende versie opent hier een korte productvideo.')"
+              >
+                ▶
+              </button>
+
+              <div class="video-label">
+                Korte uitlegvideo · 30 seconden
+              </div>
+
+            </div>
+
+            <button
+              id="learnProductButton"
+              class="primary-button"
+              style="margin-top: 14px;"
+              onclick="markProductLearned()"
+            >
+              Markeer als geleerd · +10 XP
+            </button>
+
+            <div
+              id="productSuccess"
+              class="success-message"
+            >
+              Dit onderdeel is toegevoegd aan jouw
+              kennisvoortgang. Je hebt 10 XP verdiend.
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- MIJN ZONE -->
+
+    <section
+      id="zoneScreen"
+      class="screen"
+    >
+
+      <header class="page-header">
+
+        <button
+          class="back-button"
+          onclick="goHome()"
+        >
+          ←
+        </button>
+
+        <div class="page-header-copy">
+
+          <h1>
+            Mijn zone
+          </h1>
+
+          <p>
+            Remmen & wielonderdelen
+          </p>
+
+        </div>
+
+        <button
+          class="icon-button"
+          onclick="showToast('De zonegegevens zijn bijgewerkt.')"
+        >
+          ↻
+        </button>
+
+      </header>
+
+      <div class="page-content">
+
+        <article class="card zone-hero">
+
+          <span class="tag tag-green">
+            <span class="status-dot"></span>
+            Zone op orde
+          </span>
+
+          <h2>
+            Remmen & wielonderdelen
+          </h2>
+
+          <p>
+            Jij helpt ervoor te zorgen dat deze zone
+            veilig, overzichtelijk en betrouwbaar blijft.
+          </p>
+
+          <div class="zone-stat-grid">
+
+            <div class="zone-stat">
+
+              <strong>
+                98%
+              </strong>
+
+              <span>
+                Foutloze picks deze week
+              </span>
+
+            </div>
+
+            <div class="zone-stat">
+
+              <strong id="zoneLearnedCount">
+                4
+              </strong>
+
+              <span>
+                Onderdelen geleerd
+              </span>
+
+            </div>
+
+            <div class="zone-stat">
+
+              <strong>
+                2
+              </strong>
+
+              <span>
+                Openstaande aandachtspunten
+              </span>
+
+            </div>
+
+            <div class="zone-stat">
+
+              <strong id="zoneIdeaCount">
+                1
+              </strong>
+
+              <span>
+                Ingediende verbeterideeën
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <div class="section-heading">
+
+          <h2>
+            Jouw verantwoordelijkheden
+          </h2>
+
+        </div>
+
+        <article class="card">
+
+          <div class="responsibility-list">
+
+            <div class="responsibility-item">
+
+              <div class="responsibility-icon">
+                ✓
+              </div>
+
+              <div class="responsibility-copy">
+
+                <strong>
+                  Juiste locatie
+                </strong>
+
+                <p>
+                  Producten liggen op de juiste
+                  magazijnlocatie.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="responsibility-item">
+
+              <div class="responsibility-icon">
+                ✓
+              </div>
+
+              <div class="responsibility-copy">
+
+                <strong>
+                  Duidelijke labels
+                </strong>
+
+                <p>
+                  Artikelnummer en omschrijving
+                  zijn goed leesbaar.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="responsibility-item">
+
+              <div class="responsibility-icon">
+                ✓
+              </div>
+
+              <div class="responsibility-copy">
+
+                <strong>
+                  Afwijkingen melden
+                </strong>
+
+                <p>
+                  Beschadigingen, tekorten en
+                  onduidelijkheden worden gemeld.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="responsibility-item">
+
+              <div class="responsibility-icon">
+                ✓
+              </div>
+
+              <div class="responsibility-copy">
+
+                <strong>
+                  Collega’s helpen
+                </strong>
+
+                <p>
+                  Deel kennis met nieuwe en
+                  minder ervaren collega’s.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <article class="card zone-task-card">
+
+          <span class="tag tag-orange">
+            Aandachtspunt
+          </span>
+
+          <h3>
+            Remschijven lijken sterk op elkaar
+          </h3>
+
+          <p>
+            Controleer niet alleen het artikelnummer,
+            maar ook diameter, dikte, hoogte en het
+            aantal boutgaten.
+          </p>
+
+          <button
+            class="primary-button"
+            onclick="openScreen('learningScreen')"
+          >
+            Bekijk uitleg
+          </button>
+
+        </article>
+
+        <article class="card">
+
+          <span class="tag tag-purple">
+            Kleine verbeteropdracht
+          </span>
+
+          <h3 style="margin-top: 11px;">
+            Controleer vandaag de vaklabels
+          </h3>
+
+          <p>
+            Kijk of alle labels bij de remschijven
+            duidelijk zichtbaar en goed leesbaar zijn.
+          </p>
+
+          <button
+            class="secondary-button"
+            style="margin-top: 14px;"
+            onclick="openScreen('ideaScreen')"
+          >
+            Afwijking of idee melden
+          </button>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- LEREN -->
+
+    <section
+      id="learningScreen"
+      class="screen"
+    >
+
+      <header class="page-header">
+
+        <button
+          class="back-button"
+          onclick="goHome()"
+        >
+          ←
+        </button>
+
+        <div class="page-header-copy">
+
+          <h1>
+            Vandaag leren
+          </h1>
+
+          <p>
+            Eén onderwerp in minder dan één minuut
+          </p>
+
+        </div>
+
+        <button
+          class="icon-button"
+          onclick="showToast('Je hebt een reeks van 5 actieve dagen.')"
+        >
+          🔥
+        </button>
+
+      </header>
+
+      <div class="page-content">
+
+        <article class="card lesson-card">
+
+          <div class="lesson-visual">
+            🛞
+          </div>
+
+          <span class="tag tag-blue">
+            Onderdeel van vandaag
+          </span>
+
+          <h2>
+            Hoe herken je de juiste remschijf?
+          </h2>
+
+          <div class="meta-row">
+
+            <div class="meta-chip">
+              ⏱ 45 seconden
+            </div>
+
+            <div class="meta-chip">
+              ⭐ +15 XP
+            </div>
+
+          </div>
+
+          <p>
+            De remblokken drukken tijdens het remmen
+            tegen de remschijf. Door de ontstane
+            wrijving wordt het voertuig afgeremd.
+          </p>
+
+          <p>
+            Remschijven kunnen uiterlijk sterk op
+            elkaar lijken. Controleer daarom altijd
+            het artikelnummer én de belangrijkste
+            afmetingen.
+          </p>
+
+          <div class="remember-box">
+
+            <strong>
+              Dit moet je onthouden
+            </strong>
+
+            <p>
+              Controleer diameter, dikte, hoogte en
+              het aantal boutgaten voordat je het
+              onderdeel definitief pickt.
+            </p>
+
+          </div>
+
+          <button
+            id="lessonCompleteButton"
+            class="primary-button"
+            style="margin-top: 15px;"
+            onclick="completeLesson()"
+          >
+            Ik heb dit gelezen · +15 XP
+          </button>
+
+          <div
+            id="lessonSuccess"
+            class="success-message"
+          >
+            Leermoment afgerond. Je hebt 15 XP verdiend.
+          </div>
+
+        </article>
+
+        <article class="card">
+
+          <span class="tag tag-purple">
+            Kennischeck
+          </span>
+
+          <h3 style="margin-top: 11px;">
+            Wat moet je bij een remschijf controleren?
+          </h3>
+
+          <div class="quiz-options">
+
+            <button
+              class="quiz-option"
+              onclick="checkQuiz(this, false)"
+            >
+              Alleen de kleur van de verpakking
+            </button>
+
+            <button
+              class="quiz-option"
+              onclick="checkQuiz(this, true)"
+            >
+              Diameter, dikte, hoogte en aantal boutgaten
+            </button>
+
+            <button
+              class="quiz-option"
+              onclick="checkQuiz(this, false)"
+            >
+              Alleen het gewicht van het onderdeel
+            </button>
+
+          </div>
+
+          <div
+            id="quizSuccess"
+            class="success-message"
+          ></div>
+
+          <div
+            id="quizWarning"
+            class="warning-message"
+          ></div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- VERBETERIDEËN -->
+
+    <section
+      id="ideaScreen"
+      class="screen"
+    >
+
+      <header class="page-header">
+
+        <button
+          class="back-button"
+          onclick="goHome()"
+        >
+          ←
+        </button>
+
+        <div class="page-header-copy">
+
+          <h1>
+            Verbeterideeën
+          </h1>
+
+          <p>
+            Laat zien wat er slimmer of veiliger kan
+          </p>
+
+        </div>
+
+        <button
+          class="icon-button"
+          onclick="openIdeaInfo()"
+        >
+          ?
+        </button>
+
+      </header>
+
+      <div class="page-content">
+
+        <article class="card">
+
+          <h2>
+            Nieuw verbeteridee
+          </h2>
+
+          <p>
+            Beschrijf kort wat je ziet en hoe het
+            volgens jou beter kan.
+          </p>
+
+          <div class="form-group">
+
+            <label
+              class="form-label"
+              for="ideaTitle"
+            >
+              Onderwerp
+            </label>
+
+            <input
+              id="ideaTitle"
+              class="form-input"
+              type="text"
+              placeholder="Bijvoorbeeld: grotere vaklabels"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label
+              class="form-label"
+              for="ideaCategory"
+            >
+              Categorie
+            </label>
+
+            <select
+              id="ideaCategory"
+              class="form-select"
+            >
+
+              <option value="Kwaliteit">
+                Kwaliteit
+              </option>
+
+              <option value="Veiligheid">
+                Veiligheid
+              </option>
+
+              <option value="Efficiëntie">
+                Efficiëntie
+              </option>
+
+              <option value="Werkplek">
+                Werkplek
+              </option>
+
+              <option value="Overig">
+                Overig
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+
+            <label
+              class="form-label"
+              for="ideaProblem"
+            >
+              Wat gaat er nu mis?
+            </label>
+
+            <textarea
+              id="ideaProblem"
+              class="form-textarea"
+              placeholder="Beschrijf het probleem..."
+            ></textarea>
+
+          </div>
+
+          <div class="form-group">
+
+            <label
+              class="form-label"
+              for="ideaSolution"
+            >
+              Wat is jouw oplossing?
+            </label>
+
+            <textarea
+              id="ideaSolution"
+              class="form-textarea"
+              placeholder="Beschrijf jouw voorstel..."
+            ></textarea>
+
+            <span class="form-help">
+              Een idee hoeft nog niet volledig uitgewerkt
+              te zijn. Een duidelijke observatie is genoeg.
+            </span>
+
+          </div>
+
+          <button
+            class="primary-button"
+            style="margin-top: 16px;"
+            onclick="submitIdea()"
+          >
+            Idee indienen · +20 XP
+          </button>
+
+          <div
+            id="ideaSuccess"
+            class="success-message"
+          >
+            Bedankt. Je idee is opgeslagen en heeft
+            de status ‘Nieuw’ gekregen.
+          </div>
+
+        </article>
+
+        <div class="section-heading">
+
+          <h2>
+            Mijn ideeën
+          </h2>
+
+          <button onclick="showToast('Alle ideeën worden getoond.')">
+            Alles bekijken
+          </button>
+
+        </div>
+
+        <div
+          id="ideaList"
+          class="idea-list"
+        ></div>
+
+      </div>
+
+    </section>
+
+    <!-- PROFIEL -->
+
+    <section
+      id="profileScreen"
+      class="screen"
+    >
+
+      <header class="page-header">
+
+        <button
+          class="back-button"
+          onclick="goHome()"
+        >
+          ←
+        </button>
+
+        <div class="page-header-copy">
+
+          <h1>
+            Mijn profiel
+          </h1>
+
+          <p>
+            Voortgang, kennis en erkenning
+          </p>
+
+        </div>
+
+        <button
+          class="icon-button"
+          onclick="openSettingsModal()"
+        >
+          ⚙️
+        </button>
+
+      </header>
+
+      <div class="page-content">
+
+        <article class="card profile-hero">
+
+          <div class="profile-avatar">
+            K
+          </div>
+
+          <h2>
+            Kevin Jansen
+          </h2>
+
+          <p>
+            Magazijnmedewerker · Zone Remmen
+          </p>
+
+          <div class="profile-stat-grid">
+
+            <div class="profile-stat">
+
+              <strong id="profileXP">
+                420
+              </strong>
+
+              <span>
+                Totaal verdiende XP
+              </span>
+
+            </div>
+
+            <div class="profile-stat">
+
+              <strong id="profileLearned">
+                4
+              </strong>
+
+              <span>
+                Onderdelen geleerd
+              </span>
+
+            </div>
+
+            <div class="profile-stat">
+
+              <strong>
+                5
+              </strong>
+
+              <span>
+                Dagen achter elkaar actief
+              </span>
+
+            </div>
+
+            <div class="profile-stat">
+
+              <strong id="profileIdeas">
+                1
+              </strong>
+
+              <span>
+                Verbeterideeën ingediend
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <article class="card">
+
+          <div class="card-title-row">
+
+            <div>
+
+              <h3>
+                Productkennis
+              </h3>
+
+              <p>
+                Voortgang per productgroep.
+              </p>
+
+            </div>
+
+            <span class="tag tag-blue">
+              42% totaal
+            </span>
+
+          </div>
+
+          <div class="knowledge-item">
+
+            <div class="knowledge-top">
+
+              <span>
+                Remmen
+              </span>
+
+              <span>
+                68%
+              </span>
+
+            </div>
+
+            <div class="progress-track">
+
+              <div
+                class="progress-fill"
+                style="width: 68%;"
+              ></div>
+
+            </div>
+
+          </div>
+
+          <div class="knowledge-item">
+
+            <div class="knowledge-top">
+
+              <span>
+                Luchtvering
+              </span>
+
+              <span>
+                35%
+              </span>
+
+            </div>
+
+            <div class="progress-track">
+
+              <div
+                class="progress-fill"
+                style="width: 35%;"
+              ></div>
+
+            </div>
+
+          </div>
+
+          <div class="knowledge-item">
+
+            <div class="knowledge-top">
+
+              <span>
+                Luchtremsysteem
+              </span>
+
+              <span>
+                24%
+              </span>
+
+            </div>
+
+            <div class="progress-track">
+
+              <div
+                class="progress-fill"
+                style="width: 24%;"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <article class="card">
+
+          <h3>
+            Mijn badges
+          </h3>
+
+          <p>
+            Erkenning voor kennis, inzet en eigenaarschap.
+          </p>
+
+          <div class="badge-grid">
+
+            <div class="badge-card">
+
+              <div class="badge-icon">
+                🥉
+              </div>
+
+              <strong>
+                Eerste scan
+              </strong>
+
+              <span>
+                Eerste onderdeel opgezocht
+              </span>
+
+            </div>
+
+            <div class="badge-card">
+
+              <div class="badge-icon">
+                ⭐
+              </div>
+
+              <strong>
+                Verbeterstarter
+              </strong>
+
+              <span>
+                Eerste verbeteridee ingediend
+              </span>
+
+            </div>
+
+            <div class="badge-card">
+
+              <div class="badge-icon">
+                🔥
+              </div>
+
+              <strong>
+                Vijf dagen actief
+              </strong>
+
+              <span>
+                Vijf dagen achter elkaar geleerd
+              </span>
+
+            </div>
+
+            <div class="badge-card">
+
+              <div class="badge-icon">
+                🏆
+              </div>
+
+              <strong>
+                Zone Specialist
+              </strong>
+
+              <span>
+                Verantwoordelijkheid genomen
+              </span>
+
+            </div>
+
+            <div class="badge-card locked">
+
+              <div class="badge-icon">
+                🧠
+              </div>
+
+              <strong>
+                Kennismachine
+              </strong>
+
+              <span>
+                Leer 100 verschillende onderdelen
+              </span>
+
+            </div>
+
+            <div class="badge-card locked">
+
+              <div class="badge-icon">
+                🥇
+              </div>
+
+              <strong>
+                Parts Expert
+              </strong>
+
+              <span>
+                Bereik het hoogste kennisniveau
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <button
+          class="secondary-button"
+          onclick="logout()"
+        >
+          Uitloggen uit demo
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- MANAGERDASHBOARD -->
+
+    <section
+      id="managerScreen"
+      class="screen"
+    >
+
+      <header class="page-header">
+
+        <button
+          class="back-button"
+          onclick="logout()"
+        >
+          ←
+        </button>
+
+        <div class="page-header-copy">
+
+          <h1>
+            Teamdashboard
+          </h1>
+
+          <p>
+            Overzicht voor leidinggevenden
+          </p>
+
+        </div>
+
+        <button
+          class="icon-button"
+          onclick="showToast('Dashboard bijgewerkt.')"
+        >
+          ↻
+        </button>
+
+      </header>
+
+      <div class="page-content">
+
+        <article class="card">
+
+          <span class="tag tag-blue">
+            AVT Parts · Magazijn
+          </span>
+
+          <h2 style="margin-top: 12px;">
+            Teamvoortgang
+          </h2>
+
+          <p>
+            Inzicht in leren, betrokkenheid en
+            verbeterinitiatieven. Niet bedoeld als
+            individueel afrekeninstrument.
+          </p>
+
+          <div class="manager-kpi-grid">
+
+            <div class="manager-kpi">
+
+              <strong>
+                78%
+              </strong>
+
+              <span>
+                Medewerkers deze week actief
+              </span>
+
+            </div>
+
+            <div class="manager-kpi">
+
+              <strong>
+                126
+              </strong>
+
+              <span>
+                Leermomenten afgerond
+              </span>
+
+            </div>
+
+            <div class="manager-kpi">
+
+              <strong>
+                14
+              </strong>
+
+              <span>
+                Verbeterideeën ingediend
+              </span>
+
+            </div>
+
+            <div class="manager-kpi">
+
+              <strong>
+                6
+              </strong>
+
+              <span>
+                Ideeën momenteel in test
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <article class="card">
+
+          <div class="card-title-row">
+
+            <div>
+
+              <h3>
+                Medewerkers
+              </h3>
+
+              <p>
+                Voorbeeld van een positief voortgangsoverzicht.
+              </p>
+
+            </div>
+
+            <span class="tag tag-green">
+              8 actief
+            </span>
+
+          </div>
+
+          <div class="employee-list">
+
+            <div class="employee-row">
+
+              <div class="employee-avatar">
+                KJ
+              </div>
+
+              <div class="employee-copy">
+
+                <strong>
+                  Kevin Jansen
+                </strong>
+
+                <span>
+                  Zone Remmen · 5 dagen actief
+                </span>
+
+              </div>
+
+              <div class="employee-score">
+                68%
+              </div>
+
+            </div>
+
+            <div class="employee-row">
+
+              <div class="employee-avatar">
+                SB
+              </div>
+
+              <div class="employee-copy">
+
+                <strong>
+                  Sam de Bruin
+                </strong>
+
+                <span>
+                  Zone Luchtvering · 3 dagen actief
+                </span>
+
+              </div>
+
+              <div class="employee-score">
+                54%
+              </div>
+
+            </div>
+
+            <div class="employee-row">
+
+              <div class="employee-avatar">
+                YV
+              </div>
+
+              <div class="employee-copy">
+
+                <strong>
+                  Youssef van Dijk
+                </strong>
+
+                <span>
+                  Zone Verlichting · 6 dagen actief
+                </span>
+
+              </div>
+
+              <div class="employee-score">
+                73%
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <article class="card">
+
+          <div class="card-title-row">
+
+            <div>
+
+              <h3>
+                Openstaande verbeterideeën
+              </h3>
+
+              <p>
+                Ideeën die opvolging nodig hebben.
+              </p>
+
+            </div>
+
+            <span class="tag tag-orange">
+              4 open
+            </span>
+
+          </div>
+
+          <div class="idea-list" style="margin-top: 14px;">
+
+            <div class="idea-card">
+
+              <div class="idea-card-top">
+
+                <div>
+
+                  <h3>
+                    Grotere labels bij remschijven
+                  </h3>
+
+                  <p>
+                    Diameter en artikelnummer duidelijker tonen.
+                  </p>
+
+                </div>
+
+                <span class="tag tag-orange">
+                  In test
+                </span>
+
+              </div>
+
+            </div>
+
+            <div class="idea-card">
+
+              <div class="idea-card-top">
+
+                <div>
+
+                  <h3>
+                    Vaste retourkar per zone
+                  </h3>
+
+                  <p>
+                    Retouren sneller terugplaatsen en
+                    vermenging voorkomen.
+                  </p>
+
+                </div>
+
+                <span class="tag tag-blue">
+                  Nieuw
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <button
+          class="secondary-button"
+          onclick="logout()"
+        >
+          Terug naar inlogscherm
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- NAVIGATIE -->
+
+    <nav
+      id="bottomNavigation"
+      class="bottom-nav"
+    >
+
+      <button
+        id="navHome"
+        class="nav-item active"
+        onclick="goHome()"
+      >
+
+        <div class="nav-icon-wrap">
+          🏠
+        </div>
+
+        <span>
+          Home
+        </span>
+
+      </button>
+
+      <button
+        id="navSearch"
+        class="nav-item"
+        onclick="openScreen('searchScreen')"
+      >
+
+        <div class="nav-icon-wrap">
+          🔍
+        </div>
+
+        <span>
+          Zoeken
+        </span>
+
+      </button>
+
+      <button
+        id="navLearn"
+        class="nav-item"
+        onclick="openScreen('learningScreen')"
+      >
+
+        <div class="nav-icon-wrap">
+          🎯
+        </div>
+
+        <span>
+          Leren
+        </span>
+
+      </button>
+
+      <button
+        id="navIdeas"
+        class="nav-item"
+        onclick="openScreen('ideaScreen')"
+      >
+
+        <div class="nav-icon-wrap">
+          💡
+        </div>
+
+        <span>
+          Ideeën
+        </span>
+
+      </button>
+
+      <button
+        id="navProfile"
+        class="nav-item"
+        onclick="openScreen('profileScreen')"
+      >
+
+        <div class="nav-icon-wrap">
+          👤
+        </div>
+
+        <span>
+          Profiel
+        </span>
+
+      </button>
+
+    </nav>
+
+  </main>
+
+  <!-- TOAST -->
+
+  <div
+    id="toast"
+    class="toast"
+  ></div>
+
+  <!-- MODAL -->
+
+  <div
+    id="modalBackdrop"
+    class="modal-backdrop"
+    onclick="closeModalFromBackdrop(event)"
+  >
+
+    <div
+      id="modalSheet"
+      class="modal-sheet"
+    >
+
+      <div class="modal-handle"></div>
+
+      <div id="modalContent"></div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const products = {
+      "1001": {
+        name: "Remschijf",
+        category: "Remmen & wielonderdelen",
+        emoji: "🛞",
+        warehouse: "Zone B · Stelling B04 · Vak 12",
+        description:
+          "Een metalen schijf waartegen de remblokken drukken om een truck of trailer af te remmen.",
+        function:
+          "Zet bewegingsenergie om in warmte en zorgt zo voor gecontroleerde remkracht.",
+        warning:
+          "Verschillende uitvoeringen lijken sterk op elkaar. Controleer diameter, dikte, hoogte en aantal boutgaten.",
+        related:
+          "Remblokken, remklauw, wielnaaf, montageset en slijtage-indicator."
+      },
+
+      "1002": {
+        name: "Luchtveerbalg",
+        category: "Luchtvering",
+        emoji: "🎈",
+        warehouse: "Zone C · Stelling C02 · Vak 08",
+        description:
+          "Een sterke rubberen balg die met perslucht wordt gevuld en onderdeel is van de luchtvering.",
+        function:
+          "Draagt het voertuiggewicht en helpt bij comfort, stabiliteit en hoogteverdeling.",
+        warning:
+          "Controleer hoogte, diameter, aansluitingen, voetplaat en bevestigingspunten.",
+        related:
+          "Schokdemper, hoogteregelventiel, luchtleiding en bevestigingsplaat."
+      },
+
+      "1003": {
+        name: "Luchtdrogerpatroon",
+        category: "Luchtremsysteem",
+        emoji: "🔧",
+        warehouse: "Zone D · Stelling D01 · Vak 16",
+        description:
+          "Een filterpatroon dat vocht, olie en vuil uit het persluchtsysteem verwijdert.",
+        function:
+          "Beschermt remventielen, luchtketels en leidingen tegen corrosie en bevriezing.",
+        warning:
+          "Let op merk, schroefdraad, diameter, drukklasse en specifieke toepassing.",
+        related:
+          "Luchtdroger, compressor, luchtketel, drukregelaar en ontlastventiel."
+      },
+
+      "1004": {
+        name: "Remblokset",
+        category: "Remmen & wielonderdelen",
+        emoji: "🧱",
+        warehouse: "Zone B · Stelling B03 · Vak 05",
+        description:
+          "Een set remblokken die tegen de remschijf wordt gedrukt om het voertuig af te remmen.",
+        function:
+          "Levert de wrijving die nodig is om snelheid te verminderen en veilig te stoppen.",
+        warning:
+          "Controleer vorm, breedte, dikte, slijtage-indicator en voertuigtoepassing.",
+        related:
+          "Remschijf, remklauw, montageset, veren en slijtage-indicator."
+      }
+    };
+
+    const defaultIdeas = [
+      {
+        id: 1,
+        title: "Grotere labels bij remschijven",
+        category: "Kwaliteit",
+        problem:
+          "Artikelnummer en diameter zijn vanaf het gangpad lastig te lezen.",
+        solution:
+          "Gebruik grotere labels met artikelnummer, diameter en een duidelijke productgroep.",
+        status: "In behandeling",
+        owner: "Danny de Vos"
+      }
+    ];
+
+    let appState = {
+      xp: 420,
+      learnedProducts: [],
+      lessonCompleted: false,
+      quizCompleted: false,
+      searchedProduct: false,
+      ideas: [],
+      currentProduct: null,
+      loggedIn: false
+    };
+
+    function loadState() {
+      const savedState =
+        localStorage.getItem("avtPartsReadyState");
+
+      if (savedState) {
+        try {
+          const parsedState = JSON.parse(savedState);
+
+          appState = {
+            ...appState,
+            ...parsedState
+          };
+        } catch (error) {
+          console.error(
+            "Opgeslagen gegevens konden niet worden geladen.",
+            error
+          );
+        }
+      }
+
+      if (
+        !Array.isArray(appState.ideas) ||
+        appState.ideas.length === 0
+      ) {
+        appState.ideas = [...defaultIdeas];
+      }
+
+      if (!Array.isArray(appState.learnedProducts)) {
+        appState.learnedProducts = [];
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(
+        "avtPartsReadyState",
+        JSON.stringify(appState)
+      );
+    }
+
+    function loginAsEmployee() {
+      appState.loggedIn = true;
+      saveState();
+
+      document
+        .getElementById("loginScreen")
+        .classList.remove("show");
+
+      document
+        .getElementById("bottomNavigation")
+        .classList.remove("hidden");
+
+      openScreen("homeScreen");
+      updateInterface();
+      showToast("Welkom terug, Kevin.");
+    }
+
+    function loginAsManager() {
+      document
+        .getElementById("loginScreen")
+        .classList.remove("show");
+
+      document
+        .getElementById("bottomNavigation")
+        .classList.add("hidden");
+
+      openScreen("managerScreen");
+    }
+
+    function logout() {
+      appState.loggedIn = false;
+      saveState();
+
+      document
+        .querySelectorAll(".screen")
+        .forEach(function(screen) {
+          screen.classList.remove("active");
+        });
+
+      document
+        .getElementById("homeScreen")
+        .classList.add("active");
+
+      document
+        .getElementById("bottomNavigation")
+        .classList.remove("hidden");
+
+      document
+        .getElementById("loginScreen")
+        .classList.add("show");
+
+      window.scrollTo(0, 0);
+    }
+
+    function openScreen(screenId) {
+      document
+        .querySelectorAll(".screen")
+        .forEach(function(screen) {
+          screen.classList.remove("active");
+        });
+
+      const selectedScreen =
+        document.getElementById(screenId);
+
+      if (!selectedScreen) {
+        return;
+      }
+
+      selectedScreen.classList.add("active");
+
+      updateNavigation(screenId);
+      updateInterface();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    function goHome() {
+      openScreen("homeScreen");
+    }
+
+    function updateNavigation(screenId) {
+      document
+        .querySelectorAll(".nav-item")
+        .forEach(function(item) {
+          item.classList.remove("active");
+        });
+
+      const navigationMap = {
+        homeScreen: "navHome",
+        searchScreen: "navSearch",
+        zoneScreen: "navHome",
+        learningScreen: "navLearn",
+        ideaScreen: "navIdeas",
+        profileScreen: "navProfile"
+      };
+
+      const activeNavId =
+        navigationMap[screenId];
+
+      if (activeNavId) {
+        document
+          .getElementById(activeNavId)
+          .classList.add("active");
+      }
+    }
+
+    function getLevelInformation() {
+      const xp = appState.xp;
+
+      if (xp < 300) {
+        return {
+          level: 1,
+          name: "Starter",
+          start: 0,
+          end: 300
+        };
+      }
+
+      if (xp < 500) {
+        return {
+          level: 2,
+          name: "Parts Handler",
+          start: 300,
+          end: 500
+        };
+      }
+
+      if (xp < 800) {
+        return {
+          level: 3,
+          name: "Zone Specialist",
+          start: 500,
+          end: 800
+        };
+      }
+
+      if (xp < 1200) {
+        return {
+          level: 4,
+          name: "Parts Professional",
+          start: 800,
+          end: 1200
+        };
+      }
+
+      return {
+        level: 5,
+        name: "Parts Expert",
+        start: 1200,
+        end: 1500
+      };
+    }
+
+    function updateInterface() {
+      const level =
+        getLevelInformation();
+
+      const levelRange =
+        level.end - level.start;
+
+      const levelProgress =
+        Math.max(
+          0,
+          Math.min(
+            100,
+            ((appState.xp - level.start) / levelRange) * 100
+          )
+        );
+
+      const remainingXP =
+        Math.max(0, level.end - appState.xp);
+
+      document.getElementById(
+        "homeLevelName"
+      ).textContent =
+        "Level " +
+        level.level +
+        " · " +
+        level.name;
+
+      document.getElementById(
+        "homeXP"
+      ).textContent =
+        appState.xp + " XP";
+
+      document.getElementById(
+        "homeXPBar"
+      ).style.width =
+        levelProgress + "%";
+
+      document.getElementById(
+        "levelStartText"
+      ).textContent =
+        level.start + " XP";
+
+      document.getElementById(
+        "nextLevelText"
+      ).textContent =
+        remainingXP > 0
+          ? "Nog " +
+            remainingXP +
+            " XP tot level " +
+            (level.level + 1)
+          : "Hoogste level bereikt";
+
+      document.getElementById(
+        "profileXP"
+      ).textContent =
+        appState.xp;
+
+      const learnedCount =
+        4 + appState.learnedProducts.length;
+
+      document.getElementById(
+        "profileLearned"
+      ).textContent =
+        learnedCount;
+
+      document.getElementById(
+        "zoneLearnedCount"
+      ).textContent =
+        learnedCount;
+
+      document.getElementById(
+        "profileIdeas"
+      ).textContent =
+        appState.ideas.length;
+
+      document.getElementById(
+        "zoneIdeaCount"
+      ).textContent =
+        appState.ideas.length;
+
+      updateGoals();
+      renderIdeas();
+      updateCompletedButtons();
+    }
+
+    function updateGoals() {
+      const goals = [
+        appState.lessonCompleted,
+        appState.quizCompleted,
+        appState.searchedProduct
+      ];
+
+      const completedGoals =
+        goals.filter(Boolean).length;
+
+      const percentage =
+        Math.round(
+          (completedGoals / goals.length) * 100
+        );
+
+      document.getElementById(
+        "dailyProgressText"
+      ).textContent =
+        completedGoals + " van 3";
+
+      document.getElementById(
+        "dailyProgressBar"
+      ).style.width =
+        percentage + "%";
+
+      setGoalCompleted(
+        "goalLearn",
+        appState.lessonCompleted
+      );
+
+      setGoalCompleted(
+        "goalQuiz",
+        appState.quizCompleted
+      );
+
+      setGoalCompleted(
+        "goalScan",
+        appState.searchedProduct
+      );
+    }
+
+    function setGoalCompleted(
+      elementId,
+      completed
+    ) {
+      const goal =
+        document.getElementById(elementId);
+
+      if (!goal) {
+        return;
+      }
+
+      goal.classList.toggle(
+        "completed",
+        completed
+      );
+    }
+
+    function updateCompletedButtons() {
+      const lessonButton =
+        document.getElementById(
+          "lessonCompleteButton"
+        );
+
+      const lessonSuccess =
+        document.getElementById(
+          "lessonSuccess"
+        );
+
+      if (appState.lessonCompleted) {
+        lessonButton.textContent =
+          "Leermoment afgerond ✓";
+
+        lessonButton.disabled = true;
+        lessonButton.style.opacity = "0.65";
+
+        lessonSuccess.classList.add("show");
+      }
+
+      if (
+        appState.currentProduct &&
+        appState.learnedProducts.includes(
+          appState.currentProduct
+        )
+      ) {
+        setProductAsLearnedVisual();
+      }
+    }
+
+    function setGreeting() {
+      const hour =
+        new Date().getHours();
+
+      let greeting =
+        "Goedemorgen,";
+
+      if (hour >= 12 && hour < 18) {
+        greeting =
+          "Goedemiddag,";
+      }
+
+      if (hour >= 18) {
+        greeting =
+          "Goedenavond,";
+      }
+
+      document.getElementById(
+        "greetingText"
+      ).textContent =
+        greeting;
+    }
+
+    function handleSearchEnter(event) {
+      if (event.key === "Enter") {
+        searchProduct();
+      }
+    }
+
+    function quickSearch(articleNumber) {
+      document.getElementById(
+        "searchInput"
+      ).value =
+        articleNumber;
+
+      searchProduct();
+    }
+
+    function searchProduct() {
+      const input =
+        document
+          .getElementById("searchInput")
+          .value
+          .trim();
+
+      const product =
+        products[input];
+
+      if (!product) {
+        showToast(
+          "Artikel niet gevonden. Gebruik 1001, 1002, 1003 of 1004."
+        );
+
+        document
+          .getElementById("productResult")
+          .classList.remove("show");
+
+        return;
+      }
+
+      appState.currentProduct = input;
+
+      if (!appState.searchedProduct) {
+        appState.searchedProduct = true;
+        appState.xp += 5;
+
+        showToast(
+          "Onderdeel gevonden. Dagdoel behaald en 5 XP verdiend."
+        );
+      }
+
+      document.getElementById(
+        "productImage"
+      ).textContent =
+        product.emoji;
+
+      document.getElementById(
+        "productName"
+      ).textContent =
+        product.name;
+
+      document.getElementById(
+        "productCategory"
+      ).textContent =
+        product.category;
+
+      document.getElementById(
+        "productArticle"
+      ).textContent =
+        "ART. " + input;
+
+      document.getElementById(
+        "productDescription"
+      ).textContent =
+        product.description;
+
+      document.getElementById(
+        "productWarehouse"
+      ).textContent =
+        product.warehouse;
+
+      document.getElementById(
+        "productFunction"
+      ).textContent =
+        product.function;
+
+      document.getElementById(
+        "productWarning"
+      ).textContent =
+        product.warning;
+
+      document.getElementById(
+        "productRelated"
+      ).textContent =
+        product.related;
+
+      document
+        .getElementById("productResult")
+        .classList.add("show");
+
+      resetProductLearnButton();
+
+      if (
+        appState.learnedProducts.includes(input)
+      ) {
+        setProductAsLearnedVisual();
+      }
+
+      saveState();
+      updateInterface();
+
+      setTimeout(function() {
+        document
+          .getElementById("productResult")
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+      }, 100);
+    }
+
+    function resetProductLearnButton() {
+      const button =
+        document.getElementById(
+          "learnProductButton"
+        );
+
+      const success =
+        document.getElementById(
+          "productSuccess"
+        );
+
+      button.textContent =
+        "Markeer als geleerd · +10 XP";
+
+      button.disabled = false;
+      button.style.opacity = "1";
+      success.classList.remove("show");
+    }
+
+    function setProductAsLearnedVisual() {
+      const button =
+        document.getElementById(
+          "learnProductButton"
+        );
+
+      const success =
+        document.getElementById(
+          "productSuccess"
+        );
+
+      button.textContent =
+        "Onderdeel geleerd ✓";
+
+      button.disabled = true;
+      button.style.opacity = "0.65";
+
+      success.classList.add("show");
+    }
+
+    function markProductLearned() {
+      const productId =
+        appState.currentProduct;
+
+      if (!productId) {
+        showToast(
+          "Zoek eerst een onderdeel."
+        );
+
+        return;
+      }
+
+      if (
+        appState.learnedProducts.includes(productId)
+      ) {
+        return;
+      }
+
+      appState.learnedProducts.push(productId);
+      appState.xp += 10;
+
+      saveState();
+      setProductAsLearnedVisual();
+      updateInterface();
+
+      showToast(
+        "Onderdeel geleerd. Je hebt 10 XP verdiend."
+      );
+    }
+
+    function completeLesson() {
+      if (appState.lessonCompleted) {
+        return;
+      }
+
+      appState.lessonCompleted = true;
+      appState.xp += 15;
+
+      saveState();
+      updateInterface();
+
+      showToast(
+        "Leermoment afgerond. Je hebt 15 XP verdiend."
+      );
+    }
+
+    function checkQuiz(
+      selectedButton,
+      correct
+    ) {
+      document
+        .querySelectorAll(".quiz-option")
+        .forEach(function(button) {
+          button.classList.remove(
+            "correct",
+            "wrong"
+          );
+        });
+
+      const success =
+        document.getElementById(
+          "quizSuccess"
+        );
+
+      const warning =
+        document.getElementById(
+          "quizWarning"
+        );
+
+      success.classList.remove("show");
+      warning.classList.remove("show");
+
+      if (correct) {
+        selectedButton.classList.add(
+          "correct"
+        );
+
+        success.textContent =
+          "Goed antwoord. Controleer diameter, dikte, hoogte en het aantal boutgaten.";
+
+        success.classList.add("show");
+
+        if (!appState.quizCompleted) {
+          appState.quizCompleted = true;
+          appState.xp += 15;
+
+          saveState();
+          updateInterface();
+
+          showToast(
+            "Quiz voltooid. Je hebt 15 XP verdiend."
+          );
+        }
+      } else {
+        selectedButton.classList.add(
+          "wrong"
+        );
+
+        warning.textContent =
+          "Nog niet juist. Denk aan de afmetingen en bevestigingspunten van de remschijf.";
+
+        warning.classList.add("show");
+      }
+    }
+
+    function submitIdea() {
+      const title =
+        document
+          .getElementById("ideaTitle")
+          .value
+          .trim();
+
+      const category =
+        document
+          .getElementById("ideaCategory")
+          .value;
+
+      const problem =
+        document
+          .getElementById("ideaProblem")
+          .value
+          .trim();
+
+      const solution =
+        document
+          .getElementById("ideaSolution")
+          .value
+          .trim();
+
+      if (
+        !title ||
+        !problem ||
+        !solution
+      ) {
+        showToast(
+          "Vul het onderwerp, het probleem en jouw oplossing in."
+        );
+
+        return;
+      }
+
+      const newIdea = {
+        id: Date.now(),
+        title: title,
+        category: category,
+        problem: problem,
+        solution: solution,
+        status: "Nieuw",
+        owner: "Nog toe te wijzen"
+      };
+
+      appState.ideas.unshift(newIdea);
+      appState.xp += 20;
+
+      saveState();
+      updateInterface();
+
+      document.getElementById(
+        "ideaTitle"
+      ).value = "";
+
+      document.getElementById(
+        "ideaProblem"
+      ).value = "";
+
+      document.getElementById(
+        "ideaSolution"
+      ).value = "";
+
+      document
+        .getElementById("ideaSuccess")
+        .classList.add("show");
+
+      showToast(
+        "Verbeteridee ingediend. Je hebt 20 XP verdiend."
+      );
+    }
+
+    function renderIdeas() {
+      const ideaList =
+        document.getElementById(
+          "ideaList"
+        );
+
+      if (!ideaList) {
+        return;
+      }
+
+      ideaList.innerHTML = "";
+
+      appState.ideas.forEach(function(idea) {
+        const card =
+          document.createElement("article");
+
+        card.className =
+          "idea-card";
+
+        const statusClass =
+          getIdeaStatusClass(
+            idea.status
+          );
+
+        card.innerHTML = `
+          <div class="idea-card-top">
+            <div>
+              <h3>${escapeHTML(idea.title)}</h3>
+              <p>${escapeHTML(idea.solution)}</p>
+            </div>
+
+            <span class="tag ${statusClass}">
+              ${escapeHTML(idea.status)}
+            </span>
+          </div>
+
+          <div class="idea-meta-grid">
+            <div class="idea-meta">
+              <strong>Categorie</strong>
+              <span>${escapeHTML(idea.category)}</span>
+            </div>
+
+            <div class="idea-meta">
+              <strong>Eigenaar</strong>
+              <span>${escapeHTML(idea.owner)}</span>
+            </div>
+
+            <div class="idea-meta">
+              <strong>Probleem</strong>
+              <span>${escapeHTML(idea.problem)}</span>
+            </div>
+
+            <div class="idea-meta">
+              <strong>Volgende stap</strong>
+              <span>${getNextIdeaStep(idea.status)}</span>
+            </div>
+          </div>
+        `;
+
+        ideaList.appendChild(card);
+      });
+    }
+
+    function getIdeaStatusClass(status) {
+      if (status === "Nieuw") {
+        return "tag-blue";
+      }
+
+      if (status === "In behandeling") {
+        return "tag-orange";
+      }
+
+      if (status === "Getest") {
+        return "tag-purple";
+      }
+
+      if (status === "Uitgevoerd") {
+        return "tag-green";
+      }
+
+      return "tag-blue";
+    }
+
+    function getNextIdeaStep(status) {
+      if (status === "Nieuw") {
+        return "Beoordelen";
+      }
+
+      if (status === "In behandeling") {
+        return "Oplossing testen";
+      }
+
+      if (status === "Getest") {
+        return "Besluit nemen";
+      }
+
+      if (status === "Uitgevoerd") {
+        return "Resultaat volgen";
+      }
+
+      return "Beoordelen";
+    }
+
+    function escapeHTML(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function showToast(message) {
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent =
+        message;
+
+      toast.classList.add("show");
+
+      clearTimeout(
+        window.toastTimer
+      );
+
+      window.toastTimer =
+        setTimeout(function() {
+          toast.classList.remove("show");
+        }, 2800);
+    }
+
+    function openModal(content) {
+      document.getElementById(
+        "modalContent"
+      ).innerHTML =
+        content;
+
+      document
+        .getElementById("modalBackdrop")
+        .classList.add("show");
+
+      document.body.classList.add(
+        "modal-open"
+      );
+    }
+
+    function closeModal() {
+      document
+        .getElementById("modalBackdrop")
+        .classList.remove("show");
+
+      document.body.classList.remove(
+        "modal-open"
+      );
+    }
+
+    function closeModalFromBackdrop(event) {
+      if (
+        event.target.id ===
+        "modalBackdrop"
+      ) {
+        closeModal();
+      }
+    }
+
+    function openScannerModal() {
+      openModal(`
+        <h2>Barcode scannen</h2>
+
+        <p>
+          In een definitieve versie opent hier de
+          camera van de telefoon. Voor deze demo kun
+          je een voorbeeldscan uitvoeren.
+        </p>
+
+        <div
+          style="
+            min-height: 220px;
+            display: grid;
+            place-items: center;
+            margin-top: 16px;
+            border-radius: 18px;
+            background: #17394f;
+            color: white;
+            font-size: 55px;
+          "
+        >
+          ▦
+        </div>
+
+        <button
+          class="primary-button"
+          style="margin-top: 15px;"
+          onclick="simulateScan()"
+        >
+          Voorbeeldbarcode scannen
+        </button>
+
+        <button
+          class="secondary-button"
+          style="margin-top: 9px;"
+          onclick="closeModal()"
+        >
+          Annuleren
+        </button>
+      `);
+    }
+
+    function simulateScan() {
+      closeModal();
+
+      document.getElementById(
+        "searchInput"
+      ).value =
+        "1001";
+
+      searchProduct();
+    }
+
+    function openSearchHelp() {
+      openModal(`
+        <h2>Zoeken en scannen</h2>
+
+        <p>
+          Zoek met het artikelnummer dat op het label,
+          de verpakking of de pickopdracht staat.
+        </p>
+
+        <div class="detail-list">
+          <div class="detail-item">
+            <strong>1. Zoek het nummer</strong>
+            <p>
+              Vul het volledige artikelnummer in.
+            </p>
+          </div>
+
+          <div class="detail-item">
+            <strong>2. Controleer de kenmerken</strong>
+            <p>
+              Vergelijk toepassing, afmetingen en
+              locatie met het fysieke onderdeel.
+            </p>
+          </div>
+
+          <div class="detail-item">
+            <strong>3. Meld een afwijking</strong>
+            <p>
+              Maak een verbeteridee wanneer informatie
+              onduidelijk of onjuist is.
+            </p>
+          </div>
+        </div>
+
+        <button
+          class="primary-button"
+          style="margin-top: 15px;"
+          onclick="closeModal()"
+        >
+          Begrepen
+        </button>
+      `);
+    }
+
+    function openIdeaInfo() {
+      openModal(`
+        <h2>Wat gebeurt er met een idee?</h2>
+
+        <p>
+          Een idee krijgt een duidelijke eigenaar en
+          blijft zichtbaar tijdens de opvolging.
+        </p>
+
+        <div class="detail-list">
+          <div class="detail-item">
+            <strong>Nieuw</strong>
+            <p>
+              Het idee is ontvangen en moet worden beoordeeld.
+            </p>
+          </div>
+
+          <div class="detail-item">
+            <strong>In behandeling</strong>
+            <p>
+              Een verantwoordelijke onderzoekt of test het voorstel.
+            </p>
+          </div>
+
+          <div class="detail-item">
+            <strong>Uitgevoerd</strong>
+            <p>
+              De verbetering is ingevoerd en het resultaat wordt gevolgd.
+            </p>
+          </div>
+        </div>
+
+        <button
+          class="primary-button"
+          style="margin-top: 15px;"
+          onclick="closeModal()"
+        >
+          Sluiten
+        </button>
+      `);
+    }
+
+    function openSettingsModal() {
+      openModal(`
+        <h2>Demo-instellingen</h2>
+
+        <p>
+          Hiermee kun je de lokaal opgeslagen
+          voortgang van dit prototype wissen.
+        </p>
+
+        <button
+          class="danger-button"
+          style="margin-top: 16px;"
+          onclick="resetDemo()"
+        >
+          Alle demo-voortgang wissen
+        </button>
+
+        <button
+          class="secondary-button"
+          style="margin-top: 9px;"
+          onclick="closeModal()"
+        >
+          Annuleren
+        </button>
+      `);
+    }
+
+    function resetDemo() {
+      localStorage.removeItem(
+        "avtPartsReadyState"
+      );
+
+      appState = {
+        xp: 420,
+        learnedProducts: [],
+        lessonCompleted: false,
+        quizCompleted: false,
+        searchedProduct: false,
+        ideas: [...defaultIdeas],
+        currentProduct: null,
+        loggedIn: true
+      };
+
+      closeModal();
+      updateInterface();
+      goHome();
+
+      showToast(
+        "De demo-voortgang is gewist."
+      );
+    }
+
+    function initializeApp() {
+      loadState();
+      setGreeting();
+      updateInterface();
+
+      document
+        .getElementById("loginScreen")
+        .classList.add("show");
+
+      document
+        .getElementById("bottomNavigation")
+        .classList.remove("hidden");
+    }
+
+    initializeApp();
+  </script>
+
+</body>
+</html>
