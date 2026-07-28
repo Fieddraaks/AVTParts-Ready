@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AVT Parts Ready</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #eef7fc;
+      color: #17324d;
+      min-height: 100vh;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 430px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: #f8fcff;
+      position: relative;
+      padding-bottom: 90px;
+      box-shadow: 0 0 30px rgba(38, 94, 130, 0.12);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #8fd3f4, #c7ecff);
+      padding: 28px 22px 24px;
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+    }
+
+    .logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 19px;
+      letter-spacing: 0.2px;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      background: #ffffff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 20px rgba(39, 106, 148, 0.15);
+      font-size: 23px;
+    }
+
+    .profile-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #ffffff;
+      display: grid;
+      place-items: center;
+      font-weight: bold;
+      color: #2d739e;
+    }
+
+    .welcome h1 {
+      font-size: 27px;
+      margin-bottom: 6px;
+    }
+
+    .welcome p {
+      font-size: 14px;
+      color: #35627f;
+    }
+
+    .progress-card {
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 15px;
+      border-radius: 18px;
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .progress-bar {
+      height: 9px;
+      background: #dceef8;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 60%;
+      height: 100%;
+      background: #3f9fd2;
+      border-radius: 99px;
+    }
+
+    .content {
+      padding: 22px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      margin-bottom: 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .action-card {
+      border: none;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 20px 14px;
+      min-height: 145px;
+      text-align: left;
+      box-shadow: 0 8px 22px rgba(43, 101, 137, 0.09);
+      transition: 0.2s ease;
+      border: 1px solid #e2f1f9;
+    }
+
+    .action-card:active {
+      transform: scale(0.97);
+    }
+
+    .action-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      font-size: 25px;
+      background: #dff3ff;
+      margin-bottom: 15px;
+    }
+
+    .action-card h3 {
+      font-size: 16px;
+      margin-bottom: 7px;
+    }
+
+    .action-card p {
+      font-size: 12px;
+      line-height: 1.4;
+      color: #668096;
+    }
+
+    .time-card {
+      margin-top: 20px;
+      background: #e7f6ff;
+      border: 1px solid #cdeafb;
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      gap: 13px;
+      align-items: flex-start;
+    }
+
+    .time-card span {
+      font-size: 23px;
+    }
+
+    .time-card h4 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .time-card p {
+      font-size: 12px;
+      color: #58758a;
+      line-height: 1.4;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 430px;
+      height: 72px;
+      background: #ffffff;
+      border-top: 1px solid #dfeef6;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .nav-item {
+      border: none;
+      background: transparent;
+      color: #8ca3b3;
+      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .nav-item span {
+      font-size: 22px;
+    }
+
+    .nav-item.active {
+      color: #318fc2;
+      font-weight: bold;
+    }
+
+    .screen {
+      display: none;
+      padding: 22px;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .screen-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .back-button {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: none;
+      background: #dff3ff;
+      color: #347da6;
+      font-size: 20px;
+    }
+
+    .screen-header h2 {
+      font-size: 22px;
+    }
+
+    .info-box {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 8px 22px rgba(43, 101, 137, 0.09);
+      margin-bottom: 16px;
+    }
+
+    .info-box h3 {
+      margin-bottom: 8px;
+    }
+
+    .info-box p {
+      color: #617b8e;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .input-label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      margin: 16px 0 7px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid #cfe4ef;
+      border-radius: 14px;
+      padding: 14px;
+      background: #ffffff;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #4ba7d6;
+    }
+
+    .primary-button {
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 15px;
+      margin-top: 16px;
+      background: #3f9fd2;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .product-result {
+      display: none;
+      margin-top: 18px;
+    }
+
+    .product-result.show {
+      display: block;
+    }
+
+    .product-image {
+      height: 150px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #d9f1ff, #edf9ff);
+      display: grid;
+      place-items: center;
+      font-size: 70px;
+      margin-bottom: 16px;
+    }
+
+    .product-detail {
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 14px;
+      margin-bottom: 10px;
+      border: 1px solid #e1eff6;
+    }
+
+    .product-detail strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .product-detail p {
+      font-size: 13px;
+      color: #60788a;
+    }
+
+    .zone-status {
+      display: inline-block;
+      background: #daf5e8;
+      color: #23734e;
+      border-radius: 99px;
+      padding: 7px 11px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .learning-question {
+      margin-top: 18px;
+    }
+
+    .answer-button {
+      width: 100%;
+      text-align: left;
+      margin-top: 10px;
+      padding: 13px;
+      border: 1px solid #d5e8f2;
+      background: #ffffff;
+      border-radius: 13px;
+    }
+
+    .answer-button.correct {
+      background: #dff7e9;
+      border-color: #83cea5;
+    }
+
+    .answer-button.wrong {
+      background: #ffe8e8;
+      border-color: #e6a1a1;
+    }
+
+    .message {
+      display: none;
+      background: #dcf6e8;
+      color: #236b49;
+      padding: 14px;
+      border-radius: 14px;
+      margin-top: 15px;
+      font-size: 13px;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    @media (min-width: 700px) {
+      body {
+        padding: 25px 0;
+      }
+
+      .app {
+        min-height: calc(100vh - 50px);
+        border-radius: 30px;
+        overflow: hidden;
+      }
+
+      .bottom-nav {
+        bottom: 25px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="app">
+
+    <section id="homeScreen">
+
+      <header class="header">
+
+        <div class="logo-row">
+          <div class="logo">
+            <div class="logo-icon">🚛</div>
+            <span>AVT Parts Ready</span>
+          </div>
+
+          <div class="profile-badge">K</div>
+        </div>
+
+        <div class="welcome">
+          <h1>Goedemorgen, Kevin</h1>
+          <p>Zone: Remmen & wielonderdelen</p>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-top">
+            <span>Jouw voortgang</span>
+            <span>60%</span>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+
+      </header>
+
+      <section class="content">
+
+        <h2 class="section-title">Wat wil je doen?</h2>
+
+        <div class="grid">
+
+          <button class="action-card" onclick="openScreen('scanScreen')">
+            <div class="action-icon">🔍</div>
+            <h3>Scan onderdeel</h3>
+            <p>Bekijk direct wat een onderdeel doet en waar je op moet letten.</p>
+          </button>
+
+          <button class="action-card" onclick="openScreen('zoneScreen')">
+            <div class="action-icon">📦</div>
+            <h3>Mijn zone</h3>
+            <p>Bekijk jouw productgroep, aandachtspunten en resultaten.</p>
+          </button>
+
+          <button class="action-card" onclick="openScreen('learningScreen')">
+            <div class="action-icon">🎯</div>
+            <h3>Vandaag leren</h3>
+            <p>Leer in één minuut iets dat je direct op de vloer kunt gebruiken.</p>
+          </button>
+
+          <button class="action-card" onclick="openScreen('ideaScreen')">
+            <div class="action-icon">💡</div>
+            <h3>Verbeteridee</h3>
+            <p>Deel een idee waarmee jouw zone veiliger of slimmer kan werken.</p>
+          </button>
+
+        </div>
+
+        <div class="time-card">
+          <span>⏱️</span>
+          <div>
+            <h4>Kort en praktisch</h4>
+            <p>De app is bedoeld voor snelle informatie. Geen feed, chat of eindeloos scrollen.</p>
+          </div>
+        </div>
+
+      </section>
+
+    </section>
+
+    <section id="scanScreen" class="screen">
+
+      <div class="screen-header">
+        <button class="back-button" onclick="goHome()">←</button>
+        <h2>Scan onderdeel</h2>
+      </div>
+
+      <div class="info-box">
+        <h3>Zoek een artikel</h3>
+        <p>Vul voor deze demo artikelnummer 1001, 1002 of 1003 in.</p>
+
+        <label class="input-label" for="articleNumber">Artikelnummer</label>
+
+        <input
+          id="articleNumber"
+          type="text"
+          placeholder="Bijvoorbeeld 1001"
+        />
+
+        <button class="primary-button" onclick="searchProduct()">
+          Onderdeel bekijken
+        </button>
+      </div>
+
+      <div id="productResult" class="product-result">
+
+        <div class="product-image" id="productEmoji">⚙️</div>
+
+        <div class="info-box">
+          <h3 id="productName">Productnaam</h3>
+          <p id="productDescription">Productomschrijving</p>
+        </div>
+
+        <div class="product-detail">
+          <strong>📍 Waar zit dit?</strong>
+          <p id="productLocation"></p>
+        </div>
+
+        <div class="product-detail">
+          <strong>🚛 Waarom belangrijk?</strong>
+          <p id="productImportance"></p>
+        </div>
+
+        <div class="product-detail">
+          <strong>⚠️ Let hierop</strong>
+          <p id="productWarning"></p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="zoneScreen" class="screen">
+
+      <div class="screen-header">
+        <button class="back-button" onclick="goHome()">←</button>
+        <h2>Mijn zone</h2>
+      </div>
+
+      <div class="info-box">
+        <span class="zone-status">Zone Specialist</span>
+        <h3>Remmen & wielonderdelen</h3>
+        <p>
+          Jij helpt mee om deze zone overzichtelijk, veilig en foutloos te houden.
+        </p>
+      </div>
+
+      <div class="info-box">
+        <h3>Resultaten deze week</h3>
+        <p>✅ 48 foutloze picks</p>
+        <p>📦 2 nieuwe onderdelen bekeken</p>
+        <p>💡 1 verbeteridee ingediend</p>
+      </div>
+
+      <div class="info-box">
+        <h3>Aandachtspunt</h3>
+        <p>
+          Controleer bij remschijven altijd de diameter en het aantal boutgaten.
+          Verschillende types kunnen sterk op elkaar lijken.
+        </p>
+      </div>
+
+    </section>
+
+    <section id="learningScreen" class="screen">
+
+      <div class="screen-header">
+        <button class="back-button" onclick="goHome()">←</button>
+        <h2>Vandaag leren</h2>
+      </div>
+
+      <div class="info-box">
+
+        <div class="product-image">🛞</div>
+
+        <h3>Waarom is een remschijf belangrijk?</h3>
+
+        <p>
+          De remblokken drukken tegen de remschijf. Hierdoor wordt de truck of
+          trailer afgeremd. Een verkeerde remschijf kan zorgen voor slijtage,
+          onveilige situaties en stilstand.
+        </p>
+
+        <div class="learning-question">
+
+          <h3>Welke controle is het belangrijkst?</h3>
+
+          <button class="answer-button" onclick="checkAnswer(this, false)">
+            Alleen controleren of de doos heel is
+          </button>
+
+          <button class="answer-button" onclick="checkAnswer(this, true)">
+            Diameter en aantal boutgaten controleren
+          </button>
+
+          <button class="answer-button" onclick="checkAnswer(this, false)">
+            Alleen naar de kleur kijken
+          </button>
+
+        </div>
+
+        <div id="quizMessage" class="message"></div>
+
+      </div>
+
+    </section>
+
+    <section id="ideaScreen" class="screen">
+
+      <div class="screen-header">
+        <button class="back-button" onclick="goHome()">←</button>
+        <h2>Verbeteridee</h2>
+      </div>
+
+      <div class="info-box">
+        <h3>Wat kan slimmer?</h3>
+        <p>
+          Deel een concreet probleem of idee voor jouw magazijnzone.
+        </p>
+
+        <label class="input-label" for="ideaTitle">Onderwerp</label>
+        <input
+          id="ideaTitle"
+          type="text"
+          placeholder="Bijvoorbeeld: labels op remschijven"
+        />
+
+        <label class="input-label" for="ideaText">Jouw idee</label>
+        <textarea
+          id="ideaText"
+          placeholder="Beschrijf kort wat er beter kan..."
+        ></textarea>
+
+        <button class="primary-button" onclick="submitIdea()">
+          Idee indienen
+        </button>
+
+        <div id="ideaMessage" class="message">
+          Bedankt! Je verbeteridee is ontvangen.
+        </div>
+
+      </div>
+
+    </section>
+
+    <nav class="bottom-nav">
+
+      <button class="nav-item active" onclick="goHome()">
+        <span>🏠</span>
+        Home
+      </button>
+
+      <button class="nav-item" onclick="openScreen('scanScreen')">
+        <span>🔍</span>
+        Scannen
+      </button>
+
+      <button class="nav-item" onclick="openScreen('learningScreen')">
+        <span>🎯</span>
+        Leren
+      </button>
+
+      <button class="nav-item" onclick="openScreen('zoneScreen')">
+        <span>👤</span>
+        Profiel
+      </button>
+
+    </nav>
+
+  </main>
+
+  <script>
+    const products = {
+      "1001": {
+        name: "Remschijf",
+        emoji: "🛞",
+        description:
+          "Een metalen schijf waarop de remblokken drukken om het voertuig af te remmen.",
+        location:
+          "Bij het wiel, gemonteerd aan de wielnaaf van een truck of trailer.",
+        importance:
+          "Zorgt voor veilige en gecontroleerde remkracht.",
+        warning:
+          "Controleer diameter, dikte en aantal boutgaten. Types lijken vaak sterk op elkaar."
+      },
+
+      "1002": {
+        name: "Luchtveerbalg",
+        emoji: "🎈",
+        description:
+          "Een rubberen luchtbalg die onderdeel is van de luchtvering.",
+        location:
+          "Tussen het chassis en de as van de truck of trailer.",
+        importance:
+          "Zorgt voor comfort, stabiliteit en een gelijkmatige verdeling van de belasting.",
+        warning:
+          "Controleer de aansluitingen, hoogte en bevestiging voordat je het onderdeel pakt."
+      },
+
+      "1003": {
+        name: "Luchtdrogerpatroon",
+        emoji: "🔧",
+        description:
+          "Een filterpatroon dat vocht en vuil uit het luchtremsysteem verwijdert.",
+        location:
+          "In de luchtdroger van het pneumatische remsysteem.",
+        importance:
+          "Beschermt het remsysteem tegen vocht, corrosie en bevriezing.",
+        warning:
+          "Let op merk, schroefdraad en afmetingen. Niet elk patroon is uitwisselbaar."
+      }
+    };
+
+    function openScreen(screenId) {
+      document.getElementById("homeScreen").style.display = "none";
+
+      document.querySelectorAll(".screen").forEach(function(screen) {
+        screen.classList.remove("active");
+      });
+
+      document.getElementById(screenId).classList.add("active");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    function goHome() {
+      document.querySelectorAll(".screen").forEach(function(screen) {
+        screen.classList.remove("active");
+      });
+
+      document.getElementById("homeScreen").style.display = "block";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+    function searchProduct() {
+      const articleNumber = document
+        .getElementById("articleNumber")
+        .value
+        .trim();
+
+      const result = document.getElementById("productResult");
+      const product = products[articleNumber];
+
+      if (!product) {
+        result.classList.remove("show");
+
+        alert(
+          "Artikel niet gevonden. Gebruik voor deze demo artikelnummer 1001, 1002 of 1003."
+        );
+
+        return;
+      }
+
+      document.getElementById("productEmoji").textContent = product.emoji;
+      document.getElementById("productName").textContent = product.name;
+
+      document.getElementById("productDescription").textContent =
+        product.description;
+
+      document.getElementById("productLocation").textContent =
+        product.location;
+
+      document.getElementById("productImportance").textContent =
+        product.importance;
+
+      document.getElementById("productWarning").textContent =
+        product.warning;
+
+      result.classList.add("show");
+    }
+
+    function checkAnswer(button, isCorrect) {
+      const buttons = document.querySelectorAll(".answer-button");
+
+      buttons.forEach(function(answerButton) {
+        answerButton.classList.remove("correct", "wrong");
+      });
+
+      const quizMessage = document.getElementById("quizMessage");
+
+      if (isCorrect) {
+        button.classList.add("correct");
+        quizMessage.textContent =
+          "Goed! Controleer altijd de diameter en het aantal boutgaten.";
+      } else {
+        button.classList.add("wrong");
+        quizMessage.textContent =
+          "Niet helemaal. Kijk vooral naar de diameter en het aantal boutgaten.";
+      }
+
+      quizMessage.classList.add("show");
+    }
+
+    function submitIdea() {
+      const title = document.getElementById("ideaTitle").value.trim();
+      const text = document.getElementById("ideaText").value.trim();
+
+      if (!title || !text) {
+        alert("Vul eerst het onderwerp en je verbeteridee in.");
+        return;
+      }
+
+      document.getElementById("ideaMessage").classList.add("show");
+
+      document.getElementById("ideaTitle").value = "";
+      document.getElementById("ideaText").value = "";
+    }
+  </script>
+
+</body>
+</html>
