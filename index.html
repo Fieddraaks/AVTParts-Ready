@@ -5032,7 +5032,102 @@
 
     let html5QrCode = null;
 let scannerRunning = false;
+    
+function openAIDemo() {
+  openModal(`
+    <h2>✨ AI Herkenning (Demo)</h2>
 
+    <p>
+      Maak een foto van een onderdeel.
+      In deze demonstratie simuleert de AI de herkenning.
+    </p>
+
+    <div style="
+      margin-top:18px;
+      background:#eef8ff;
+      border-radius:18px;
+      padding:30px;
+      text-align:center;
+    ">
+      <div style="font-size:70px;">
+        📸
+      </div>
+
+      <button
+        class="primary-button"
+        style="margin-top:18px;"
+        onclick="startAIDemo()"
+      >
+        Maak foto
+      </button>
+    </div>
+  `);
+}
+    
+function startAIDemo() {
+
+  document.querySelector(".modal-sheet").innerHTML = `
+    <div class="text-center">
+
+      <div style="font-size:70px;margin-top:20px;">
+        🤖
+      </div>
+
+      <h2 style="margin-top:20px;">
+        AI analyseert...
+      </h2>
+
+      <p style="margin-top:10px;">
+        Onderdeel vergelijken met productdatabase...
+      </p>
+
+    </div>
+  `;
+
+  setTimeout(() => {
+
+    const demo = [
+      {code:"1001",name:"Remschijf",emoji:"🛞",score:96},
+      {code:"1002",name:"Luchtveerbalg",emoji:"🎈",score:93},
+      {code:"1003",name:"Lager",emoji:"⚙️",score:91},
+      {code:"1004",name:"Oliefilter",emoji:"🛢️",score:95}
+    ];
+
+    const part = demo[Math.floor(Math.random()*demo.length)];
+
+    document.querySelector(".modal-sheet").innerHTML = `
+      <div class="text-center">
+
+        <div style="font-size:75px;">
+          ${part.emoji}
+        </div>
+
+        <h2 style="margin-top:18px;">
+          ${part.name}
+        </h2>
+
+        <p style="margin-top:10px;">
+          AI is <b>${part.score}% zeker</b>
+        </p>
+
+        <button
+          class="primary-button"
+          style="margin-top:22px;"
+          onclick="
+            closeModal();
+            quickSearch('${part.code}');
+          "
+        >
+          Open product
+        </button>
+
+      </div>
+    `;
+
+  },2000);
+
+}
+    
 function openScannerModal() {
   openModal(`
     <h2>Barcode scannen</h2>
