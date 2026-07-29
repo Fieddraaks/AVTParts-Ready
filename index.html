@@ -1974,11 +1974,11 @@
           </div>
 
           <div>
-            <strong>Inloggen als medewerker</strong>
+           <strong>Inloggen als orderpicker</strong>
 
-            <span>
-              Open het persoonlijke dashboard van Kevin.
-            </span>
+<span>
+  Open de werkomgeving van Kevin.
+</span>
           </div>
 
         </button>
@@ -3937,94 +3937,167 @@
 
     </section>
 
-    <!-- NAVIGATIE -->
+  <!-- NAVIGATIE ORDERPICKER -->
 
-    <nav
-      id="bottomNavigation"
-      class="bottom-nav"
-    >
+<nav
+  id="employeeNavigation"
+  class="bottom-nav"
+>
 
-      <button
-        id="navHome"
-        class="nav-item active"
-        onclick="goHome()"
-      >
+  <button
+    id="navHome"
+    class="nav-item active"
+    onclick="goHome()"
+  >
 
-        <div class="nav-icon-wrap">
-          🏠
-        </div>
+    <div class="nav-icon-wrap">
+      🏠
+    </div>
 
-        <span>
-          Home
-        </span>
+    <span>
+      Home
+    </span>
 
-      </button>
+  </button>
 
-      <button
-        id="navSearch"
-        class="nav-item"
-        onclick="openScreen('searchScreen')"
-      >
+  <button
+    id="navSearch"
+    class="nav-item"
+    onclick="openScreen('searchScreen')"
+  >
 
-        <div class="nav-icon-wrap">
-          🔍
-        </div>
+    <div class="nav-icon-wrap">
+      🔍
+    </div>
 
-        <span>
-          Zoeken
-        </span>
+    <span>
+      Zoeken
+    </span>
 
-      </button>
+  </button>
 
-      <button
-        id="navLearn"
-        class="nav-item"
-        onclick="openScreen('learningScreen')"
-      >
+  <button
+    id="navOrders"
+    class="nav-item"
+    onclick="showToast('Het orderoverzicht wordt in de volgende stap toegevoegd.')"
+  >
 
-        <div class="nav-icon-wrap">
-          🎯
-        </div>
+    <div class="nav-icon-wrap">
+      📦
+    </div>
 
-        <span>
-          Leren
-        </span>
+    <span>
+      Orders
+    </span>
 
-      </button>
+  </button>
 
-      <button
-        id="navIdeas"
-        class="nav-item"
-        onclick="openScreen('ideaScreen')"
-      >
+  <button
+    id="navProfile"
+    class="nav-item"
+    onclick="openScreen('profileScreen')"
+  >
 
-        <div class="nav-icon-wrap">
-          💡
-        </div>
+    <div class="nav-icon-wrap">
+      👤
+    </div>
 
-        <span>
-          Ideeën
-        </span>
+    <span>
+      Profiel
+    </span>
 
-      </button>
+  </button>
 
-      <button
-        id="navProfile"
-        class="nav-item"
-        onclick="openScreen('profileScreen')"
-      >
+</nav>
 
-        <div class="nav-icon-wrap">
-          👤
-        </div>
+<!-- NAVIGATIE MANAGER -->
 
-        <span>
-          Profiel
-        </span>
+<nav
+  id="managerNavigation"
+  class="bottom-nav hidden"
+>
 
-      </button>
+  <button
+    id="managerNavHome"
+    class="nav-item"
+    onclick="openManagerDashboard('managerNavHome')"
+  >
 
-    </nav>
+    <div class="nav-icon-wrap">
+      🏠
+    </div>
+
+    <span>
+      Home
+    </span>
+
+  </button>
+
+  <button
+    id="managerNavDashboard"
+    class="nav-item active"
+    onclick="openManagerDashboard('managerNavDashboard')"
+  >
+
+    <div class="nav-icon-wrap">
+      📊
+    </div>
+
+    <span>
+      Dashboard
+    </span>
+
+  </button>
+
+  <button
+    id="managerNavEmployees"
+    class="nav-item"
+    onclick="showManagerNavigationMessage('managerNavEmployees', 'Medewerkers')"
+  >
+
+    <div class="nav-icon-wrap">
+      👥
+    </div>
+
+    <span>
+      Medewerkers
+    </span>
+
+  </button>
+
+  <button
+    id="managerNavOrders"
+    class="nav-item"
+    onclick="showManagerNavigationMessage('managerNavOrders', 'Orders')"
+  >
+
+    <div class="nav-icon-wrap">
+      📦
+    </div>
+
+    <span>
+      Orders
+    </span>
+
+  </button>
+
+  <button
+    id="managerNavManagement"
+    class="nav-item"
+    onclick="showManagerNavigationMessage('managerNavManagement', 'Beheer')"
+  >
+
+    <div class="nav-icon-wrap">
+      ⚙️
+    </div>
+
+    <span>
+      Beheer
+    </span>
+
+  </button>
+
+</nav>
 
   </main>
 
@@ -4135,15 +4208,16 @@
     ];
 
     let appState = {
-      xp: 420,
-      learnedProducts: [],
-      lessonCompleted: false,
-      quizCompleted: false,
-      searchedProduct: false,
-      ideas: [],
-      currentProduct: null,
-      loggedIn: false
-    };
+  xp: 420,
+  learnedProducts: [],
+  lessonCompleted: false,
+  quizCompleted: false,
+  searchedProduct: false,
+  ideas: [],
+  currentProduct: null,
+  loggedIn: false,
+  currentRole: null
+};
 
     function loadState() {
       const savedState =
@@ -4185,58 +4259,90 @@
     }
 
     function loginAsEmployee() {
-      appState.loggedIn = true;
-      saveState();
+  appState.loggedIn = true;
+  appState.currentRole = "orderpicker";
 
-      document
-        .getElementById("loginScreen")
-        .classList.remove("show");
+  saveState();
 
-      document
-        .getElementById("bottomNavigation")
-        .classList.remove("hidden");
+  document
+    .getElementById("loginScreen")
+    .classList.remove("show");
 
-      openScreen("homeScreen");
-      updateInterface();
-      showToast("Welkom terug, Kevin.");
-    }
+  document
+    .getElementById("employeeNavigation")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("managerNavigation")
+    .classList.add("hidden");
+
+  openScreen("homeScreen");
+  updateInterface();
+
+  showToast(
+    "Welkom terug, Kevin."
+  );
+}
 
     function loginAsManager() {
-      document
-        .getElementById("loginScreen")
-        .classList.remove("show");
+  appState.loggedIn = true;
+  appState.currentRole = "manager";
 
-      document
-        .getElementById("bottomNavigation")
-        .classList.add("hidden");
+  saveState();
 
-      openScreen("managerScreen");
-    }
+  document
+    .getElementById("loginScreen")
+    .classList.remove("show");
+
+  document
+    .getElementById("employeeNavigation")
+    .classList.add("hidden");
+
+  document
+    .getElementById("managerNavigation")
+    .classList.remove("hidden");
+
+  openScreen("managerScreen");
+
+  setManagerNavigationActive(
+    "managerNavDashboard"
+  );
+
+  showToast(
+    "Manageromgeving geopend."
+  );
+}
 
     function logout() {
-      appState.loggedIn = false;
-      saveState();
+  appState.loggedIn = false;
+  appState.currentRole = null;
 
-      document
-        .querySelectorAll(".screen")
-        .forEach(function(screen) {
-          screen.classList.remove("active");
-        });
+  saveState();
 
-      document
-        .getElementById("homeScreen")
-        .classList.add("active");
+  document
+    .querySelectorAll(".screen")
+    .forEach(function(screen) {
+      screen.classList.remove("active");
+    });
 
-      document
-        .getElementById("bottomNavigation")
-        .classList.remove("hidden");
+  document
+    .getElementById("homeScreen")
+    .classList.add("active");
 
-      document
-        .getElementById("loginScreen")
-        .classList.add("show");
+  document
+    .getElementById("employeeNavigation")
+    .classList.add("hidden");
 
-      window.scrollTo(0, 0);
-    }
+  document
+    .getElementById("managerNavigation")
+    .classList.add("hidden");
+
+  document
+    .getElementById("loginScreen")
+    .classList.add("show");
+
+  window.scrollTo(0, 0);
+}
 
     function openScreen(screenId) {
       document
@@ -4266,32 +4372,90 @@
     function goHome() {
       openScreen("homeScreen");
     }
+function setManagerNavigationActive(
+  navigationId
+) {
+  document
+    .querySelectorAll(
+      "#managerNavigation .nav-item"
+    )
+    .forEach(function(item) {
+      item.classList.remove("active");
+    });
 
+  const activeItem =
+    document.getElementById(
+      navigationId
+    );
+
+  if (activeItem) {
+    activeItem.classList.add("active");
+  }
+}
+
+function openManagerDashboard(
+  navigationId
+) {
+  openScreen("managerScreen");
+
+  setManagerNavigationActive(
+    navigationId
+  );
+}
+
+function showManagerNavigationMessage(
+  navigationId,
+  sectionName
+) {
+  setManagerNavigationActive(
+    navigationId
+  );
+
+  showToast(
+    sectionName +
+    " wordt in een latere fase toegevoegd."
+  );
+}
     function updateNavigation(screenId) {
-      document
-        .querySelectorAll(".nav-item")
-        .forEach(function(item) {
-          item.classList.remove("active");
-        });
+  if (appState.currentRole === "manager") {
+    return;
+  }
 
-      const navigationMap = {
-        homeScreen: "navHome",
-        searchScreen: "navSearch",
-        zoneScreen: "navHome",
-        learningScreen: "navLearn",
-        ideaScreen: "navIdeas",
-        profileScreen: "navProfile"
-      };
+  document
+    .querySelectorAll(
+      "#employeeNavigation .nav-item"
+    )
+    .forEach(function(item) {
+      item.classList.remove("active");
+    });
 
-      const activeNavId =
-        navigationMap[screenId];
+  const navigationMap = {
+    homeScreen: "navHome",
+    searchScreen: "navSearch",
+    zoneScreen: "navHome",
+    learningScreen: "navHome",
+    ideaScreen: "navHome",
+    profileScreen: "navProfile"
+  };
 
-      if (activeNavId) {
-        document
-          .getElementById(activeNavId)
-          .classList.add("active");
-      }
-    }
+  const activeNavId =
+    navigationMap[screenId];
+
+  if (!activeNavId) {
+    return;
+  }
+
+  const activeNavigationItem =
+    document.getElementById(
+      activeNavId
+    );
+
+  if (activeNavigationItem) {
+    activeNavigationItem.classList.add(
+      "active"
+    );
+  }
+}
 
     function getLevelInformation() {
       const xp = appState.xp;
@@ -5410,15 +5574,16 @@ async function stopScannerAndClose() {
       );
 
       appState = {
-        xp: 420,
-        learnedProducts: [],
-        lessonCompleted: false,
-        quizCompleted: false,
-        searchedProduct: false,
-        ideas: [...defaultIdeas],
-        currentProduct: null,
-        loggedIn: true
-      };
+  xp: 420,
+  learnedProducts: [],
+  lessonCompleted: false,
+  quizCompleted: false,
+  searchedProduct: false,
+  ideas: [...defaultIdeas],
+  currentProduct: null,
+  loggedIn: true,
+  currentRole: "orderpicker"
+};
 
       closeModal();
       updateInterface();
@@ -5430,19 +5595,22 @@ async function stopScannerAndClose() {
     }
 
     function initializeApp() {
-      loadState();
-      setGreeting();
-      updateInterface();
+  loadState();
+  setGreeting();
+  updateInterface();
 
-      document
-        .getElementById("loginScreen")
-        .classList.add("show");
+  document
+    .getElementById("loginScreen")
+    .classList.add("show");
 
-      document
-        .getElementById("bottomNavigation")
-        .classList.remove("hidden");
-    }
+  document
+    .getElementById("employeeNavigation")
+    .classList.add("hidden");
 
+  document
+    .getElementById("managerNavigation")
+    .classList.add("hidden");
+}
     initializeApp();
   </script>
 
