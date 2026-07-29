@@ -1839,6 +1839,346 @@
   font-size: 10px;
   line-height: 1.5;
 }
+    .order-detail-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 19px;
+  border: 1px solid #c9e7f4;
+  border-radius: var(--radius-large);
+  background:
+    radial-gradient(
+      circle at 92% 5%,
+      rgba(255, 255, 255, 0.95),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #dff5ff,
+      #f7fdff
+    );
+  box-shadow: var(--shadow-medium);
+}
+
+.order-detail-hero::after {
+  content: "";
+  position: absolute;
+  right: -65px;
+  bottom: -80px;
+  width: 185px;
+  height: 185px;
+  border-radius: 50%;
+  background:
+    rgba(17, 141, 194, 0.08);
+}
+
+.order-detail-hero-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.order-detail-hero-top h2 {
+  margin-top: 5px;
+  font-size: 23px;
+  letter-spacing: -0.4px;
+}
+
+.order-detail-status-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.order-detail-status-row > span:last-child {
+  color: var(--text-soft);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.order-detail-stat-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 17px;
+}
+
+.order-detail-stat {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 9px;
+  padding: 12px;
+  border: 1px solid rgba(190, 220, 233, 0.9);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.order-detail-stat-icon {
+  grid-row: 1 / 3;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--primary-light);
+  font-size: 17px;
+}
+
+.order-detail-stat strong {
+  font-size: 13px;
+}
+
+.order-detail-stat span {
+  margin-top: 2px;
+  color: var(--text-soft);
+  font-size: 8px;
+}
+
+.order-detail-location-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  margin-top: 14px;
+  padding: 16px;
+  border: 1px solid #cde8f5;
+  border-radius: var(--radius-large);
+  background: var(--surface-blue);
+}
+
+.order-detail-location-icon {
+  width: 43px;
+  height: 43px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: white;
+  font-size: 21px;
+  box-shadow: var(--shadow-small);
+}
+
+.order-detail-location-card span {
+  color: var(--primary-dark);
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.order-detail-location-card h3 {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.order-detail-location-card p {
+  margin-top: 5px;
+  color: var(--text-soft);
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.order-detail-progress-card {
+  margin-top: 14px;
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background: white;
+  box-shadow: var(--shadow-small);
+}
+
+.order-detail-progress-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 11px;
+}
+
+.order-detail-progress-top div span {
+  display: block;
+  color: var(--text-soft);
+  font-size: 9px;
+}
+
+.order-detail-progress-top div strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+}
+
+.order-detail-list {
+  display: grid;
+  gap: 11px;
+}
+
+.order-detail-item {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.order-detail-item-number {
+  width: 29px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.order-detail-item-main {
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: white;
+  box-shadow: var(--shadow-small);
+}
+
+.order-detail-item-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+}
+
+.order-detail-item-visual {
+  width: 45px;
+  height: 45px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--surface-blue);
+  font-size: 23px;
+}
+
+.order-detail-item-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.order-detail-location {
+  display: block;
+  overflow: hidden;
+  color: var(--primary-dark);
+  font-size: 8px;
+  font-weight: 900;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.order-detail-item-copy h3 {
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.order-detail-article {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-soft);
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.order-detail-quantity {
+  min-width: 43px;
+  flex: 0 0 auto;
+  padding: 7px 6px;
+  border-radius: 12px;
+  background: var(--surface-soft);
+  text-align: center;
+}
+
+.order-detail-quantity strong {
+  display: block;
+  color: var(--primary-dark);
+  font-size: 16px;
+}
+
+.order-detail-quantity span {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-soft);
+  font-size: 7px;
+}
+
+.order-detail-item-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin-top: 11px;
+  padding: 9px;
+  border-radius: 11px;
+  background: var(--surface-soft);
+}
+
+.order-detail-item-note span {
+  flex: 0 0 auto;
+  font-size: 12px;
+}
+
+.order-detail-item-note p {
+  color: var(--text-soft);
+  font-size: 8px;
+  line-height: 1.45;
+}
+
+.order-start-information {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin-top: 17px;
+  padding: 14px;
+  border: 1px solid #bfe4d1;
+  border-radius: 17px;
+  background: var(--success-bg);
+}
+
+.order-start-information-icon {
+  width: 29px;
+  height: 29px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--success);
+  color: white;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.order-start-information h3 {
+  color: var(--success);
+  font-size: 11px;
+}
+
+.order-start-information p {
+  margin-top: 4px;
+  color: #46745f;
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.order-start-button {
+  min-height: 54px;
+  margin-top: 13px;
+  font-size: 14px;
+}
+    
     .manager-kpi-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -4059,6 +4399,235 @@
   </div>
 
 </section>
+    <!-- ORDERDETAIL ORDERPICKER -->
+
+<section
+  id="orderDetailScreen"
+  class="screen"
+>
+
+  <header class="page-header">
+
+    <button
+      class="back-button"
+      onclick="openOrdersScreen()"
+    >
+      ←
+    </button>
+
+    <div class="page-header-copy">
+
+      <h1>
+        Orderoverzicht
+      </h1>
+
+      <p id="detailHeaderOrderNumber">
+        AVT-000000
+      </p>
+
+    </div>
+
+    <button
+      class="icon-button"
+      onclick="showToast('Controleer de picklijst voordat je start.')"
+    >
+      ?
+    </button>
+
+  </header>
+
+  <div class="page-content">
+
+    <article class="order-detail-hero">
+
+      <div class="order-detail-hero-top">
+
+        <div>
+
+          <span class="order-label">
+            PICKLIJST
+          </span>
+
+          <h2 id="detailOrderNumber">
+            AVT-000000
+          </h2>
+
+        </div>
+
+        <span
+          id="detailPriority"
+          class="tag tag-blue"
+        >
+          Normaal
+        </span>
+
+      </div>
+
+      <div class="order-detail-status-row">
+
+        <span class="tag tag-green">
+
+          <span class="status-dot"></span>
+
+          Geaccepteerd
+
+        </span>
+
+        <span>
+          Klaar om te starten
+        </span>
+
+      </div>
+
+      <div class="order-detail-stat-grid">
+
+        <div class="order-detail-stat">
+
+          <div class="order-detail-stat-icon">
+            📦
+          </div>
+
+          <strong id="detailArticleCount">
+            0
+          </strong>
+
+          <span>
+            Artikelen
+          </span>
+
+        </div>
+
+        <div class="order-detail-stat">
+
+          <div class="order-detail-stat-icon">
+            ⏱️
+          </div>
+
+          <strong id="detailEstimatedTime">
+            0 min
+          </strong>
+
+          <span>
+            Geschatte tijd
+          </span>
+
+        </div>
+
+      </div>
+
+    </article>
+
+    <article class="order-detail-location-card">
+
+      <div class="order-detail-location-icon">
+        📍
+      </div>
+
+      <div>
+
+        <span>
+          Startlocatie
+        </span>
+
+        <h3 id="detailStartLocation">
+          Nog geen locatie geselecteerd
+        </h3>
+
+        <p>
+          Ga eerst naar deze locatie voordat je
+          het pickproces start.
+        </p>
+
+      </div>
+
+    </article>
+
+    <article class="order-detail-progress-card">
+
+      <div class="order-detail-progress-top">
+
+        <div>
+
+          <span>
+            Pickvoortgang
+          </span>
+
+          <strong id="detailProgressText">
+            0 van 0 artikelen
+          </strong>
+
+        </div>
+
+        <span class="tag tag-blue">
+          Nog niet gestart
+        </span>
+
+      </div>
+
+      <div class="progress-track">
+
+        <div
+          id="detailProgressBar"
+          class="progress-fill"
+          style="width: 0%;"
+        ></div>
+
+      </div>
+
+    </article>
+
+    <div class="section-heading">
+
+      <h2>
+        Artikelen in deze order
+      </h2>
+
+    </div>
+
+    <p class="section-description">
+      De artikelen staan in de voorgestelde
+      pickvolgorde.
+    </p>
+
+    <div
+      id="orderItemList"
+      class="order-detail-list"
+    ></div>
+
+    <article class="order-start-information">
+
+      <div class="order-start-information-icon">
+        ✓
+      </div>
+
+      <div>
+
+        <h3>
+          Controleer voordat je begint
+        </h3>
+
+        <p>
+          Zorg voor een lege pickwagen of geschikte
+          pompwagen. Gebruik bij zware of hoog
+          opgeslagen producten het juiste hulpmiddel.
+        </p>
+
+      </div>
+
+    </article>
+
+    <button
+      id="startPickingButton"
+      class="primary-button order-start-button"
+    >
+      Start picking
+      <span>→</span>
+    </button>
+
+  </div>
+
+</section>
+    
     <!-- MANAGERDASHBOARD -->
 
     <section
@@ -4678,7 +5247,224 @@ const defaultOrders = [
     acceptedAt: null
   }
 ];
-    
+    const orderItemsByOrderId = {
+  "order-240731": [
+    {
+      articleNumber: "500231",
+      name: "Remtrommel",
+      emoji: "⚙️",
+      location:
+        "Begane grond · Stelling A · Vak 04",
+      quantity: 2,
+      pickInstruction:
+        "Zwaar onderdeel. Gebruik indien nodig een pompwagen en controleer het artikelnummer."
+    },
+
+    {
+      articleNumber: "600451",
+      name: "Luchtveerbalg",
+      emoji: "🎈",
+      location:
+        "Stellingen · Stelling B · Vak 02",
+      quantity: 1,
+      pickInstruction:
+        "Controleer het type, de hoogte en de bevestigingspunten."
+    },
+
+    {
+      articleNumber: "700210",
+      name: "Accu 180 Ah",
+      emoji: "🔋",
+      location:
+        "Begane grond · Stelling C · Vak 01",
+      quantity: 1,
+      pickInstruction:
+        "Zwaar product. Gebruik een pompwagen of geschikt tilhulpmiddel."
+    },
+
+    {
+      articleNumber: "801220",
+      name: "LED-achterlicht",
+      emoji: "💡",
+      location:
+        "Pickmagazijn · Stelling D · Vak 07",
+      quantity: 2,
+      pickInstruction:
+        "Controleer links of rechts en vergelijk de stekkeraansluiting."
+    }
+  ],
+
+  "order-240728": [
+    {
+      articleNumber: "400105",
+      name: "Oliefilter",
+      emoji: "🛢️",
+      location:
+        "Pickmagazijn · Stelling B · Vak 11",
+      quantity: 2,
+      pickInstruction:
+        "Controleer schroefdraad, diameter en toepassing."
+    },
+
+    {
+      articleNumber: "310440",
+      name: "Wielmoer",
+      emoji: "🔩",
+      location:
+        "Pickmagazijn · Stelling B · Vak 13",
+      quantity: 20,
+      pickInstruction:
+        "Controleer draadmaat en type passing."
+    },
+
+    {
+      articleNumber: "500231",
+      name: "Remtrommel",
+      emoji: "⚙️",
+      location:
+        "Begane grond · Stelling A · Vak 04",
+      quantity: 1,
+      pickInstruction:
+        "Gebruik bij voorkeur een pompwagen."
+    },
+
+    {
+      articleNumber: "801220",
+      name: "LED-achterlicht",
+      emoji: "💡",
+      location:
+        "Pickmagazijn · Stelling D · Vak 07",
+      quantity: 1,
+      pickInstruction:
+        "Controleer uitvoering en aansluiting."
+    },
+
+    {
+      articleNumber: "600451",
+      name: "Luchtveerbalg",
+      emoji: "🎈",
+      location:
+        "Stellingen · Stelling B · Vak 02",
+      quantity: 2,
+      pickInstruction:
+        "Vergelijk hoogte, diameter en bevestiging."
+    },
+
+    {
+      articleNumber: "720115",
+      name: "Startaccu 140 Ah",
+      emoji: "🔋",
+      location:
+        "Begane grond · Stelling C · Vak 03",
+      quantity: 1,
+      pickInstruction:
+        "Zwaar product. Gebruik een geschikt tilhulpmiddel."
+    },
+
+    {
+      articleNumber: "920015",
+      name: "Remblokset",
+      emoji: "🧱",
+      location:
+        "Pickmagazijn · Stelling A · Vak 09",
+      quantity: 1,
+      pickInstruction:
+        "Controleer vorm, afmeting en voertuigtoepassing."
+    }
+  ],
+
+  "order-240724": [
+    {
+      articleNumber: "700210",
+      name: "Accu 180 Ah",
+      emoji: "🔋",
+      location:
+        "Begane grond · Stelling C · Vak 02",
+      quantity: 2,
+      pickInstruction:
+        "Gebruik een pompwagen en controleer de accupolen."
+    },
+
+    {
+      articleNumber: "400105",
+      name: "Oliefilter",
+      emoji: "🛢️",
+      location:
+        "Pickmagazijn · Stelling B · Vak 11",
+      quantity: 3,
+      pickInstruction:
+        "Controleer artikelnummer en schroefdraad."
+    },
+
+    {
+      articleNumber: "310440",
+      name: "Wielmoer",
+      emoji: "🔩",
+      location:
+        "Pickmagazijn · Stelling B · Vak 13",
+      quantity: 12,
+      pickInstruction:
+        "Controleer draadmaat en passing."
+    },
+
+    {
+      articleNumber: "600451",
+      name: "Luchtveerbalg",
+      emoji: "🎈",
+      location:
+        "Stellingen · Stelling B · Vak 02",
+      quantity: 1,
+      pickInstruction:
+        "Gebruik indien nodig de reachtruck."
+    },
+
+    {
+      articleNumber: "801220",
+      name: "LED-achterlicht",
+      emoji: "💡",
+      location:
+        "Pickmagazijn · Stelling D · Vak 07",
+      quantity: 2,
+      pickInstruction:
+        "Controleer links of rechts en het type aansluiting."
+    }
+  ],
+
+  "order-240719": [
+    {
+      articleNumber: "801220",
+      name: "LED-achterlicht",
+      emoji: "💡",
+      location:
+        "Pickmagazijn · Stelling D · Vak 06",
+      quantity: 2,
+      pickInstruction:
+        "Controleer de zijde en vergelijk de aansluiting."
+    },
+
+    {
+      articleNumber: "310440",
+      name: "Wielmoer",
+      emoji: "🔩",
+      location:
+        "Pickmagazijn · Stelling B · Vak 13",
+      quantity: 10,
+      pickInstruction:
+        "Controleer draadmaat en type passing."
+    },
+
+    {
+      articleNumber: "400105",
+      name: "Oliefilter",
+      emoji: "🛢️",
+      location:
+        "Pickmagazijn · Stelling B · Vak 11",
+      quantity: 1,
+      pickInstruction:
+        "Controleer artikelnummer, maat en toepassing."
+    }
+  ]
+};
     let appState = {
   xp: 420,
   learnedProducts: [],
@@ -4919,14 +5705,15 @@ function showManagerNavigationMessage(
     });
 
   const navigationMap = {
-    homeScreen: "navHome",
-    searchScreen: "navSearch",
-    ordersScreen: "navOrders",
-    zoneScreen: "navHome",
-    learningScreen: "navHome",
-    ideaScreen: "navHome",
-    profileScreen: "navProfile"
-  };
+  homeScreen: "navHome",
+  searchScreen: "navSearch",
+  ordersScreen: "navOrders",
+  orderDetailScreen: "navOrders",
+  zoneScreen: "navHome",
+  learningScreen: "navHome",
+  ideaScreen: "navHome",
+  profileScreen: "navProfile"
+};
 
   const activeNavId =
     navigationMap[screenId];
@@ -5235,13 +6022,187 @@ function openAcceptedOrder(orderId) {
     });
 
   if (!selectedOrder) {
+    showToast(
+      "Deze picklijst kon niet worden gevonden."
+    );
+
+    return;
+  }
+
+  if (selectedOrder.status !== "accepted") {
+    showToast(
+      "Accepteer deze picklijst eerst."
+    );
+
+    return;
+  }
+
+  renderOrderDetail(selectedOrder);
+  openScreen("orderDetailScreen");
+}
+
+function renderOrderDetail(order) {
+  const orderItems =
+    orderItemsByOrderId[order.id] || [];
+
+  document.getElementById(
+    "detailHeaderOrderNumber"
+  ).textContent =
+    order.orderNumber;
+
+  document.getElementById(
+    "detailOrderNumber"
+  ).textContent =
+    order.orderNumber;
+
+  const priorityElement =
+    document.getElementById(
+      "detailPriority"
+    );
+
+  priorityElement.textContent =
+    order.priority;
+
+  priorityElement.className =
+    "tag " +
+    getOrderPriorityClass(
+      order.priority
+    );
+
+  document.getElementById(
+    "detailArticleCount"
+  ).textContent =
+    orderItems.length;
+
+  document.getElementById(
+    "detailEstimatedTime"
+  ).textContent =
+    order.estimatedMinutes + " min";
+
+  document.getElementById(
+    "detailStartLocation"
+  ).textContent =
+    order.startLocation;
+
+  document.getElementById(
+    "detailProgressText"
+  ).textContent =
+    "0 van " +
+    orderItems.length +
+    " artikelen";
+
+  document.getElementById(
+    "detailProgressBar"
+  ).style.width =
+    "0%";
+
+  const startButton =
+    document.getElementById(
+      "startPickingButton"
+    );
+
+  startButton.onclick =
+    function() {
+      startPicking(order.id);
+    };
+
+  const orderItemList =
+    document.getElementById(
+      "orderItemList"
+    );
+
+  orderItemList.innerHTML = "";
+
+  orderItems.forEach(function(
+    item,
+    index
+  ) {
+    const articleCard =
+      document.createElement(
+        "article"
+      );
+
+    articleCard.className =
+      "order-detail-item";
+
+    articleCard.innerHTML = `
+      <div class="order-detail-item-number">
+        ${index + 1}
+      </div>
+
+      <div class="order-detail-item-main">
+
+        <div class="order-detail-item-top">
+
+          <div class="order-detail-item-visual">
+            ${escapeHTML(item.emoji)}
+          </div>
+
+          <div class="order-detail-item-copy">
+
+            <span class="order-detail-location">
+              📍 ${escapeHTML(item.location)}
+            </span>
+
+            <h3>
+              ${escapeHTML(item.name)}
+            </h3>
+
+            <span class="order-detail-article">
+              ART. ${escapeHTML(item.articleNumber)}
+            </span>
+
+          </div>
+
+          <div class="order-detail-quantity">
+
+            <strong>
+              ${item.quantity}
+            </strong>
+
+            <span>
+              aantal
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="order-detail-item-note">
+
+          <span>
+            ℹ️
+          </span>
+
+          <p>
+            ${escapeHTML(item.pickInstruction)}
+          </p>
+
+        </div>
+
+      </div>
+    `;
+
+    orderItemList.appendChild(
+      articleCard
+    );
+  });
+}
+
+function startPicking(orderId) {
+  const selectedOrder =
+    appState.orders.find(function(order) {
+      return order.id === orderId;
+    });
+
+  if (!selectedOrder) {
     return;
   }
 
   showToast(
-    "Het orderoverzicht van " +
+    "Het pickproces van " +
     selectedOrder.orderNumber +
-    " wordt in fase 2 toegevoegd."
+    " wordt in de volgende stap geopend."
   );
 }
     function getLevelInformation() {
