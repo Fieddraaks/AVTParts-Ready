@@ -2623,7 +2623,84 @@
       font-size: 11px;
       font-weight: 900;
     }
+    
+    .manager-order-overview {
+      padding: 16px;
+    }
 
+    .manager-order-kpi-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(4, 1fr);
+      gap: 7px;
+    }
+
+    .manager-order-kpi {
+      padding: 12px 5px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface-soft);
+      text-align: center;
+    }
+
+    .manager-order-kpi strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .manager-order-kpi span {
+      display: block;
+      margin-top: 5px;
+      color: var(--text-soft);
+      font-size: 8px;
+      font-weight: 800;
+    }
+
+    .manager-order-status-list {
+      display: grid;
+      gap: 9px;
+      margin-top: 15px;
+    }
+
+    .manager-order-status-item {
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--surface-soft);
+    }
+
+    .manager-order-status-main {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .manager-order-status-main strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 13px;
+    }
+
+    .manager-order-status-main p {
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 9px;
+    }
+
+    .manager-order-status-details {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+      padding-top: 9px;
+      border-top: 1px solid var(--border);
+      color: var(--text-soft);
+      font-size: 9px;
+      font-weight: 700;
+    }
+    
     .bottom-nav {
       position: fixed;
       left: 50%;
@@ -5559,7 +5636,81 @@
           </div>
 
         </article>
+        
+        <div class="section-heading">
 
+          <h2>
+            Live orderstatus
+          </h2>
+
+          <button
+            onclick="renderManagerOrderStatus(); showToast('Orderstatus bijgewerkt.')"
+          >
+            Vernieuwen
+          </button>
+
+        </div>
+
+        <article class="card manager-order-overview">
+
+          <div class="manager-order-kpi-grid">
+
+            <div class="manager-order-kpi">
+
+              <strong id="managerNewOrders">
+                0
+              </strong>
+
+              <span>
+                Nieuw
+              </span>
+
+            </div>
+
+            <div class="manager-order-kpi">
+
+              <strong id="managerAcceptedOrders">
+                0
+              </strong>
+
+              <span>
+                Geaccepteerd
+              </span>
+
+            </div>
+
+            <div class="manager-order-kpi">
+
+              <strong id="managerActiveOrders">
+                0
+              </strong>
+
+              <span>
+                Actief
+              </span>
+
+            </div>
+
+            <div class="manager-order-kpi">
+
+              <strong id="managerCompletedOrders">
+                0
+              </strong>
+
+              <span>
+                Afgerond
+              </span>
+
+            </div>
+
+          </div>
+
+          <div
+            id="managerOrderStatusList"
+            class="manager-order-status-list"
+          ></div>
+
+        </article>
         <article class="card">
 
           <div class="card-title-row">
@@ -6405,7 +6556,8 @@ if (!appState.orderFilter) {
     .classList.remove("hidden");
 
   openScreen("managerScreen");
-
+  renderManagerOrderStatus();
+      
   setManagerNavigationActive(
     "managerNavDashboard"
   );
@@ -6503,8 +6655,9 @@ function openManagerDashboard(
   setManagerNavigationActive(
     navigationId
   );
-}
 
+  renderManagerOrderStatus();
+}
 function showManagerNavigationMessage(
   navigationId,
   sectionName
@@ -6517,6 +6670,146 @@ function showManagerNavigationMessage(
     sectionName +
     " wordt in een latere fase toegevoegd."
   );
+}
+    function renderManagerOrderStatus() {
+  const orderStatusList =
+    document.getElementById(
+      "managerOrderStatusList"
+    );
+
+  if (!orderStatusList) {
+    return;
+  }
+
+  const newOrders =
+    appState.orders.filter(function(order) {
+      return order.status === "new";
+    });
+
+  const acceptedOrders =
+    appState.orders.filter(function(order) {
+      return order.status === "accepted";
+    });
+
+  const activeOrder =
+    appState.orders.find(function(order) {
+      return (
+        order.id ===
+        appState.currentPickingOrderId
+      );
+    });
+
+  const completedOrders =
+    appState.orders.filter(function(order) {
+      return (
+        order.received ===
+        "Volledig gepickt"
+      );
+    });
+
+  document.getElementById(
+    "managerNewOrders"
+  ).textContent =
+    newOrders.length;
+
+  document.getElementById(
+    "managerAcceptedOrders"
+  ).textContent =
+    acceptedOrders.length;
+
+  document.getElementById(
+    "managerActiveOrders"
+  ).textContent =
+    activeOrder ? 1 : 0;
+
+  document.getElementById(
+    "managerCompletedOrders"
+  ).textContent =
+    completedOrders.length;
+
+  orderStatusList.innerHTML = "";
+
+  appState.orders.forEach(function(order) {
+    let statusLabel = "Nieuw";
+    let statusClass = "tag-blue";
+    let statusDescription =
+      "Wacht op acceptatie";
+
+    if (order.status === "accepted") {
+      statusLabel = "Geaccepteerd";
+      statusClass = "tag-orange";
+      statusDescription =
+        "Klaar om gestart te worden";
+    }
+
+    if (
+      order.id ===
+      appState.currentPickingOrderId
+    ) {
+      statusLabel = "Wordt gepickt";
+      statusClass = "tag-purple";
+      statusDescription =
+        "Orderpicker is bezig";
+    }
+
+    if (
+      order.received ===
+      "Volledig gepickt"
+    ) {
+      statusLabel = "Afgerond";
+      statusClass = "tag-green";
+      statusDescription =
+        "Alle artikelen zijn gepickt";
+    }
+
+    const statusItem =
+      document.createElement("article");
+
+    statusItem.className =
+      "manager-order-status-item";
+
+    statusItem.innerHTML = `
+      <div class="manager-order-status-main">
+
+        <div>
+
+          <span class="order-label">
+            PICKLIJST
+          </span>
+
+          <strong>
+            ${escapeHTML(order.orderNumber)}
+          </strong>
+
+          <p>
+            ${escapeHTML(statusDescription)}
+          </p>
+
+        </div>
+
+        <span class="tag ${statusClass}">
+          ${statusLabel}
+        </span>
+
+      </div>
+
+      <div class="manager-order-status-details">
+
+        <span>
+          📦 ${order.articleCount} artikelen
+        </span>
+
+        <span>
+          ⏱️ ${order.estimatedMinutes} min
+        </span>
+
+      </div>
+    `;
+
+    orderStatusList.appendChild(
+      statusItem
+    );
+  });
 }
     function updateNavigation(screenId) {
   if (appState.currentRole === "manager") {
