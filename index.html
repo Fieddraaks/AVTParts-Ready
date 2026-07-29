@@ -1581,7 +1581,264 @@
       font-size: 9px;
       line-height: 1.35;
     }
+.orders-summary-card {
+  position: relative;
+  overflow: hidden;
+  padding: 19px;
+  border: 1px solid #c9e7f4;
+  border-radius: var(--radius-large);
+  background:
+    radial-gradient(
+      circle at 92% 8%,
+      rgba(255, 255, 255, 0.95),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #dff5ff,
+      #f7fdff
+    );
+  box-shadow: var(--shadow-medium);
+}
 
+.orders-summary-card::after {
+  content: "";
+  position: absolute;
+  right: -55px;
+  bottom: -75px;
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  background:
+    rgba(17, 141, 194, 0.08);
+}
+
+.orders-summary-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.orders-summary-copy h2 {
+  margin-top: 10px;
+  font-size: 22px;
+  letter-spacing: -0.35px;
+}
+
+.orders-summary-copy p {
+  margin-top: 6px;
+  max-width: 300px;
+  color: var(--text-soft);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.orders-summary-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns:
+    repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 17px;
+}
+
+.orders-summary-item {
+  padding: 12px 8px;
+  border: 1px solid rgba(190, 220, 233, 0.9);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.84);
+  text-align: center;
+}
+
+.orders-summary-item strong {
+  display: block;
+  color: var(--primary-dark);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.orders-summary-item span {
+  display: block;
+  margin-top: 5px;
+  color: var(--text-soft);
+  font-size: 8px;
+  line-height: 1.3;
+}
+
+.order-filter-row {
+  display: flex;
+  gap: 8px;
+  margin: 18px 0 14px;
+  padding: 4px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: white;
+  box-shadow: var(--shadow-small);
+}
+
+.order-filter-button {
+  min-height: 38px;
+  flex: 1 0 auto;
+  padding: 9px 13px;
+  border: none;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 10px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.order-filter-button.active {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.order-list {
+  display: grid;
+  gap: 13px;
+}
+
+.order-card {
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background: white;
+  box-shadow: var(--shadow-small);
+}
+
+.order-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.order-label {
+  display: block;
+  color: var(--text-light);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 1.1px;
+}
+
+.order-card-top h2 {
+  margin-top: 4px;
+  font-size: 19px;
+  letter-spacing: -0.25px;
+}
+
+.order-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 13px;
+}
+
+.order-received-time {
+  color: var(--text-soft);
+  font-size: 9px;
+  text-align: right;
+}
+
+.order-information-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.order-information-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-soft);
+}
+
+.order-information-icon {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--primary-light);
+  font-size: 16px;
+}
+
+.order-information-item strong {
+  display: block;
+  font-size: 12px;
+}
+
+.order-information-item span {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-soft);
+  font-size: 8px;
+}
+
+.order-location-preview {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 12px 0 14px;
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--surface-blue);
+}
+
+.order-location-preview > span {
+  flex: 0 0 auto;
+  font-size: 17px;
+}
+
+.order-location-preview strong {
+  display: block;
+  font-size: 10px;
+}
+
+.order-location-preview p {
+  margin-top: 3px;
+  color: var(--text-soft);
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.order-card .primary-button,
+.order-card .secondary-button {
+  min-height: 46px;
+}
+
+.orders-empty-state {
+  padding: 28px 18px;
+  border: 1px dashed var(--border-dark);
+  border-radius: var(--radius-large);
+  background: white;
+  text-align: center;
+}
+
+.orders-empty-icon {
+  font-size: 45px;
+}
+
+.orders-empty-state h2 {
+  margin-top: 10px;
+  font-size: 17px;
+}
+
+.orders-empty-state p {
+  margin: 6px auto 16px;
+  max-width: 280px;
+  color: var(--text-soft);
+  font-size: 10px;
+  line-height: 1.5;
+}
     .manager-kpi-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -3639,7 +3896,169 @@
       </div>
 
     </section>
+<!-- ORDERS ORDERPICKER -->
 
+<section
+  id="ordersScreen"
+  class="screen"
+>
+
+  <header class="page-header">
+
+    <button
+      class="back-button"
+      onclick="goHome()"
+    >
+      ←
+    </button>
+
+    <div class="page-header-copy">
+
+      <h1>
+        Mijn orders
+      </h1>
+
+      <p>
+        Bekijk en accepteer beschikbare picklijsten
+      </p>
+
+    </div>
+
+    <button
+      class="icon-button"
+      onclick="renderOrders(); showToast('Orderoverzicht bijgewerkt.')"
+    >
+      ↻
+    </button>
+
+  </header>
+
+  <div class="page-content">
+
+    <article class="orders-summary-card">
+
+      <div class="orders-summary-copy">
+
+        <span class="tag tag-blue">
+          Vandaag
+        </span>
+
+        <h2>
+          Picklijsten
+        </h2>
+
+        <p>
+          Accepteer een nieuwe picklijst voordat je
+          begint met verzamelen.
+        </p>
+
+      </div>
+
+      <div class="orders-summary-grid">
+
+        <div class="orders-summary-item">
+
+          <strong id="newOrdersCount">
+            0
+          </strong>
+
+          <span>
+            Nieuwe orders
+          </span>
+
+        </div>
+
+        <div class="orders-summary-item">
+
+          <strong id="acceptedOrdersCount">
+            0
+          </strong>
+
+          <span>
+            Geaccepteerd
+          </span>
+
+        </div>
+
+        <div class="orders-summary-item">
+
+          <strong id="totalOrdersCount">
+            0
+          </strong>
+
+          <span>
+            Totaal zichtbaar
+          </span>
+
+        </div>
+
+      </div>
+
+    </article>
+
+    <div class="order-filter-row">
+
+      <button
+        id="orderFilterAll"
+        class="order-filter-button active"
+        onclick="setOrderFilter('all')"
+      >
+        Alles
+      </button>
+
+      <button
+        id="orderFilterNew"
+        class="order-filter-button"
+        onclick="setOrderFilter('new')"
+      >
+        Nieuw
+      </button>
+
+      <button
+        id="orderFilterAccepted"
+        class="order-filter-button"
+        onclick="setOrderFilter('accepted')"
+      >
+        Geaccepteerd
+      </button>
+
+    </div>
+
+    <div
+      id="orderList"
+      class="order-list"
+    ></div>
+
+    <div
+      id="ordersEmptyState"
+      class="orders-empty-state hidden"
+    >
+
+      <div class="orders-empty-icon">
+        📭
+      </div>
+
+      <h2>
+        Geen orders gevonden
+      </h2>
+
+      <p>
+        Binnen deze selectie zijn momenteel geen
+        picklijsten beschikbaar.
+      </p>
+
+      <button
+        class="secondary-button"
+        onclick="setOrderFilter('all')"
+      >
+        Toon alle orders
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
     <!-- MANAGERDASHBOARD -->
 
     <section
@@ -3977,10 +4396,10 @@
   </button>
 
   <button
-    id="navOrders"
-    class="nav-item"
-    onclick="showToast('Het orderoverzicht wordt in de volgende stap toegevoegd.')"
-  >
+  id="navOrders"
+  class="nav-item"
+  onclick="openOrdersScreen()"
+>
 
     <div class="nav-icon-wrap">
       📦
@@ -4206,7 +4625,60 @@
         owner: "Danny de Vos"
       }
     ];
+const defaultOrders = [
+  {
+    id: "order-240731",
+    orderNumber: "AVT-240731",
+    priority: "Spoed",
+    articleCount: 4,
+    estimatedMinutes: 12,
+    startLocation:
+      "Pickmagazijn · Stelling A · Vak 04",
+    received: "2 min geleden",
+    status: "new",
+    acceptedAt: null
+  },
 
+  {
+    id: "order-240728",
+    orderNumber: "AVT-240728",
+    priority: "Hoog",
+    articleCount: 7,
+    estimatedMinutes: 18,
+    startLocation:
+      "Pickmagazijn · Stelling B · Vak 11",
+    received: "8 min geleden",
+    status: "new",
+    acceptedAt: null
+  },
+
+  {
+    id: "order-240724",
+    orderNumber: "AVT-240724",
+    priority: "Normaal",
+    articleCount: 5,
+    estimatedMinutes: 15,
+    startLocation:
+      "Stellingen · Begane grond · Vak C02",
+    received: "14 min geleden",
+    status: "new",
+    acceptedAt: null
+  },
+
+  {
+    id: "order-240719",
+    orderNumber: "AVT-240719",
+    priority: "Normaal",
+    articleCount: 3,
+    estimatedMinutes: 9,
+    startLocation:
+      "Pickmagazijn · Stelling D · Vak 06",
+    received: "Geaccepteerd om 09:42",
+    status: "accepted",
+    acceptedAt: null
+  }
+];
+    
     let appState = {
   xp: 420,
   learnedProducts: [],
@@ -4216,7 +4688,9 @@
   ideas: [],
   currentProduct: null,
   loggedIn: false,
-  currentRole: null
+  currentRole: null,
+  orders: [],
+  orderFilter: "all"
 };
 
     function loadState() {
@@ -4249,6 +4723,21 @@
       if (!Array.isArray(appState.learnedProducts)) {
         appState.learnedProducts = [];
       }
+      if (
+  !Array.isArray(appState.orders) ||
+  appState.orders.length === 0
+) {
+  appState.orders =
+    defaultOrders.map(function(order) {
+      return {
+        ...order
+      };
+    });
+}
+
+if (!appState.orderFilter) {
+  appState.orderFilter = "all";
+}
     }
 
     function saveState() {
@@ -4432,6 +4921,7 @@ function showManagerNavigationMessage(
   const navigationMap = {
     homeScreen: "navHome",
     searchScreen: "navSearch",
+    ordersScreen: "navOrders",
     zoneScreen: "navHome",
     learningScreen: "navHome",
     ideaScreen: "navHome",
@@ -4456,7 +4946,304 @@ function showManagerNavigationMessage(
     );
   }
 }
+function openOrdersScreen() {
+  openScreen("ordersScreen");
+  renderOrders();
+}
 
+function setOrderFilter(filterName) {
+  appState.orderFilter = filterName;
+
+  document
+    .querySelectorAll(".order-filter-button")
+    .forEach(function(button) {
+      button.classList.remove("active");
+    });
+
+  const selectedFilter =
+    document.getElementById(
+      "orderFilter" +
+      filterName.charAt(0).toUpperCase() +
+      filterName.slice(1)
+    );
+
+  if (selectedFilter) {
+    selectedFilter.classList.add("active");
+  }
+
+  renderOrders();
+}
+
+function renderOrders() {
+  const orderList =
+    document.getElementById("orderList");
+
+  const emptyState =
+    document.getElementById("ordersEmptyState");
+
+  if (!orderList || !emptyState) {
+    return;
+  }
+
+  orderList.innerHTML = "";
+
+  const filter =
+    appState.orderFilter || "all";
+
+  const visibleOrders =
+    appState.orders.filter(function(order) {
+      if (filter === "all") {
+        return true;
+      }
+
+      return order.status === filter;
+    });
+
+  const newOrdersCount =
+    appState.orders.filter(function(order) {
+      return order.status === "new";
+    }).length;
+
+  const acceptedOrdersCount =
+    appState.orders.filter(function(order) {
+      return order.status === "accepted";
+    }).length;
+
+  const newCountElement =
+    document.getElementById(
+      "newOrdersCount"
+    );
+
+  const acceptedCountElement =
+    document.getElementById(
+      "acceptedOrdersCount"
+    );
+
+  const totalCountElement =
+    document.getElementById(
+      "totalOrdersCount"
+    );
+
+  if (newCountElement) {
+    newCountElement.textContent =
+      newOrdersCount;
+  }
+
+  if (acceptedCountElement) {
+    acceptedCountElement.textContent =
+      acceptedOrdersCount;
+  }
+
+  if (totalCountElement) {
+    totalCountElement.textContent =
+      appState.orders.length;
+  }
+
+  emptyState.classList.toggle(
+    "hidden",
+    visibleOrders.length !== 0
+  );
+
+  visibleOrders.forEach(function(order) {
+    const orderCard =
+      document.createElement("article");
+
+    orderCard.className =
+      "order-card";
+
+    const priorityClass =
+      getOrderPriorityClass(
+        order.priority
+      );
+
+    const statusInformation =
+      getOrderStatusInformation(
+        order.status
+      );
+
+    orderCard.innerHTML = `
+      <div class="order-card-top">
+        <div>
+          <span class="order-label">
+            PICKLIJST
+          </span>
+
+          <h2>
+            ${escapeHTML(order.orderNumber)}
+          </h2>
+        </div>
+
+        <span class="tag ${priorityClass}">
+          ${escapeHTML(order.priority)}
+        </span>
+      </div>
+
+      <div class="order-status-row">
+        <span class="tag ${statusInformation.className}">
+          <span class="status-dot"></span>
+          ${statusInformation.label}
+        </span>
+
+        <span class="order-received-time">
+          ${escapeHTML(order.received)}
+        </span>
+      </div>
+
+      <div class="order-information-grid">
+        <div class="order-information-item">
+          <span class="order-information-icon">
+            📦
+          </span>
+
+          <div>
+            <strong>
+              ${order.articleCount}
+            </strong>
+
+            <span>
+              artikelen
+            </span>
+          </div>
+        </div>
+
+        <div class="order-information-item">
+          <span class="order-information-icon">
+            ⏱️
+          </span>
+
+          <div>
+            <strong>
+              ${order.estimatedMinutes} min
+            </strong>
+
+            <span>
+              geschatte tijd
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="order-location-preview">
+        <span>
+          📍
+        </span>
+
+        <div>
+          <strong>
+            Startlocatie
+          </strong>
+
+          <p>
+            ${escapeHTML(order.startLocation)}
+          </p>
+        </div>
+      </div>
+
+      ${
+        order.status === "new"
+          ? `
+            <button
+              class="primary-button"
+              onclick="acceptOrder('${order.id}')"
+            >
+              Picklijst accepteren
+              <span>→</span>
+            </button>
+          `
+          : `
+            <button
+              class="secondary-button"
+              onclick="openAcceptedOrder('${order.id}')"
+            >
+              Orderoverzicht bekijken
+              <span>→</span>
+            </button>
+          `
+      }
+    `;
+
+    orderList.appendChild(orderCard);
+  });
+}
+
+function getOrderPriorityClass(priority) {
+  if (priority === "Spoed") {
+    return "tag-red";
+  }
+
+  if (priority === "Hoog") {
+    return "tag-orange";
+  }
+
+  return "tag-blue";
+}
+
+function getOrderStatusInformation(status) {
+  if (status === "accepted") {
+    return {
+      label: "Geaccepteerd",
+      className: "tag-green"
+    };
+  }
+
+  return {
+    label: "Nieuw",
+    className: "tag-blue"
+  };
+}
+
+function acceptOrder(orderId) {
+  const selectedOrder =
+    appState.orders.find(function(order) {
+      return order.id === orderId;
+    });
+
+  if (!selectedOrder) {
+    showToast(
+      "Deze picklijst kon niet worden gevonden."
+    );
+
+    return;
+  }
+
+  if (selectedOrder.status !== "new") {
+    showToast(
+      "Deze picklijst is al geaccepteerd."
+    );
+
+    return;
+  }
+
+  selectedOrder.status = "accepted";
+  selectedOrder.acceptedAt =
+    new Date().toISOString();
+
+  saveState();
+  renderOrders();
+
+  showToast(
+    "Picklijst " +
+    selectedOrder.orderNumber +
+    " is geaccepteerd."
+  );
+}
+
+function openAcceptedOrder(orderId) {
+  const selectedOrder =
+    appState.orders.find(function(order) {
+      return order.id === orderId;
+    });
+
+  if (!selectedOrder) {
+    return;
+  }
+
+  showToast(
+    "Het orderoverzicht van " +
+    selectedOrder.orderNumber +
+    " wordt in fase 2 toegevoegd."
+  );
+}
     function getLevelInformation() {
       const xp = appState.xp;
 
@@ -5582,7 +6369,13 @@ async function stopScannerAndClose() {
   ideas: [...defaultIdeas],
   currentProduct: null,
   loggedIn: true,
-  currentRole: "orderpicker"
+  currentRole: "orderpicker",
+  orders: defaultOrders.map(function(order) {
+    return {
+      ...order
+    };
+  }),
+  orderFilter: "all"
 };
 
       closeModal();
