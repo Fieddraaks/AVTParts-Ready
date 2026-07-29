@@ -2178,6 +2178,371 @@
   margin-top: 13px;
   font-size: 14px;
 }
+    .picking-progress-card {
+  padding: 15px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background: white;
+  box-shadow: var(--shadow-small);
+}
+
+.picking-progress-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 11px;
+}
+
+.picking-progress-top div span {
+  display: block;
+  color: var(--text-soft);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.picking-progress-top div strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.picking-location-card {
+  margin-top: 14px;
+  padding: 18px;
+  border: 1px solid #b9dff0;
+  border-radius: var(--radius-large);
+  background:
+    linear-gradient(
+      135deg,
+      #dff5ff,
+      #f7fdff
+    );
+  box-shadow: var(--shadow-medium);
+}
+
+.picking-location-card > span {
+  color: var(--primary-dark);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.picking-location-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 10px;
+}
+
+.picking-location-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: white;
+  font-size: 24px;
+  box-shadow: var(--shadow-small);
+}
+
+.picking-location-row h2 {
+  font-size: 20px;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+}
+
+.picking-product-card {
+  margin-top: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background: white;
+  box-shadow: var(--shadow-medium);
+}
+
+.picking-product-visual {
+  min-height: 175px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      white,
+      #e0f5ff
+    );
+  font-size: 82px;
+}
+
+.picking-product-content {
+  padding: 17px;
+}
+
+.picking-product-content h2 {
+  margin-top: 10px;
+  font-size: 23px;
+}
+
+.picking-product-article {
+  display: block;
+  margin-top: 5px;
+  color: var(--text-soft);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.picking-quantity-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 13px 15px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: var(--surface-soft);
+}
+
+.picking-quantity-card span {
+  color: var(--text-soft);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.picking-quantity-card strong {
+  min-width: 48px;
+  padding: 8px;
+  border-radius: 12px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  text-align: center;
+  font-size: 23px;
+}
+
+.picking-instruction {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 14px;
+  background: var(--warning-bg);
+}
+
+.picking-instruction span {
+  flex: 0 0 auto;
+  font-size: 16px;
+}
+
+.picking-instruction p {
+  color: #7b5b25;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.picking-scan-card {
+  margin-top: 14px;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  background: white;
+  box-shadow: var(--shadow-small);
+}
+
+.picking-scan-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.picking-scan-header h3 {
+  font-size: 15px;
+}
+
+.picking-scan-header p {
+  margin-top: 4px;
+  color: var(--text-soft);
+  font-size: 10px;
+}
+
+.picking-barcode-icon {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 24px;
+}
+
+.picking-expected-code {
+  margin: 14px 0;
+  padding: 12px;
+  border: 1px dashed var(--border-dark);
+  border-radius: 14px;
+  background: var(--surface-soft);
+  text-align: center;
+}
+
+.picking-expected-code span {
+  display: block;
+  color: var(--text-soft);
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.picking-expected-code strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+}
+
+.picking-scan-result {
+  display: none;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 13px;
+  border-radius: 14px;
+}
+
+.picking-scan-result.correct,
+.picking-scan-result.wrong {
+  display: flex;
+}
+
+.picking-scan-result.correct {
+  border: 1px solid #9ed2b8;
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.picking-scan-result.wrong {
+  border: 1px solid #e7aaaa;
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+.picking-result-icon {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.picking-scan-result strong {
+  display: block;
+  font-size: 11px;
+}
+
+.picking-scan-result p {
+  margin-top: 3px;
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.picking-demo-area {
+  margin-top: 14px;
+  padding-top: 13px;
+  border-top: 1px solid var(--border);
+}
+
+.picking-demo-area > span {
+  display: block;
+  color: var(--text-soft);
+  text-align: center;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.picking-demo-area .button-row {
+  margin-top: 9px;
+}
+
+.picking-demo-area .secondary-button {
+  min-height: 42px;
+  font-size: 10px;
+}
+
+.picking-complete-card {
+  margin-top: 14px;
+  padding: 24px 18px;
+  border: 1px solid #bfe4d1;
+  border-radius: var(--radius-large);
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      white,
+      var(--success-bg)
+    );
+  box-shadow: var(--shadow-medium);
+  text-align: center;
+}
+
+.picking-complete-icon {
+  width: 74px;
+  height: 74px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: var(--success);
+  color: white;
+  font-size: 35px;
+  font-weight: 900;
+}
+
+.picking-complete-card h2 {
+  margin-top: 12px;
+  font-size: 23px;
+}
+
+.picking-complete-card > p {
+  margin: 7px auto 0;
+  max-width: 280px;
+  color: #527463;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.picking-complete-stats {
+  display: grid;
+  grid-template-columns:
+    repeat(3, 1fr);
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.picking-complete-stats div {
+  padding: 12px 6px;
+  border: 1px solid
+    rgba(35, 134, 92, 0.18);
+  border-radius: 14px;
+  background:
+    rgba(255, 255, 255, 0.72);
+}
+
+.picking-complete-stats strong {
+  display: block;
+  color: var(--success);
+  font-size: 17px;
+}
+
+.picking-complete-stats span {
+  display: block;
+  margin-top: 4px;
+  color: #668374;
+  font-size: 7px;
+}
     
     .manager-kpi-grid {
       display: grid;
@@ -4627,6 +4992,314 @@
   </div>
 
 </section>
+    <!-- ACTIEF PICKPROCES -->
+
+<section
+  id="pickingScreen"
+  class="screen"
+>
+
+  <header class="page-header">
+
+    <button
+      class="back-button"
+      onclick="leavePickingScreen()"
+    >
+      ←
+    </button>
+
+    <div class="page-header-copy">
+
+      <h1>
+        Order picken
+      </h1>
+
+      <p id="pickingOrderNumber">
+        AVT-000000
+      </p>
+
+    </div>
+
+    <button
+      class="icon-button"
+      onclick="showToast('Scan steeds het artikel dat op het scherm staat.')"
+    >
+      ?
+    </button>
+
+  </header>
+
+  <div class="page-content">
+
+    <article class="picking-progress-card">
+
+      <div class="picking-progress-top">
+
+        <div>
+
+          <span id="pickingArticlePosition">
+            Artikel 1 van 4
+          </span>
+
+          <strong id="pickingProgressText">
+            0 van 4 gepickt
+          </strong>
+
+        </div>
+
+        <span
+          id="pickingProgressPercentage"
+          class="tag tag-blue"
+        >
+          0%
+        </span>
+
+      </div>
+
+      <div class="progress-track">
+
+        <div
+          id="pickingProgressBar"
+          class="progress-fill"
+          style="width:0%;"
+        ></div>
+
+      </div>
+
+    </article>
+
+    <div id="pickingMainContent">
+
+      <article class="picking-location-card">
+
+        <span>
+          GA NAAR LOCATIE
+        </span>
+
+        <div class="picking-location-row">
+
+          <div class="picking-location-icon">
+            📍
+          </div>
+
+          <h2 id="pickingLocation">
+            Pickmagazijn · Stelling A · Vak 04
+          </h2>
+
+        </div>
+
+      </article>
+
+      <article class="picking-product-card">
+
+        <div
+          id="pickingProductEmoji"
+          class="picking-product-visual"
+        >
+          ⚙️
+        </div>
+
+        <div class="picking-product-content">
+
+          <span class="tag tag-blue">
+            Te picken artikel
+          </span>
+
+          <h2 id="pickingProductName">
+            Remtrommel
+          </h2>
+
+          <span
+            id="pickingArticleNumber"
+            class="picking-product-article"
+          >
+            ART. 500231
+          </span>
+
+          <div class="picking-quantity-card">
+
+            <span>
+              Aantal pakken
+            </span>
+
+            <strong id="pickingQuantity">
+              2
+            </strong>
+
+          </div>
+
+          <div class="picking-instruction">
+
+            <span>
+              ℹ️
+            </span>
+
+            <p id="pickingInstruction">
+              Controleer het artikelnummer.
+            </p>
+
+          </div>
+
+        </div>
+
+      </article>
+
+      <article class="picking-scan-card">
+
+        <div class="picking-scan-header">
+
+          <div>
+
+            <h3>
+              Controleer met barcode
+            </h3>
+
+            <p>
+              Scan het label van het gepakte artikel.
+            </p>
+
+          </div>
+
+          <div class="picking-barcode-icon">
+            ▥
+          </div>
+
+        </div>
+
+        <div class="picking-expected-code">
+
+          <span>
+            Verwachte barcode
+          </span>
+
+          <strong id="pickingExpectedCode">
+            500231
+          </strong>
+
+        </div>
+
+        <button
+          id="pickScanButton"
+          class="primary-button"
+          onclick="openPickingScanner()"
+        >
+          📷 Barcode scannen
+        </button>
+
+        <div
+          id="pickingScanResult"
+          class="picking-scan-result"
+        ></div>
+
+        <div class="picking-demo-area">
+
+          <span>
+            Testknoppen voor het prototype
+          </span>
+
+          <div class="button-row">
+
+            <button
+              class="secondary-button"
+              onclick="simulateWrongPickScan()"
+            >
+              Test fout
+            </button>
+
+            <button
+              class="secondary-button"
+              onclick="simulateCorrectPickScan()"
+            >
+              Test correct
+            </button>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+    <div
+      id="pickingCompleteContent"
+      class="hidden"
+    >
+
+      <article class="picking-complete-card">
+
+        <div class="picking-complete-icon">
+          ✓
+        </div>
+
+        <span class="tag tag-green">
+          Order volledig gepickt
+        </span>
+
+        <h2 id="completedOrderNumber">
+          AVT-000000
+        </h2>
+
+        <p>
+          Alle artikelen zijn gecontroleerd en
+          aan de picklijst toegevoegd.
+        </p>
+
+        <div class="picking-complete-stats">
+
+          <div>
+
+            <strong id="completedArticleCount">
+              0
+            </strong>
+
+            <span>
+              Artikelen
+            </span>
+
+          </div>
+
+          <div>
+
+            <strong id="completedPickTime">
+              0 min
+            </strong>
+
+            <span>
+              Picktijd
+            </span>
+
+          </div>
+
+          <div>
+
+            <strong id="completedWrongScans">
+              0
+            </strong>
+
+            <span>
+              Foute scans
+            </span>
+
+          </div>
+
+        </div>
+
+        <button
+          class="primary-button"
+          onclick="finishPickedOrder()"
+        >
+          Order afronden
+          <span>→</span>
+        </button>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
     
     <!-- MANAGERDASHBOARD -->
 
@@ -5476,9 +6149,13 @@ const defaultOrders = [
   loggedIn: false,
   currentRole: null,
   orders: [],
-  orderFilter: "all"
+  orderFilter: "all",
+  currentPickingOrderId: null,
+  currentPickIndex: 0,
+  wrongPickScans: 0,
+  pickStartedAt: null
 };
-
+    
     function loadState() {
       const savedState =
         localStorage.getItem("avtPartsReadyState");
@@ -5709,6 +6386,7 @@ function showManagerNavigationMessage(
   searchScreen: "navSearch",
   ordersScreen: "navOrders",
   orderDetailScreen: "navOrders",
+  pickingScreen: "navOrders",
   zoneScreen: "navHome",
   learningScreen: "navHome",
   ideaScreen: "navHome",
@@ -6196,13 +6874,471 @@ function startPicking(orderId) {
     });
 
   if (!selectedOrder) {
+    showToast(
+      "Deze order kon niet worden gevonden."
+    );
+
     return;
   }
 
+  const orderItems =
+    orderItemsByOrderId[orderId] || [];
+
+  if (orderItems.length === 0) {
+    showToast(
+      "Deze order bevat geen artikelen."
+    );
+
+    return;
+  }
+
+  appState.currentPickingOrderId =
+    orderId;
+
+  appState.currentPickIndex = 0;
+  appState.wrongPickScans = 0;
+
+  appState.pickStartedAt =
+    new Date().toISOString();
+
+  saveState();
+
+  renderCurrentPickItem();
+
+  openScreen("pickingScreen");
+}
+
+function renderCurrentPickItem() {
+  const orderId =
+    appState.currentPickingOrderId;
+
+  const selectedOrder =
+    appState.orders.find(function(order) {
+      return order.id === orderId;
+    });
+
+  const orderItems =
+    orderItemsByOrderId[orderId] || [];
+
+  const currentIndex =
+    appState.currentPickIndex || 0;
+
+  if (
+    !selectedOrder ||
+    orderItems.length === 0
+  ) {
+    openOrdersScreen();
+    return;
+  }
+
+  if (currentIndex >= orderItems.length) {
+    renderPickingComplete(
+      selectedOrder,
+      orderItems
+    );
+
+    return;
+  }
+
+  const currentItem =
+    orderItems[currentIndex];
+
+  const percentage =
+    Math.round(
+      (
+        currentIndex /
+        orderItems.length
+      ) * 100
+    );
+
+  document.getElementById(
+    "pickingOrderNumber"
+  ).textContent =
+    selectedOrder.orderNumber;
+
+  document.getElementById(
+    "pickingArticlePosition"
+  ).textContent =
+    "Artikel " +
+    (currentIndex + 1) +
+    " van " +
+    orderItems.length;
+
+  document.getElementById(
+    "pickingProgressText"
+  ).textContent =
+    currentIndex +
+    " van " +
+    orderItems.length +
+    " gepickt";
+
+  document.getElementById(
+    "pickingProgressPercentage"
+  ).textContent =
+    percentage + "%";
+
+  document.getElementById(
+    "pickingProgressBar"
+  ).style.width =
+    percentage + "%";
+
+  document.getElementById(
+    "pickingLocation"
+  ).textContent =
+    currentItem.location;
+
+  document.getElementById(
+    "pickingProductEmoji"
+  ).textContent =
+    currentItem.emoji;
+
+  document.getElementById(
+    "pickingProductName"
+  ).textContent =
+    currentItem.name;
+
+  document.getElementById(
+    "pickingArticleNumber"
+  ).textContent =
+    "ART. " +
+    currentItem.articleNumber;
+
+  document.getElementById(
+    "pickingQuantity"
+  ).textContent =
+    currentItem.quantity;
+
+  document.getElementById(
+    "pickingInstruction"
+  ).textContent =
+    currentItem.pickInstruction;
+
+  document.getElementById(
+    "pickingExpectedCode"
+  ).textContent =
+    currentItem.articleNumber;
+
+  const resultBox =
+    document.getElementById(
+      "pickingScanResult"
+    );
+
+  resultBox.className =
+    "picking-scan-result";
+
+  resultBox.innerHTML = "";
+
+  document.getElementById(
+    "pickingMainContent"
+  ).classList.remove("hidden");
+
+  document.getElementById(
+    "pickingCompleteContent"
+  ).classList.add("hidden");
+
+  const scanButton =
+    document.getElementById(
+      "pickScanButton"
+    );
+
+  scanButton.disabled = false;
+  scanButton.style.opacity = "1";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+function openPickingScanner() {
+  scannerPurpose = "picking";
+
+  openScannerModal();
+}
+
+function simulateCorrectPickScan() {
+  const currentItem =
+    getCurrentPickItem();
+
+  if (!currentItem) {
+    return;
+  }
+
+  checkPickedArticle(
+    currentItem.articleNumber
+  );
+}
+
+function simulateWrongPickScan() {
+  checkPickedArticle("999999");
+}
+
+function getCurrentPickItem() {
+  const orderItems =
+    orderItemsByOrderId[
+      appState.currentPickingOrderId
+    ] || [];
+
+  const currentIndex =
+    appState.currentPickIndex || 0;
+
+  return orderItems[currentIndex] || null;
+}
+
+function checkPickedArticle(scannedCode) {
+  const currentItem =
+    getCurrentPickItem();
+
+  if (!currentItem) {
+    showToast(
+      "Er is geen actief artikel."
+    );
+
+    return;
+  }
+
+  const cleanScannedCode =
+    String(scannedCode)
+      .trim()
+      .replace(/\s/g, "");
+
+  const expectedCode =
+    String(currentItem.articleNumber)
+      .trim()
+      .replace(/\s/g, "");
+
+  const resultBox =
+    document.getElementById(
+      "pickingScanResult"
+    );
+
+  if (
+    cleanScannedCode !== expectedCode
+  ) {
+    appState.wrongPickScans =
+      (appState.wrongPickScans || 0) + 1;
+
+    saveState();
+
+    resultBox.className =
+      "picking-scan-result wrong";
+
+    resultBox.innerHTML = `
+      <div class="picking-result-icon">
+        ✕
+      </div>
+
+      <div>
+        <strong>
+          Verkeerd artikel
+        </strong>
+
+        <p>
+          Gescand:
+          ${escapeHTML(cleanScannedCode)}
+          · Verwacht:
+          ${escapeHTML(expectedCode)}
+        </p>
+      </div>
+    `;
+
+    showToast(
+      "Verkeerd artikel. Controleer het artikelnummer."
+    );
+
+    return;
+  }
+
+  resultBox.className =
+    "picking-scan-result correct";
+
+  resultBox.innerHTML = `
+    <div class="picking-result-icon">
+      ✓
+    </div>
+
+    <div>
+      <strong>
+        Correct artikel
+      </strong>
+
+      <p>
+        Artikel
+        ${escapeHTML(expectedCode)}
+        is goed gescand.
+      </p>
+    </div>
+  `;
+
+  const scanButton =
+    document.getElementById(
+      "pickScanButton"
+    );
+
+  scanButton.disabled = true;
+  scanButton.style.opacity = "0.55";
+
   showToast(
-    "Het pickproces van " +
+    currentItem.name +
+    " correct gepickt."
+  );
+
+  setTimeout(function() {
+    appState.currentPickIndex =
+      (appState.currentPickIndex || 0) + 1;
+
+    saveState();
+
+    renderCurrentPickItem();
+  }, 1100);
+}
+
+function renderPickingComplete(
+  selectedOrder,
+  orderItems
+) {
+  document.getElementById(
+    "pickingMainContent"
+  ).classList.add("hidden");
+
+  document.getElementById(
+    "pickingCompleteContent"
+  ).classList.remove("hidden");
+
+  document.getElementById(
+    "completedOrderNumber"
+  ).textContent =
+    selectedOrder.orderNumber;
+
+  document.getElementById(
+    "completedArticleCount"
+  ).textContent =
+    orderItems.length;
+
+  document.getElementById(
+    "completedWrongScans"
+  ).textContent =
+    appState.wrongPickScans || 0;
+
+  document.getElementById(
+    "completedPickTime"
+  ).textContent =
+    calculatePickDuration();
+
+  document.getElementById(
+    "pickingProgressText"
+  ).textContent =
+    orderItems.length +
+    " van " +
+    orderItems.length +
+    " gepickt";
+
+  document.getElementById(
+    "pickingProgressPercentage"
+  ).textContent = "100%";
+
+  document.getElementById(
+    "pickingProgressBar"
+  ).style.width = "100%";
+
+  showToast(
+    "Order " +
     selectedOrder.orderNumber +
-    " wordt in de volgende stap geopend."
+    " is volledig gepickt."
+  );
+}
+
+function calculatePickDuration() {
+  if (!appState.pickStartedAt) {
+    return "0 min";
+  }
+
+  const startTime =
+    new Date(
+      appState.pickStartedAt
+    ).getTime();
+
+  const currentTime =
+    new Date().getTime();
+
+  const difference =
+    Math.max(
+      0,
+      currentTime - startTime
+    );
+
+  const minutes =
+    Math.max(
+      1,
+      Math.ceil(
+        difference / 60000
+      )
+    );
+
+  return minutes + " min";
+}
+
+function leavePickingScreen() {
+  const currentItem =
+    getCurrentPickItem();
+
+  if (!currentItem) {
+    openOrdersScreen();
+    return;
+  }
+
+  openModal(`
+    <h2>Pickproces verlaten?</h2>
+
+    <p>
+      Je huidige voortgang blijft lokaal opgeslagen.
+    </p>
+
+    <button
+      class="danger-button"
+      style="margin-top:16px;"
+      onclick="closeModal(); openOrdersScreen();"
+    >
+      Pickproces verlaten
+    </button>
+
+    <button
+      class="secondary-button"
+      style="margin-top:9px;"
+      onclick="closeModal()"
+    >
+      Verder met picking
+    </button>
+  `);
+}
+
+function finishPickedOrder() {
+  const selectedOrder =
+    appState.orders.find(function(order) {
+      return (
+        order.id ===
+        appState.currentPickingOrderId
+      );
+    });
+
+  if (selectedOrder) {
+    selectedOrder.received =
+      "Volledig gepickt";
+  }
+
+  appState.currentPickingOrderId =
+    null;
+
+  appState.currentPickIndex = 0;
+  appState.wrongPickScans = 0;
+  appState.pickStartedAt = null;
+
+  saveState();
+
+  openOrdersScreen();
+
+  showToast(
+    "De order is afgerond."
   );
 }
     function getLevelInformation() {
@@ -7154,6 +8290,8 @@ async function startBarcodeScanner() {
   }
 }
 
+let scannerPurpose = "search";
+
 async function handleSuccessfulScan(decodedText) {
   if (!scannerRunning) {
     return;
@@ -7168,14 +8306,22 @@ async function handleSuccessfulScan(decodedText) {
 
   closeModal();
 
+  if (scannerPurpose === "picking") {
+    checkPickedArticle(scannedCode);
+
+    scannerPurpose = "search";
+
+    return;
+  }
+
   document.getElementById(
     "searchInput"
-  ).value =
-    scannedCode;
+  ).value = scannedCode;
 
   searchProduct();
-}
 
+  scannerPurpose = "search";
+}
 async function stopBarcodeScanner() {
   if (!html5QrCode) {
     scannerRunning = false;
@@ -7336,7 +8482,11 @@ async function stopScannerAndClose() {
       ...order
     };
   }),
-  orderFilter: "all"
+  orderFilter: "all",
+  currentPickingOrderId: null,
+  currentPickIndex: 0,
+  wrongPickScans: 0,
+  pickStartedAt: null
 };
 
       closeModal();
