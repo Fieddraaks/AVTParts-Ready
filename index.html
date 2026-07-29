@@ -2770,6 +2770,27 @@
       font-size: 11px;
       line-height: 1.5;
     }
+        .dashboard-logo-row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .dashboard-logo-header {
+      justify-content: center;
+      min-height: 86px;
+    }
+
+    .dashboard-logo {
+      width: min(190px, 52vw);
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+    
     .splash-screen {
       position: fixed;
       inset: 0;
@@ -3001,8 +3022,6 @@
 
       </div>
 
-      <h1>AVT Parts Ready</h1>
-
       <p>
         Een praktisch hulpmiddel voor productkennis,
         eigenaarschap en verbeteren op de werkvloer.
@@ -3070,35 +3089,13 @@
 
       <header class="home-header">
 
-        <div class="home-top-row">
+                <div class="dashboard-logo-row">
 
-          <div class="brand">
-
-            <div class="brand-logo">
-              🚛
-            </div>
-
-            <div class="brand-copy">
-
-              <strong>
-                AVT Parts Ready
-              </strong>
-
-              <span>
-                KENNIS · EIGENAARSCHAP · VERBETEREN
-              </span>
-
-            </div>
-
-          </div>
-
-          <button
-            class="avatar-button"
-            onclick="openScreen('profileScreen')"
-            aria-label="Open profiel"
+          <img
+            class="dashboard-logo"
+            src="avt-ready-logo.PNG"
+            alt="AVT Ready"
           >
-            K
-          </button>
 
         </div>
 
@@ -5392,33 +5389,13 @@
       class="screen"
     >
 
-      <header class="page-header">
+          <header class="page-header dashboard-logo-header">
 
-        <button
-          class="back-button"
-          onclick="logout()"
+        <img
+          class="dashboard-logo"
+          src="avt-ready-logo.PNG"
+          alt="AVT Ready"
         >
-          ←
-        </button>
-
-        <div class="page-header-copy">
-
-          <h1>
-            Teamdashboard
-          </h1>
-
-          <p>
-            Overzicht voor leidinggevenden
-          </p>
-
-        </div>
-
-        <button
-          class="icon-button"
-          onclick="showToast('Dashboard bijgewerkt.')"
-        >
-          ↻
-        </button>
 
       </header>
 
