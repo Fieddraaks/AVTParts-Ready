@@ -2770,18 +2770,47 @@
       font-size: 11px;
       line-height: 1.5;
     }
-        .dashboard-logo-row {
+         .dashboard-logo-row {
       position: relative;
       z-index: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
+      min-height: 74px;
+    }
+
+    .home-header {
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #e9f8ff 42%,
+          #72c6ed 100%
+        );
     }
 
     .dashboard-logo-header {
+      position: relative;
       justify-content: center;
       min-height: 86px;
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #e9f8ff 100%
+        );
+    }
+
+    .dashboard-logo-button {
+      display: block;
+      padding: 0;
+      border: none;
+      background: transparent;
+    }
+
+    .dashboard-logo-button:active {
+      transform: scale(0.97);
     }
 
     .dashboard-logo {
@@ -2789,6 +2818,35 @@
       height: auto;
       display: block;
       object-fit: contain;
+    }
+
+    .dashboard-back-button {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      z-index: 2;
+      width: 42px;
+      height: 42px;
+      transform: translateY(-50%);
+      display: grid;
+      place-items: center;
+      border: none;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--primary-dark);
+      box-shadow: var(--shadow-small);
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .dashboard-logo-header .dashboard-back-button {
+      left: 20px;
+    }
+
+    .dashboard-back-button:active {
+      transform:
+        translateY(-50%)
+        scale(0.96);
     }
     
     .splash-screen {
@@ -3089,16 +3147,31 @@
 
       <header class="home-header">
 
-                <div class="dashboard-logo-row">
+                        <div class="dashboard-logo-row">
 
-          <img
-            class="dashboard-logo"
-            src="avt-ready-logo.PNG"
-            alt="AVT Ready"
+          <button
+            class="dashboard-back-button"
+            onclick="logout()"
+            aria-label="Terug naar inloggen"
+          >
+            ←
+          </button>
+
+          <button
+            class="dashboard-logo-button"
+            onclick="goHome(); updateInterface();"
+            aria-label="Dashboard herladen"
           >
 
-        </div>
+            <img
+              class="dashboard-logo"
+              src="avt-ready-logo.PNG"
+              alt="AVT Ready"
+            >
 
+          </button>
+
+        </div>
         <div class="welcome-block">
 
           <p id="greetingText">
@@ -5389,13 +5462,29 @@
       class="screen"
     >
 
-          <header class="page-header dashboard-logo-header">
+              <header class="page-header dashboard-logo-header">
 
-        <img
-          class="dashboard-logo"
-          src="avt-ready-logo.PNG"
-          alt="AVT Ready"
+        <button
+          class="dashboard-back-button"
+          onclick="logout()"
+          aria-label="Terug naar inloggen"
         >
+          ←
+        </button>
+
+        <button
+          class="dashboard-logo-button"
+          onclick="openManagerDashboard('managerNavDashboard'); updateInterface();"
+          aria-label="Dashboard herladen"
+        >
+
+          <img
+            class="dashboard-logo"
+            src="avt-ready-logo.PNG"
+            alt="AVT Ready"
+          >
+
+        </button>
 
       </header>
 
