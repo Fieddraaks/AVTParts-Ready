@@ -6838,8 +6838,9 @@ if (!appState.orderFilter) {
     .getElementById("managerNavigation")
     .classList.remove("hidden");
 
-  openScreen("managerScreen");
+    openScreen("managerScreen");
   renderManagerOrderStatus();
+  renderManagerActivityFeed();
       
   setManagerNavigationActive(
     "managerNavDashboard"
