@@ -2903,6 +2903,235 @@
     .manager-home-logout {
       margin-top: 18px;
     }
+        .manager-performance-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 19px;
+      border: 1px solid #c7e5f2;
+      border-radius: var(--radius-large);
+      background:
+        radial-gradient(
+          circle at 95% 5%,
+          rgba(255, 255, 255, 0.96),
+          transparent 35%
+        ),
+        linear-gradient(
+          145deg,
+          #dff5ff,
+          #f9fdff
+        );
+      box-shadow: var(--shadow-medium);
+    }
+
+    .manager-performance-hero::after {
+      content: "";
+      position: absolute;
+      right: -75px;
+      bottom: -105px;
+      width: 215px;
+      height: 215px;
+      border-radius: 50%;
+      background:
+        rgba(17, 141, 194, 0.07);
+    }
+
+    .manager-performance-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .manager-performance-top h1 {
+      margin-top: 10px;
+      font-size: 23px;
+      line-height: 1.15;
+      letter-spacing: -0.45px;
+    }
+
+    .manager-performance-top p {
+      max-width: 275px;
+      margin-top: 6px;
+      color: var(--text-soft);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .manager-performance-refresh {
+      width: 41px;
+      height: 41px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--primary-dark);
+      box-shadow: var(--shadow-small);
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .manager-performance-refresh:active {
+      transform: scale(0.96);
+    }
+
+    .manager-performance-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .manager-performance-kpi {
+      min-height: 145px;
+      padding: 14px;
+      border: 1px solid
+        rgba(190, 220, 233, 0.9);
+      border-radius: 17px;
+      background:
+        rgba(255, 255, 255, 0.88);
+      box-shadow:
+        0 5px 15px
+        rgba(30, 85, 116, 0.05);
+    }
+
+    .manager-performance-kpi-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .manager-performance-icon {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--primary-light);
+      font-size: 17px;
+    }
+
+    .manager-performance-warning {
+      background: var(--warning-bg);
+    }
+
+    .manager-performance-success {
+      background: var(--success-bg);
+    }
+
+    .manager-performance-purple {
+      background: var(--purple-bg);
+    }
+
+    .manager-trend {
+      display: inline-flex;
+      align-items: center;
+      min-height: 23px;
+      padding: 5px 7px;
+      border-radius: 999px;
+      font-size: 7px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .manager-trend-positive {
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .manager-trend-neutral {
+      background: var(--surface-blue);
+      color: var(--primary-dark);
+    }
+
+    .manager-performance-kpi > strong {
+      display: block;
+      margin-top: 13px;
+      color: var(--primary-deep);
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: -0.5px;
+    }
+
+    .manager-performance-label {
+      display: block;
+      margin-top: 7px;
+      color: var(--text);
+      font-size: 10px;
+      font-weight: 900;
+      line-height: 1.3;
+    }
+
+    .manager-performance-kpi > p {
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 8px;
+      line-height: 1.4;
+    }
+
+    .manager-operational-summary {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin-top: 12px;
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background:
+        rgba(255, 255, 255, 0.84);
+    }
+
+    .manager-operational-icon {
+      width: 39px;
+      height: 39px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: var(--surface-blue);
+      font-size: 18px;
+    }
+
+    .manager-operational-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .manager-operational-copy > span {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: 0.7px;
+    }
+
+    .manager-operational-copy strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 11px;
+    }
+
+    .manager-operational-copy p {
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 8px;
+      line-height: 1.4;
+    }
+
+    .manager-operational-summary > .tag {
+      flex: 0 0 auto;
+      min-height: 25px;
+      padding: 5px 8px;
+      font-size: 8px;
+    }
     
     .manager-kpi-grid {
       display: grid;
@@ -6442,7 +6671,194 @@
       </header>
 
       <div class="page-content">
+        <article class="manager-performance-hero">
 
+          <div class="manager-performance-top">
+
+            <div>
+
+              <span class="tag tag-blue">
+                Operationeel dashboard
+              </span>
+
+              <h1>
+                Vandaag in het magazijn
+              </h1>
+
+              <p>
+                Live inzicht in snelheid, kwaliteit
+                en de actuele werkbelasting.
+              </p>
+
+            </div>
+
+            <button
+              class="manager-performance-refresh"
+              onclick="renderManagerPerformanceKpis(); renderManagerOrderStatus(); renderManagerActivityFeed(); showToast('Dashboard bijgewerkt.')"
+              aria-label="Dashboard vernieuwen"
+            >
+              ↻
+            </button>
+
+          </div>
+
+          <div class="manager-performance-grid">
+
+            <article class="manager-performance-kpi">
+
+              <div class="manager-performance-kpi-top">
+
+                <div class="manager-performance-icon">
+                  ⏱️
+                </div>
+
+                <span class="manager-trend manager-trend-positive">
+                  ↓ 8%
+                </span>
+
+              </div>
+
+              <strong id="managerAveragePickTime">
+                0 min
+              </strong>
+
+              <span class="manager-performance-label">
+                Gemiddelde picktijd
+              </span>
+
+              <p>
+                Vergeleken met gisteren
+              </p>
+
+            </article>
+
+            <article class="manager-performance-kpi">
+
+              <div class="manager-performance-kpi-top">
+
+                <div class="manager-performance-icon manager-performance-warning">
+                  ⚠️
+                </div>
+
+                <span class="manager-trend manager-trend-neutral">
+                  Vandaag
+                </span>
+
+              </div>
+
+              <strong id="managerWrongScansToday">
+                0
+              </strong>
+
+              <span class="manager-performance-label">
+                Foutscans
+              </span>
+
+              <p>
+                Geregistreerde afwijkingen
+              </p>
+
+            </article>
+
+            <article class="manager-performance-kpi">
+
+              <div class="manager-performance-kpi-top">
+
+                <div class="manager-performance-icon manager-performance-success">
+                  ✓
+                </div>
+
+                <span class="manager-trend manager-trend-positive">
+                  ↑ 12%
+                </span>
+
+              </div>
+
+              <strong id="managerCompletedToday">
+                0
+              </strong>
+
+              <span class="manager-performance-label">
+                Orders afgerond
+              </span>
+
+              <p>
+                Volledig gecontroleerd
+              </p>
+
+            </article>
+
+            <article class="manager-performance-kpi">
+
+              <div class="manager-performance-kpi-top">
+
+                <div class="manager-performance-icon manager-performance-purple">
+                  👷
+                </div>
+
+                <span class="manager-trend manager-trend-neutral">
+                  Live
+                </span>
+
+              </div>
+
+              <strong id="managerActivePickers">
+                0
+              </strong>
+
+              <span class="manager-performance-label">
+                Actieve orderpickers
+              </span>
+
+              <p>
+                Momenteel aan het picken
+              </p>
+
+            </article>
+
+          </div>
+
+          <div class="manager-operational-summary">
+
+            <div class="manager-operational-icon">
+              📡
+            </div>
+
+            <div class="manager-operational-copy">
+
+              <span>
+                OPERATIONELE STATUS
+              </span>
+
+              <strong>
+                Actuele situatie
+              </strong>
+
+              <p id="managerOperationalDescription">
+                Het operationele overzicht wordt geladen.
+              </p>
+
+            </div>
+
+            <span
+              id="managerOperationalStatus"
+              class="tag tag-blue"
+            >
+              Laden
+            </span>
+
+          </div>
+
+        </article>
+
+        <div class="section-heading">
+
+          <h2>
+            Teamontwikkeling
+          </h2>
+
+        </div>
+        
         <article class="card">
 
           <span class="tag tag-blue">
@@ -7804,21 +8220,156 @@ function setManagerHomeText(
     element.textContent = value;
   }
 }
+   function renderManagerPerformanceKpis() {
+  const orders =
+    Array.isArray(appState.orders)
+      ? appState.orders
+      : [];
+
+  const activities =
+    Array.isArray(appState.activities)
+      ? appState.activities
+      : [];
+
+  const completedOrders =
+    orders.filter(function(order) {
+      return (
+        order.received ===
+        "Volledig gepickt"
+      );
+    });
+
+  const activeOrder =
+    orders.find(function(order) {
+      return (
+        order.id ===
+        appState.currentPickingOrderId
+      );
+    });
+
+  const relevantOrders =
+    completedOrders.length > 0
+      ? completedOrders
+      : orders;
+
+  const totalEstimatedMinutes =
+    relevantOrders.reduce(function(
+      total,
+      order
+    ) {
+      return (
+        total +
+        Number(
+          order.estimatedMinutes || 0
+        )
+      );
+    }, 0);
+
+  const averagePickTime =
+    relevantOrders.length > 0
+      ? Math.round(
+          totalEstimatedMinutes /
+          relevantOrders.length
+        )
+      : 0;
+
+  const wrongScanActivities =
+    activities.filter(function(activity) {
+      return activity.type === "warning";
+    });
+
+  setManagerPerformanceText(
+    "managerAveragePickTime",
+    averagePickTime + " min"
+  );
+
+  setManagerPerformanceText(
+    "managerWrongScansToday",
+    wrongScanActivities.length
+  );
+
+  setManagerPerformanceText(
+    "managerCompletedToday",
+    completedOrders.length
+  );
+
+  setManagerPerformanceText(
+    "managerActivePickers",
+    activeOrder ? 1 : 0
+  );
+
+  const operationalStatus =
+    document.getElementById(
+      "managerOperationalStatus"
+    );
+
+  const operationalDescription =
+    document.getElementById(
+      "managerOperationalDescription"
+    );
+
+  if (
+    operationalStatus &&
+    operationalDescription
+  ) {
+    if (wrongScanActivities.length >= 3) {
+      operationalStatus.textContent =
+        "Extra aandacht nodig";
+
+      operationalStatus.className =
+        "tag tag-red";
+
+      operationalDescription.textContent =
+        "Er zijn meerdere foutscans geregistreerd. Controleer de recente activiteiten.";
+    } else if (activeOrder) {
+      operationalStatus.textContent =
+        "Magazijn actief";
+
+      operationalStatus.className =
+        "tag tag-green";
+
+      operationalDescription.textContent =
+        activeOrder.orderNumber +
+        " wordt momenteel gepickt.";
+    } else {
+      operationalStatus.textContent =
+        "Rustig moment";
+
+      operationalStatus.className =
+        "tag tag-blue";
+
+      operationalDescription.textContent =
+        "Er wordt momenteel geen order actief gepickt.";
+    }
+  }
+}
+
+function setManagerPerformanceText(
+  elementId,
+  value
+) {
+  const element =
+    document.getElementById(elementId);
+
+  if (element) {
+    element.textContent = value;
+  }
+}
     
 function openManagerDashboard(
   navigationId
 ) {
-    openScreen("managerScreen");
-  renderManagerOrderStatus();
-  renderManagerActivityFeed();
+  openScreen("managerScreen");
 
   setManagerNavigationActive(
     navigationId
   );
 
+  renderManagerPerformanceKpis();
   renderManagerOrderStatus();
-    renderManagerActivityFeed();
+  renderManagerActivityFeed();
 }
+    
 function showManagerNavigationMessage(
   navigationId,
   sectionName
