@@ -2543,6 +2543,366 @@
   color: #668374;
   font-size: 7px;
 }
+        .manager-home-header {
+      position: relative;
+      overflow: hidden;
+      padding:
+        calc(14px + env(safe-area-inset-top))
+        20px
+        29px;
+      border-bottom-left-radius: 32px;
+      border-bottom-right-radius: 32px;
+      background:
+        radial-gradient(
+          circle at 90% 30%,
+          rgba(255, 255, 255, 0.85),
+          transparent 32%
+        ),
+        linear-gradient(
+          160deg,
+          #ffffff 0%,
+          #dff5ff 45%,
+          #79c9ec 100%
+        );
+    }
+
+    .manager-home-header::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -90px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background:
+        rgba(255, 255, 255, 0.18);
+    }
+
+    .manager-home-header
+    .dashboard-back-button {
+      left: 0;
+    }
+
+    .manager-home-welcome {
+      position: relative;
+      z-index: 1;
+      margin-top: 16px;
+    }
+
+    .manager-home-label {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .manager-home-welcome h1 {
+      margin-top: 7px;
+      font-size: 27px;
+      line-height: 1.12;
+      letter-spacing: -0.6px;
+    }
+
+    .manager-home-welcome p {
+      max-width: 290px;
+      margin-top: 7px;
+      color: #4c7186;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .manager-home-content {
+      padding-top: 18px;
+    }
+
+    .manager-home-overview {
+      position: relative;
+      overflow: hidden;
+      padding: 18px;
+      border: 1px solid #c7e5f2;
+      border-radius: var(--radius-large);
+      background:
+        radial-gradient(
+          circle at 95% 0%,
+          rgba(255, 255, 255, 0.95),
+          transparent 38%
+        ),
+        linear-gradient(
+          135deg,
+          #e2f6ff,
+          #f9fdff
+        );
+      box-shadow: var(--shadow-medium);
+    }
+
+    .manager-home-overview::after {
+      content: "";
+      position: absolute;
+      right: -60px;
+      bottom: -85px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background:
+        rgba(17, 141, 194, 0.07);
+    }
+
+    .manager-home-overview-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .manager-home-overview-top h2 {
+      margin-top: 9px;
+      font-size: 20px;
+      letter-spacing: -0.3px;
+    }
+
+    .manager-home-overview-top p {
+      margin-top: 5px;
+      color: var(--text-soft);
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .manager-home-live {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 9px;
+      border-radius: 999px;
+      background: var(--success-bg);
+      color: var(--success);
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .manager-home-stat-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns:
+        repeat(4, 1fr);
+      gap: 7px;
+      margin-top: 17px;
+    }
+
+    .manager-home-stat {
+      padding: 12px 5px;
+      border: 1px solid
+        rgba(190, 220, 233, 0.9);
+      border-radius: 14px;
+      background:
+        rgba(255, 255, 255, 0.82);
+      text-align: center;
+    }
+
+    .manager-home-stat strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .manager-home-stat span {
+      display: block;
+      margin-top: 5px;
+      color: var(--text-soft);
+      font-size: 7px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .manager-home-notice-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .manager-home-notice {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: white;
+      color: var(--text);
+      text-align: left;
+      box-shadow: var(--shadow-small);
+    }
+
+    .manager-home-notice:active {
+      transform: scale(0.99);
+    }
+
+    .manager-home-notice-danger {
+      border-color: #efb8b8;
+      background:
+        linear-gradient(
+          135deg,
+          #fff6f6,
+          #ffffff
+        );
+    }
+
+    .manager-home-notice-icon {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      font-size: 20px;
+    }
+
+    .manager-home-icon-red {
+      background: var(--danger-bg);
+    }
+
+    .manager-home-icon-orange {
+      background: var(--warning-bg);
+    }
+
+    .manager-home-icon-purple {
+      background: var(--purple-bg);
+    }
+
+    .manager-home-notice-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .manager-home-notice-copy strong {
+      display: block;
+      font-size: 11px;
+    }
+
+    .manager-home-notice-copy p {
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.4;
+    }
+
+    .manager-home-notice-action {
+      flex: 0 0 auto;
+      color: var(--primary-dark);
+      font-size: 8px;
+      font-weight: 900;
+    }
+
+    .manager-home-active-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 16px;
+      padding: 15px;
+      border: 1px solid #cce7f3;
+      border-radius: 18px;
+      background: var(--surface-blue);
+    }
+
+    .manager-home-active-icon {
+      width: 40px;
+      height: 40px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: white;
+      font-size: 19px;
+      box-shadow: var(--shadow-small);
+    }
+
+    .manager-home-active-card span {
+      color: var(--primary-dark);
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: 0.7px;
+    }
+
+    .manager-home-active-card h3 {
+      margin-top: 4px;
+      font-size: 13px;
+    }
+
+    .manager-home-active-card p {
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.45;
+    }
+
+    .manager-home-action-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+    }
+
+    .manager-home-action {
+      min-height: 142px;
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 19px;
+      background: white;
+      color: var(--text);
+      text-align: left;
+      box-shadow: var(--shadow-small);
+    }
+
+    .manager-home-action:active {
+      transform: scale(0.97);
+    }
+
+    .manager-home-action-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 12px;
+      border-radius: 14px;
+      background: var(--primary-light);
+      font-size: 22px;
+    }
+
+    .manager-home-action:nth-child(2)
+    .manager-home-action-icon {
+      background: var(--success-bg);
+    }
+
+    .manager-home-action:nth-child(3)
+    .manager-home-action-icon {
+      background: var(--warning-bg);
+    }
+
+    .manager-home-action:nth-child(4)
+    .manager-home-action-icon {
+      background: var(--purple-bg);
+    }
+
+    .manager-home-action strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .manager-home-action span {
+      display: block;
+      margin-top: 5px;
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.4;
+    }
+
+    .manager-home-logout {
+      margin-top: 18px;
+    }
     
     .manager-kpi-grid {
       display: grid;
@@ -5672,6 +6032,381 @@
   </div>
 
 </section>
+        <!-- MANAGER HOME -->
+
+    <section
+      id="managerHomeScreen"
+      class="screen"
+    >
+
+      <header class="manager-home-header">
+
+        <div class="dashboard-logo-row">
+
+          <button
+            class="dashboard-back-button"
+            onclick="logout()"
+            aria-label="Terug naar inloggen"
+          >
+            ←
+          </button>
+
+          <button
+            class="dashboard-logo-button"
+            onclick="openManagerHome()"
+            aria-label="Home herladen"
+          >
+
+            <img
+              class="dashboard-logo"
+              src="avt-ready-logo.PNG"
+              alt="AVT Ready"
+            >
+
+          </button>
+
+        </div>
+
+        <div class="manager-home-welcome">
+
+          <span class="manager-home-label">
+            LEIDINGGEVENDE OMGEVING
+          </span>
+
+          <h1>
+            Goedemiddag, Daan
+          </h1>
+
+          <p>
+            Dit vraagt vandaag jouw aandacht
+            in het magazijn.
+          </p>
+
+        </div>
+
+      </header>
+
+      <div class="page-content manager-home-content">
+
+        <article class="manager-home-overview">
+
+          <div class="manager-home-overview-top">
+
+            <div>
+
+              <span class="tag tag-blue">
+                Vandaag
+              </span>
+
+              <h2>
+                Operationeel overzicht
+              </h2>
+
+              <p>
+                De belangrijkste magazijninformatie
+                in één oogopslag.
+              </p>
+
+            </div>
+
+            <div class="manager-home-live">
+
+              <span class="status-dot"></span>
+
+              Live
+
+            </div>
+
+          </div>
+
+          <div class="manager-home-stat-grid">
+
+            <div class="manager-home-stat">
+
+              <strong id="managerHomeNewOrders">
+                0
+              </strong>
+
+              <span>
+                Nieuwe orders
+              </span>
+
+            </div>
+
+            <div class="manager-home-stat">
+
+              <strong id="managerHomeActiveOrders">
+                0
+              </strong>
+
+              <span>
+                Actieve orders
+              </span>
+
+            </div>
+
+            <div class="manager-home-stat">
+
+              <strong id="managerHomeCompletedOrders">
+                0
+              </strong>
+
+              <span>
+                Afgerond
+              </span>
+
+            </div>
+
+            <div class="manager-home-stat">
+
+              <strong id="managerHomeNewIdeas">
+                0
+              </strong>
+
+              <span>
+                Nieuwe ideeën
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <div class="section-heading">
+
+          <h2>
+            Vandaag belangrijk
+          </h2>
+
+          <button
+            onclick="renderManagerHome(); showToast('Home-overzicht bijgewerkt.')"
+          >
+            Vernieuwen
+          </button>
+
+        </div>
+
+        <div class="manager-home-notice-list">
+
+          <button
+            id="managerHomeUrgentCard"
+            class="manager-home-notice"
+            onclick="showManagerNavigationMessage('managerNavOrders', 'Orders')"
+          >
+
+            <div class="manager-home-notice-icon manager-home-icon-red">
+              🚨
+            </div>
+
+            <div class="manager-home-notice-copy">
+
+              <strong>
+                Spoedorders
+              </strong>
+
+              <p>
+                <span id="managerHomeUrgentCount">
+                  0
+                </span>
+                order(s) hebben prioriteit Spoed.
+              </p>
+
+            </div>
+
+            <span
+              id="managerHomeUrgentStatus"
+              class="manager-home-notice-action"
+            >
+              Bekijken
+            </span>
+
+          </button>
+
+          <button
+            class="manager-home-notice"
+            onclick="openManagerDashboard('managerNavDashboard')"
+          >
+
+            <div class="manager-home-notice-icon manager-home-icon-orange">
+              📦
+            </div>
+
+            <div class="manager-home-notice-copy">
+
+              <strong>
+                Geaccepteerde orders
+              </strong>
+
+              <p>
+                <span id="managerHomeAcceptedCount">
+                  0
+                </span>
+                order(s) staan klaar om te starten.
+              </p>
+
+            </div>
+
+            <span class="manager-home-notice-action">
+              Dashboard
+            </span>
+
+          </button>
+
+          <button
+            class="manager-home-notice"
+            onclick="showManagerNavigationMessage('managerNavManagement', 'Beheer')"
+          >
+
+            <div class="manager-home-notice-icon manager-home-icon-purple">
+              💡
+            </div>
+
+            <div class="manager-home-notice-copy">
+
+              <strong>
+                Nieuwe verbeterideeën
+              </strong>
+
+              <p>
+                <span id="managerHomeIdeaCount">
+                  0
+                </span>
+                idee(ën) moeten nog worden beoordeeld.
+              </p>
+
+            </div>
+
+            <span class="manager-home-notice-action">
+              Beoordelen
+            </span>
+
+          </button>
+
+        </div>
+
+        <article class="manager-home-active-card">
+
+          <div class="manager-home-active-icon">
+            ⚡
+          </div>
+
+          <div>
+
+            <span>
+              ACTUELE PICKACTIVITEIT
+            </span>
+
+            <h3>
+              Wat gebeurt er nu?
+            </h3>
+
+            <p id="managerHomeActiveOrderText">
+              Er wordt momenteel geen order gepickt.
+            </p>
+
+          </div>
+
+        </article>
+
+        <div class="section-heading">
+
+          <h2>
+            Snel naar
+          </h2>
+
+        </div>
+
+        <div class="manager-home-action-grid">
+
+          <button
+            class="manager-home-action"
+            onclick="openManagerDashboard('managerNavDashboard')"
+          >
+
+            <div class="manager-home-action-icon">
+              📊
+            </div>
+
+            <strong>
+              Dashboard
+            </strong>
+
+            <span>
+              Bekijk KPI’s en live orderstatus
+            </span>
+
+          </button>
+
+          <button
+            class="manager-home-action"
+            onclick="showManagerNavigationMessage('managerNavEmployees', 'Medewerkers')"
+          >
+
+            <div class="manager-home-action-icon">
+              👥
+            </div>
+
+            <strong>
+              Medewerkers
+            </strong>
+
+            <span>
+              Bekijk het orderpicker-overzicht
+            </span>
+
+          </button>
+
+          <button
+            class="manager-home-action"
+            onclick="showManagerNavigationMessage('managerNavOrders', 'Orders')"
+          >
+
+            <div class="manager-home-action-icon">
+              📦
+            </div>
+
+            <strong>
+              Orders
+            </strong>
+
+            <span>
+              Open het volledige orderoverzicht
+            </span>
+
+          </button>
+
+          <button
+            class="manager-home-action"
+            onclick="showManagerNavigationMessage('managerNavManagement', 'Beheer')"
+          >
+
+            <div class="manager-home-action-icon">
+              ⚙️
+            </div>
+
+            <strong>
+              Beheer
+            </strong>
+
+            <span>
+              Open acties en instellingen
+            </span>
+
+          </button>
+
+        </div>
+
+        <button
+          class="secondary-button manager-home-logout"
+          onclick="logout()"
+        >
+          ← Terug naar inlogscherm
+        </button>
+
+      </div>
+
+    </section>
     
     <!-- MANAGERDASHBOARD -->
 
@@ -6186,10 +6921,10 @@
   class="bottom-nav hidden"
 >
 
-  <button
+    <button
     id="managerNavHome"
-    class="nav-item"
-    onclick="openManagerDashboard('managerNavHome')"
+    class="nav-item active"
+    onclick="openManagerHome()"
   >
 
     <div class="nav-icon-wrap">
@@ -6202,9 +6937,9 @@
 
   </button>
 
-  <button
+    <button
     id="managerNavDashboard"
-    class="nav-item active"
+    class="nav-item"
     onclick="openManagerDashboard('managerNavDashboard')"
   >
 
@@ -6838,13 +7573,7 @@ if (!appState.orderFilter) {
     .getElementById("managerNavigation")
     .classList.remove("hidden");
 
-    openScreen("managerScreen");
-  renderManagerOrderStatus();
-  renderManagerActivityFeed();
-      
-  setManagerNavigationActive(
-    "managerNavDashboard"
-  );
+      openManagerHome();
 
   showToast(
     "Manageromgeving geopend."
@@ -6930,7 +7659,152 @@ function setManagerNavigationActive(
     activeItem.classList.add("active");
   }
 }
+function openManagerHome() {
+  openScreen("managerHomeScreen");
 
+  renderManagerHome();
+
+  setManagerNavigationActive(
+    "managerNavHome"
+  );
+}
+
+function renderManagerHome() {
+  const orders =
+    Array.isArray(appState.orders)
+      ? appState.orders
+      : [];
+
+  const ideas =
+    Array.isArray(appState.ideas)
+      ? appState.ideas
+      : [];
+
+  const newOrders =
+    orders.filter(function(order) {
+      return order.status === "new";
+    });
+
+  const urgentOrders =
+    orders.filter(function(order) {
+      return (
+        order.priority === "Spoed" &&
+        order.received !==
+          "Volledig gepickt"
+      );
+    });
+
+  const acceptedOrders =
+    orders.filter(function(order) {
+      return order.status === "accepted";
+    });
+
+  const completedOrders =
+    orders.filter(function(order) {
+      return (
+        order.received ===
+        "Volledig gepickt"
+      );
+    });
+
+  const activeOrder =
+    orders.find(function(order) {
+      return (
+        order.id ===
+        appState.currentPickingOrderId
+      );
+    });
+
+  const newIdeas =
+    ideas.filter(function(idea) {
+      return idea.status === "Nieuw";
+    });
+
+  setManagerHomeText(
+    "managerHomeNewOrders",
+    newOrders.length
+  );
+
+  setManagerHomeText(
+    "managerHomeActiveOrders",
+    activeOrder ? 1 : 0
+  );
+
+  setManagerHomeText(
+    "managerHomeCompletedOrders",
+    completedOrders.length
+  );
+
+  setManagerHomeText(
+    "managerHomeNewIdeas",
+    newIdeas.length
+  );
+
+  setManagerHomeText(
+    "managerHomeUrgentCount",
+    urgentOrders.length
+  );
+
+  setManagerHomeText(
+    "managerHomeAcceptedCount",
+    acceptedOrders.length
+  );
+
+  setManagerHomeText(
+    "managerHomeIdeaCount",
+    newIdeas.length
+  );
+
+  const urgentCard =
+    document.getElementById(
+      "managerHomeUrgentCard"
+    );
+
+  if (urgentCard) {
+    urgentCard.classList.toggle(
+      "manager-home-notice-danger",
+      urgentOrders.length > 0
+    );
+  }
+
+  const urgentStatus =
+    document.getElementById(
+      "managerHomeUrgentStatus"
+    );
+
+  if (urgentStatus) {
+    urgentStatus.textContent =
+      urgentOrders.length > 0
+        ? "Direct bekijken"
+        : "Geen spoed";
+  }
+
+  const activeOrderText =
+    document.getElementById(
+      "managerHomeActiveOrderText"
+    );
+
+  if (activeOrderText) {
+    activeOrderText.textContent =
+      activeOrder
+        ? activeOrder.orderNumber +
+          " wordt momenteel gepickt."
+        : "Er wordt momenteel geen order gepickt.";
+  }
+}
+
+function setManagerHomeText(
+  elementId,
+  value
+) {
+  const element =
+    document.getElementById(elementId);
+
+  if (element) {
+    element.textContent = value;
+  }
+}
+    
 function openManagerDashboard(
   navigationId
 ) {
