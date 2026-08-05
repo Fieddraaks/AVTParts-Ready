@@ -3590,6 +3590,596 @@
       font-size: 9px;
       line-height: 1.5;
     }
+        .manager-orders-hero,
+    .manager-management-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 19px;
+      border: 1px solid #c7e5f2;
+      border-radius: var(--radius-large);
+      background:
+        radial-gradient(
+          circle at 94% 4%,
+          rgba(255, 255, 255, 0.96),
+          transparent 36%
+        ),
+        linear-gradient(
+          145deg,
+          #dff5ff,
+          #f9fdff
+        );
+      box-shadow: var(--shadow-medium);
+    }
+
+    .manager-management-hero {
+      border-color: #d8d4f4;
+      background:
+        radial-gradient(
+          circle at 94% 4%,
+          rgba(255, 255, 255, 0.96),
+          transparent 36%
+        ),
+        linear-gradient(
+          145deg,
+          #efedff,
+          #fbfaff
+        );
+    }
+
+    .manager-orders-hero::after,
+    .manager-management-hero::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -100px;
+      width: 205px;
+      height: 205px;
+      border-radius: 50%;
+      background:
+        rgba(17, 141, 194, 0.07);
+    }
+
+    .manager-management-hero::after {
+      background:
+        rgba(108, 99, 184, 0.07);
+    }
+
+    .manager-orders-hero-top,
+    .manager-management-hero-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .manager-orders-hero-top h1,
+    .manager-management-hero-top h1 {
+      margin-top: 10px;
+      font-size: 24px;
+      line-height: 1.15;
+      letter-spacing: -0.45px;
+    }
+
+    .manager-orders-hero-top p,
+    .manager-management-hero-top p {
+      max-width: 270px;
+      margin-top: 6px;
+      color: var(--text-soft);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .manager-orders-summary,
+    .manager-management-summary {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns:
+        repeat(4, 1fr);
+      gap: 7px;
+      margin-top: 18px;
+    }
+
+    .manager-orders-summary > div,
+    .manager-management-summary > div {
+      padding: 12px 5px;
+      border: 1px solid
+        rgba(190, 220, 233, 0.9);
+      border-radius: 14px;
+      background:
+        rgba(255, 255, 255, 0.86);
+      text-align: center;
+    }
+
+    .manager-management-summary > div {
+      border-color:
+        rgba(210, 205, 239, 0.9);
+    }
+
+    .manager-orders-summary strong,
+    .manager-management-summary strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .manager-management-summary strong {
+      color: var(--purple);
+    }
+
+    .manager-orders-summary span,
+    .manager-management-summary span {
+      display: block;
+      margin-top: 5px;
+      color: var(--text-soft);
+      font-size: 7px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .manager-order-filter-row {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 14px;
+      padding: 4px;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: white;
+      box-shadow: var(--shadow-small);
+    }
+
+    .manager-order-filter {
+      min-height: 38px;
+      flex: 1 0 auto;
+      padding: 9px 12px;
+      border: none;
+      border-radius: 11px;
+      background: transparent;
+      color: var(--text-soft);
+      font-size: 9px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .manager-order-filter.active {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    .manager-full-order-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .manager-full-order-card {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-large);
+      background: white;
+      box-shadow: var(--shadow-small);
+    }
+
+    .manager-full-order-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .manager-full-order-top h2 {
+      margin-top: 4px;
+      font-size: 19px;
+    }
+
+    .manager-full-order-status {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .manager-full-order-status > span:last-child {
+      color: var(--text-soft);
+      font-size: 8px;
+      text-align: right;
+    }
+
+    .manager-full-order-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(3, 1fr);
+      gap: 7px;
+      margin-top: 13px;
+    }
+
+    .manager-full-order-grid > div {
+      padding: 11px 5px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: var(--surface-soft);
+      text-align: center;
+    }
+
+    .manager-full-order-grid strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 13px;
+      line-height: 1.2;
+    }
+
+    .manager-full-order-grid span {
+      display: block;
+      margin-top: 5px;
+      color: var(--text-soft);
+      font-size: 7px;
+      line-height: 1.3;
+    }
+
+    .manager-full-order-location {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin-top: 12px;
+      padding: 11px;
+      border-radius: 13px;
+      background: var(--surface-blue);
+    }
+
+    .manager-full-order-location > span {
+      font-size: 17px;
+    }
+
+    .manager-full-order-location strong {
+      display: block;
+      font-size: 9px;
+    }
+
+    .manager-full-order-location p {
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 8px;
+      line-height: 1.4;
+    }
+
+    .manager-full-order-button {
+      width: 100%;
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 12px;
+      border: 1px solid var(--border-dark);
+      border-radius: 13px;
+      background: white;
+      color: var(--primary-dark);
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .manager-order-empty,
+    .manager-management-empty {
+      padding: 30px 18px;
+      border: 1px dashed var(--border-dark);
+      border-radius: var(--radius-large);
+      background: white;
+      text-align: center;
+    }
+
+    .manager-order-empty > div,
+    .manager-management-empty > div {
+      font-size: 43px;
+    }
+
+    .manager-order-empty h2,
+    .manager-management-empty h2 {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .manager-order-empty p,
+    .manager-management-empty p {
+      max-width: 270px;
+      margin: 6px auto 16px;
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    .manager-order-modal-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .manager-order-modal-heading > div > span {
+      display: block;
+      color: var(--text-light);
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .manager-order-modal-heading h2 {
+      margin-top: 4px;
+    }
+
+    .manager-order-modal-status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 14px;
+      padding: 11px;
+      border-radius: 14px;
+      background: var(--surface-blue);
+    }
+
+    .manager-order-modal-status > span:last-child {
+      flex: 1;
+      color: var(--text-soft);
+      font-size: 9px;
+    }
+
+    .manager-order-modal-summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 13px;
+    }
+
+    .manager-order-modal-summary > div {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface-soft);
+      text-align: center;
+    }
+
+    .manager-order-modal-summary strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 18px;
+    }
+
+    .manager-order-modal-summary span {
+      display: block;
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 8px;
+    }
+
+    .manager-order-modal-location {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin-top: 13px;
+      padding: 11px;
+      border-radius: 14px;
+      background: var(--surface-blue);
+    }
+
+    .manager-order-modal-location p {
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 9px;
+    }
+
+    .manager-order-modal-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .manager-order-modal-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 11px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .manager-order-modal-item > span {
+      width: 27px;
+      height: 27px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 10px;
+      font-weight: 900;
+    }
+
+    .manager-order-modal-item strong {
+      display: block;
+      font-size: 10px;
+    }
+
+    .manager-order-modal-item p {
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 8px;
+    }
+
+    .manager-order-modal-item small {
+      display: block;
+      margin-top: 4px;
+      color: var(--primary-dark);
+      font-size: 7px;
+      line-height: 1.4;
+    }
+
+    .manager-management-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .manager-management-actions button {
+      min-height: 145px;
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: white;
+      color: var(--text);
+      text-align: left;
+      box-shadow: var(--shadow-small);
+    }
+
+    .manager-management-actions button > div {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 11px;
+      border-radius: 13px;
+      background: var(--primary-light);
+      font-size: 21px;
+    }
+
+    .manager-management-actions button:nth-child(2)
+    > div {
+      background: var(--success-bg);
+    }
+
+    .manager-management-actions button:nth-child(3)
+    > div {
+      background: var(--purple-bg);
+    }
+
+    .manager-management-actions button:nth-child(4)
+    > div {
+      background: var(--danger-bg);
+    }
+
+    .manager-management-actions strong {
+      display: block;
+      font-size: 11px;
+    }
+
+    .manager-management-actions span {
+      display: block;
+      margin-top: 5px;
+      color: var(--text-soft);
+      font-size: 8px;
+      line-height: 1.4;
+    }
+
+    .manager-management-idea-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .manager-management-idea {
+      padding: 15px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: white;
+      box-shadow: var(--shadow-small);
+    }
+
+    .manager-management-idea-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .manager-management-idea-top > div > span {
+      display: block;
+      color: var(--purple);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+    }
+
+    .manager-management-idea-top h3 {
+      margin-top: 4px;
+      font-size: 13px;
+    }
+
+    .manager-management-idea > p {
+      margin-top: 9px;
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    .manager-management-solution {
+      margin-top: 10px;
+      padding: 11px;
+      border-radius: 13px;
+      background: var(--surface-soft);
+    }
+
+    .manager-management-solution strong {
+      display: block;
+      font-size: 9px;
+    }
+
+    .manager-management-solution p {
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 8px;
+      line-height: 1.45;
+    }
+
+    .manager-management-idea-actions {
+      display: grid;
+      grid-template-columns:
+        repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 11px;
+    }
+
+    .manager-management-idea-actions button {
+      min-height: 36px;
+      padding: 7px 4px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: white;
+      color: var(--primary-dark);
+      font-size: 7px;
+      font-weight: 900;
+    }
+
+    .manager-management-info {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 17px;
+      padding: 13px;
+      border: 1px solid #d8d4f4;
+      border-radius: 16px;
+      background: var(--purple-bg);
+    }
+
+    .manager-management-info > div:first-child {
+      flex: 0 0 auto;
+      font-size: 19px;
+    }
+
+    .manager-management-info strong {
+      display: block;
+      color: var(--purple);
+      font-size: 10px;
+    }
+
+    .manager-management-info p {
+      margin-top: 4px;
+      color: #68648d;
+      font-size: 9px;
+      line-height: 1.5;
+    }
     
     .manager-kpi-grid {
       display: grid;
@@ -6879,7 +7469,7 @@
           <button
             id="managerHomeUrgentCard"
             class="manager-home-notice"
-            onclick="showManagerNavigationMessage('managerNavOrders', 'Orders')"
+            onclick="openManagerOrders('new')"
           >
 
             <div class="manager-home-notice-icon manager-home-icon-red">
@@ -6942,7 +7532,7 @@
 
           <button
             class="manager-home-notice"
-            onclick="showManagerNavigationMessage('managerNavManagement', 'Beheer')"
+            onclick="openManagerManagement()"
           >
 
             <div class="manager-home-notice-icon manager-home-icon-purple">
@@ -7046,7 +7636,7 @@
 
           <button
             class="manager-home-action"
-            onclick="showManagerNavigationMessage('managerNavOrders', 'Orders')"
+            onclick="openManagerOrders()"
           >
 
             <div class="manager-home-action-icon">
@@ -7065,7 +7655,7 @@
 
           <button
             class="manager-home-action"
-            onclick="showManagerNavigationMessage('managerNavManagement', 'Beheer')"
+            onclick="openManagerManagement()"
           >
 
             <div class="manager-home-action-icon">
@@ -7933,6 +8523,491 @@
       </div>
 
     </section>
+        <!-- MANAGER ORDERS -->
+
+    <section
+      id="managerOrdersScreen"
+      class="screen"
+    >
+
+      <header class="page-header dashboard-logo-header">
+
+        <button
+          class="dashboard-back-button"
+          onclick="openManagerHome()"
+          aria-label="Terug naar Manager Home"
+        >
+          ←
+        </button>
+
+        <button
+          class="dashboard-logo-button"
+          onclick="openManagerOrders()"
+          aria-label="Manager Orders herladen"
+        >
+
+          <img
+            class="dashboard-logo"
+            src="avt-ready-logo.PNG"
+            alt="AVT Ready"
+          >
+
+        </button>
+
+      </header>
+
+      <div class="page-content">
+
+        <article class="manager-orders-hero">
+
+          <div class="manager-orders-hero-top">
+
+            <div>
+
+              <span class="tag tag-blue">
+                Orderbeheer
+              </span>
+
+              <h1>
+                Alle orders
+              </h1>
+
+              <p>
+                Bekijk de actuele status,
+                prioriteit en werkverdeling
+                van alle picklijsten.
+              </p>
+
+            </div>
+
+            <button
+              class="manager-performance-refresh"
+              onclick="renderManagerOrders(); showToast('Orderoverzicht bijgewerkt.')"
+              aria-label="Orders vernieuwen"
+            >
+              ↻
+            </button>
+
+          </div>
+
+          <div class="manager-orders-summary">
+
+            <div>
+
+              <strong id="managerOrdersTotal">
+                0
+              </strong>
+
+              <span>
+                Totaal
+              </span>
+
+            </div>
+
+            <div>
+
+              <strong id="managerOrdersNew">
+                0
+              </strong>
+
+              <span>
+                Nieuw
+              </span>
+
+            </div>
+
+            <div>
+
+              <strong id="managerOrdersActive">
+                0
+              </strong>
+
+              <span>
+                Bezig
+              </span>
+
+            </div>
+
+            <div>
+
+              <strong id="managerOrdersCompleted">
+                0
+              </strong>
+
+              <span>
+                Afgerond
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <div class="section-heading">
+
+          <h2>
+            Orderoverzicht
+          </h2>
+
+          <button
+            onclick="setManagerOrderFilter('all')"
+          >
+            Alles tonen
+          </button>
+
+        </div>
+
+        <div class="manager-order-filter-row">
+
+          <button
+            id="managerOrderFilter-all"
+            class="manager-order-filter active"
+            onclick="setManagerOrderFilter('all')"
+          >
+            Alles
+          </button>
+
+          <button
+            id="managerOrderFilter-new"
+            class="manager-order-filter"
+            onclick="setManagerOrderFilter('new')"
+          >
+            Nieuw
+          </button>
+
+          <button
+            id="managerOrderFilter-accepted"
+            class="manager-order-filter"
+            onclick="setManagerOrderFilter('accepted')"
+          >
+            Geaccepteerd
+          </button>
+
+          <button
+            id="managerOrderFilter-active"
+            class="manager-order-filter"
+            onclick="setManagerOrderFilter('active')"
+          >
+            Bezig
+          </button>
+
+          <button
+            id="managerOrderFilter-completed"
+            class="manager-order-filter"
+            onclick="setManagerOrderFilter('completed')"
+          >
+            Afgerond
+          </button>
+
+        </div>
+
+        <div
+          id="managerOrderOverviewList"
+          class="manager-full-order-list"
+        ></div>
+
+        <div
+          id="managerOrderEmptyState"
+          class="manager-order-empty hidden"
+        >
+
+          <div>
+            📦
+          </div>
+
+          <h2>
+            Geen orders gevonden
+          </h2>
+
+          <p>
+            Binnen deze status zijn momenteel
+            geen orders zichtbaar.
+          </p>
+
+          <button
+            class="secondary-button"
+            onclick="setManagerOrderFilter('all')"
+          >
+            Toon alle orders
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- MANAGER BEHEER -->
+
+    <section
+      id="managerManagementScreen"
+      class="screen"
+    >
+
+      <header class="page-header dashboard-logo-header">
+
+        <button
+          class="dashboard-back-button"
+          onclick="openManagerHome()"
+          aria-label="Terug naar Manager Home"
+        >
+          ←
+        </button>
+
+        <button
+          class="dashboard-logo-button"
+          onclick="openManagerManagement()"
+          aria-label="Beheer herladen"
+        >
+
+          <img
+            class="dashboard-logo"
+            src="avt-ready-logo.PNG"
+            alt="AVT Ready"
+          >
+
+        </button>
+
+      </header>
+
+      <div class="page-content">
+
+        <article class="manager-management-hero">
+
+          <div class="manager-management-hero-top">
+
+            <div>
+
+              <span class="tag tag-purple">
+                Manageromgeving
+              </span>
+
+              <h1>
+                Beheer
+              </h1>
+
+              <p>
+                Beoordeel verbeterideeën en
+                beheer de instellingen van
+                de AVT Ready-demo.
+              </p>
+
+            </div>
+
+            <button
+              class="manager-performance-refresh"
+              onclick="renderManagerManagement(); showToast('Beheer bijgewerkt.')"
+              aria-label="Beheer vernieuwen"
+            >
+              ↻
+            </button>
+
+          </div>
+
+          <div class="manager-management-summary">
+
+            <div>
+
+              <strong id="managerManagementIdeaTotal">
+                0
+              </strong>
+
+              <span>
+                Ideeën totaal
+              </span>
+
+            </div>
+
+            <div>
+
+              <strong id="managerManagementIdeaNew">
+                0
+              </strong>
+
+              <span>
+                Nieuw
+              </span>
+
+            </div>
+
+            <div>
+
+              <strong id="managerManagementIdeaProgress">
+                0
+              </strong>
+
+              <span>
+                In behandeling
+              </span>
+
+            </div>
+
+            <div>
+
+              <strong id="managerManagementIdeaCompleted">
+                0
+              </strong>
+
+              <span>
+                Afgerond
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <div class="section-heading">
+
+          <h2>
+            Manageracties
+          </h2>
+
+        </div>
+
+        <div class="manager-management-actions">
+
+          <button
+            onclick="openManagerOrders('new')"
+          >
+
+            <div>
+              📦
+            </div>
+
+            <strong>
+              Nieuwe orders bekijken
+            </strong>
+
+            <span>
+              Controleer openstaande picklijsten
+            </span>
+
+          </button>
+
+          <button
+            onclick="openManagerEmployees()"
+          >
+
+            <div>
+              👥
+            </div>
+
+            <strong>
+              Teamstatus bekijken
+            </strong>
+
+            <span>
+              Open het medewerkersoverzicht
+            </span>
+
+          </button>
+
+          <button
+            onclick="renderManagerManagement(); showToast('Verbeterideeën bijgewerkt.')"
+          >
+
+            <div>
+              💡
+            </div>
+
+            <strong>
+              Ideeën vernieuwen
+            </strong>
+
+            <span>
+              Laad de actuele idee-statussen
+            </span>
+
+          </button>
+
+          <button
+            onclick="openManagerResetConfirmation()"
+          >
+
+            <div>
+              ↺
+            </div>
+
+            <strong>
+              Demo resetten
+            </strong>
+
+            <span>
+              Zet de prototypegegevens terug
+            </span>
+
+          </button>
+
+        </div>
+
+        <div class="section-heading">
+
+          <h2>
+            Verbeterideeën beheren
+          </h2>
+
+          <button
+            onclick="renderManagerIdeaManagement()"
+          >
+            Vernieuwen
+          </button>
+
+        </div>
+
+        <div
+          id="managerManagementIdeaList"
+          class="manager-management-idea-list"
+        ></div>
+
+        <div
+          id="managerManagementIdeaEmpty"
+          class="manager-management-empty hidden"
+        >
+
+          <div>
+            💡
+          </div>
+
+          <h2>
+            Nog geen verbeterideeën
+          </h2>
+
+          <p>
+            Nieuwe ideeën van medewerkers
+            verschijnen hier automatisch.
+          </p>
+
+        </div>
+
+        <article class="manager-management-info">
+
+          <div>
+            🔒
+          </div>
+
+          <div>
+
+            <strong>
+              Prototypebeheer
+            </strong>
+
+            <p>
+              Deze versie gebruikt lokale
+              demonstratiegegevens. Een latere
+              backend bepaalt welke manager
+              welke instellingen mag wijzigen.
+            </p>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
     
   <!-- NAVIGATIE ORDERPICKER -->
 
@@ -8065,7 +9140,7 @@
   <button
     id="managerNavOrders"
     class="nav-item"
-    onclick="showManagerNavigationMessage('managerNavOrders', 'Orders')"
+        onclick="openManagerOrders()"
   >
 
     <div class="nav-icon-wrap">
@@ -8081,7 +9156,7 @@
   <button
     id="managerNavManagement"
     class="nav-item"
-    onclick="showManagerNavigationMessage('managerNavManagement', 'Beheer')"
+        onclick="openManagerManagement()"
   >
 
     <div class="nav-icon-wrap">
@@ -9650,6 +10725,896 @@ function openManagerEmployeeDetail(
       onclick="closeModal()"
     >
       Sluiten
+    </button>
+  `);
+}
+  let managerOrderFilter = "all";
+
+function openManagerOrders(
+  requestedFilter
+) {
+  if (requestedFilter) {
+    managerOrderFilter =
+      requestedFilter;
+  }
+
+  openScreen(
+    "managerOrdersScreen"
+  );
+
+  setManagerNavigationActive(
+    "managerNavOrders"
+  );
+
+  updateManagerOrderFilters();
+  renderManagerOrders();
+}
+
+function setManagerOrderFilter(
+  filterName
+) {
+  managerOrderFilter =
+    filterName;
+
+  updateManagerOrderFilters();
+  renderManagerOrders();
+}
+
+function updateManagerOrderFilters() {
+  document
+    .querySelectorAll(
+      ".manager-order-filter"
+    )
+    .forEach(function(button) {
+      button.classList.remove(
+        "active"
+      );
+    });
+
+  const selectedFilter =
+    document.getElementById(
+      "managerOrderFilter-" +
+      managerOrderFilter
+    );
+
+  if (selectedFilter) {
+    selectedFilter.classList.add(
+      "active"
+    );
+  }
+}
+
+function getManagerOrderStatus(order) {
+  if (
+    order.received ===
+    "Volledig gepickt"
+  ) {
+    return {
+      key: "completed",
+      label: "Afgerond",
+      className: "tag-green",
+      description:
+        "Alle artikelen zijn gepickt"
+    };
+  }
+
+  if (
+    order.id ===
+    appState.currentPickingOrderId
+  ) {
+    return {
+      key: "active",
+      label: "Bezig",
+      className: "tag-purple",
+      description:
+        "Order wordt momenteel gepickt"
+    };
+  }
+
+  if (
+    order.status === "accepted"
+  ) {
+    return {
+      key: "accepted",
+      label: "Geaccepteerd",
+      className: "tag-orange",
+      description:
+        "Klaar om gestart te worden"
+    };
+  }
+
+  return {
+    key: "new",
+    label: "Nieuw",
+    className: "tag-blue",
+    description:
+      "Wacht op acceptatie"
+  };
+}
+
+function renderManagerOrders() {
+  const orderList =
+    document.getElementById(
+      "managerOrderOverviewList"
+    );
+
+  const emptyState =
+    document.getElementById(
+      "managerOrderEmptyState"
+    );
+
+  if (
+    !orderList ||
+    !emptyState
+  ) {
+    return;
+  }
+
+  const orders =
+    Array.isArray(appState.orders)
+      ? appState.orders
+      : [];
+
+  const visibleOrders =
+    orders.filter(function(order) {
+      const status =
+        getManagerOrderStatus(order);
+
+      if (
+        managerOrderFilter === "all"
+      ) {
+        return true;
+      }
+
+      return (
+        status.key ===
+        managerOrderFilter
+      );
+    });
+
+  const newOrders =
+    orders.filter(function(order) {
+      return (
+        getManagerOrderStatus(order)
+          .key === "new"
+      );
+    }).length;
+
+  const activeOrders =
+    orders.filter(function(order) {
+      return (
+        getManagerOrderStatus(order)
+          .key === "active"
+      );
+    }).length;
+
+  const completedOrders =
+    orders.filter(function(order) {
+      return (
+        getManagerOrderStatus(order)
+          .key === "completed"
+      );
+    }).length;
+
+  setManagerOrderText(
+    "managerOrdersTotal",
+    orders.length
+  );
+
+  setManagerOrderText(
+    "managerOrdersNew",
+    newOrders
+  );
+
+  setManagerOrderText(
+    "managerOrdersActive",
+    activeOrders
+  );
+
+  setManagerOrderText(
+    "managerOrdersCompleted",
+    completedOrders
+  );
+
+  orderList.innerHTML = "";
+
+  emptyState.classList.toggle(
+    "hidden",
+    visibleOrders.length !== 0
+  );
+
+  visibleOrders.forEach(function(
+    order
+  ) {
+    const status =
+      getManagerOrderStatus(order);
+
+    const orderItems =
+      orderItemsByOrderId[
+        order.id
+      ] || [];
+
+    const orderCard =
+      document.createElement(
+        "article"
+      );
+
+    orderCard.className =
+      "manager-full-order-card";
+
+    orderCard.innerHTML = `
+      <div class="manager-full-order-top">
+
+        <div>
+
+          <span class="order-label">
+            PICKLIJST
+          </span>
+
+          <h2>
+            ${escapeHTML(
+              order.orderNumber
+            )}
+          </h2>
+
+        </div>
+
+        <span class="tag ${getOrderPriorityClass(
+          order.priority
+        )}">
+          ${escapeHTML(
+            order.priority
+          )}
+        </span>
+
+      </div>
+
+      <div class="manager-full-order-status">
+
+        <span class="tag ${status.className}">
+          <span class="status-dot"></span>
+          ${escapeHTML(status.label)}
+        </span>
+
+        <span>
+          ${escapeHTML(
+            status.description
+          )}
+        </span>
+
+      </div>
+
+      <div class="manager-full-order-grid">
+
+        <div>
+
+          <strong>
+            ${orderItems.length}
+          </strong>
+
+          <span>
+            Artikelen
+          </span>
+
+        </div>
+
+        <div>
+
+          <strong>
+            ${order.estimatedMinutes} min
+          </strong>
+
+          <span>
+            Geschatte tijd
+          </span>
+
+        </div>
+
+        <div>
+
+          <strong>
+            ${
+              order.managerAssignedTo ||
+              (
+                status.key === "active"
+                  ? "Kevin"
+                  : "—"
+              )
+            }
+          </strong>
+
+          <span>
+            Toegewezen aan
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="manager-full-order-location">
+
+        <span>
+          📍
+        </span>
+
+        <div>
+
+          <strong>
+            Startlocatie
+          </strong>
+
+          <p>
+            ${escapeHTML(
+              order.startLocation
+            )}
+          </p>
+
+        </div>
+
+      </div>
+
+      <button
+        class="manager-full-order-button"
+        onclick="openManagerOrderDetail('${order.id}')"
+      >
+        Orderdetails bekijken
+        <span>→</span>
+      </button>
+    `;
+
+    orderList.appendChild(
+      orderCard
+    );
+  });
+}
+
+function setManagerOrderText(
+  elementId,
+  value
+) {
+  const element =
+    document.getElementById(
+      elementId
+    );
+
+  if (element) {
+    element.textContent =
+      value;
+  }
+}
+
+function openManagerOrderDetail(
+  orderId
+) {
+  const order =
+    appState.orders.find(function(
+      item
+    ) {
+      return item.id === orderId;
+    });
+
+  if (!order) {
+    showToast(
+      "De order kon niet worden gevonden."
+    );
+
+    return;
+  }
+
+  const status =
+    getManagerOrderStatus(order);
+
+  const orderItems =
+    orderItemsByOrderId[
+      order.id
+    ] || [];
+
+  const itemsHTML =
+    orderItems
+      .map(function(
+        item,
+        index
+      ) {
+        return `
+          <div class="manager-order-modal-item">
+
+            <span>
+              ${index + 1}
+            </span>
+
+            <div>
+
+              <strong>
+                ${escapeHTML(
+                  item.name
+                )}
+              </strong>
+
+              <p>
+                ART.
+                ${escapeHTML(
+                  item.articleNumber
+                )}
+                ·
+                ${item.quantity} stuks
+              </p>
+
+              <small>
+                📍
+                ${escapeHTML(
+                  item.location
+                )}
+              </small>
+
+            </div>
+
+          </div>
+        `;
+      })
+      .join("");
+
+  openModal(`
+    <div class="manager-order-modal-heading">
+
+      <div>
+
+        <span>
+          PICKLIJST
+        </span>
+
+        <h2>
+          ${escapeHTML(
+            order.orderNumber
+          )}
+        </h2>
+
+      </div>
+
+      <span class="tag ${getOrderPriorityClass(
+        order.priority
+      )}">
+        ${escapeHTML(
+          order.priority
+        )}
+      </span>
+
+    </div>
+
+    <div class="manager-order-modal-status">
+
+      <span class="tag ${status.className}">
+        <span class="status-dot"></span>
+        ${escapeHTML(status.label)}
+      </span>
+
+      <span>
+        ${escapeHTML(
+          status.description
+        )}
+      </span>
+
+    </div>
+
+    <div class="manager-order-modal-summary">
+
+      <div>
+
+        <strong>
+          ${orderItems.length}
+        </strong>
+
+        <span>
+          Artikelen
+        </span>
+
+      </div>
+
+      <div>
+
+        <strong>
+          ${order.estimatedMinutes} min
+        </strong>
+
+        <span>
+          Geschatte tijd
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="manager-order-modal-location">
+
+      <span>
+        📍
+      </span>
+
+      <div>
+
+        <strong>
+          Startlocatie
+        </strong>
+
+        <p>
+          ${escapeHTML(
+            order.startLocation
+          )}
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="manager-order-modal-list">
+      ${itemsHTML}
+    </div>
+
+    ${
+      status.key === "new"
+        ? `
+          <button
+            class="primary-button"
+            style="margin-top:16px;"
+            onclick="assignManagerOrder('${order.id}', 'Kevin Jansen')"
+          >
+            Toewijzen aan Kevin
+          </button>
+        `
+        : ""
+    }
+
+    <button
+      class="secondary-button"
+      style="margin-top:9px;"
+      onclick="closeModal()"
+    >
+      Sluiten
+    </button>
+  `);
+}
+
+function assignManagerOrder(
+  orderId,
+  employeeName
+) {
+  const order =
+    appState.orders.find(function(
+      item
+    ) {
+      return item.id === orderId;
+    });
+
+  if (!order) {
+    return;
+  }
+
+  order.managerAssignedTo =
+    employeeName;
+
+  addManagerActivity({
+    type: "assigned",
+    icon: "👤",
+    title: "Order toegewezen",
+    description:
+      order.orderNumber +
+      " is toegewezen aan " +
+      employeeName +
+      ".",
+    tag: "Toegewezen",
+    tagClass: "tag-blue"
+  });
+
+  saveState();
+  closeModal();
+  renderManagerOrders();
+
+  showToast(
+    order.orderNumber +
+    " is toegewezen aan " +
+    employeeName +
+    "."
+  );
+}
+
+function openManagerManagement() {
+  openScreen(
+    "managerManagementScreen"
+  );
+
+  setManagerNavigationActive(
+    "managerNavManagement"
+  );
+
+  renderManagerManagement();
+}
+
+function renderManagerManagement() {
+  const ideas =
+    Array.isArray(appState.ideas)
+      ? appState.ideas
+      : [];
+
+  const newIdeas =
+    ideas.filter(function(idea) {
+      return (
+        idea.status === "Nieuw"
+      );
+    }).length;
+
+  const inProgressIdeas =
+    ideas.filter(function(idea) {
+      return (
+        idea.status ===
+          "In behandeling" ||
+        idea.status === "In test"
+      );
+    }).length;
+
+  const completedIdeas =
+    ideas.filter(function(idea) {
+      return (
+        idea.status ===
+        "Afgerond"
+      );
+    }).length;
+
+  setManagerManagementText(
+    "managerManagementIdeaTotal",
+    ideas.length
+  );
+
+  setManagerManagementText(
+    "managerManagementIdeaNew",
+    newIdeas
+  );
+
+  setManagerManagementText(
+    "managerManagementIdeaProgress",
+    inProgressIdeas
+  );
+
+  setManagerManagementText(
+    "managerManagementIdeaCompleted",
+    completedIdeas
+  );
+
+  renderManagerIdeaManagement();
+}
+
+function setManagerManagementText(
+  elementId,
+  value
+) {
+  const element =
+    document.getElementById(
+      elementId
+    );
+
+  if (element) {
+    element.textContent =
+      value;
+  }
+}
+
+function renderManagerIdeaManagement() {
+  const ideaList =
+    document.getElementById(
+      "managerManagementIdeaList"
+    );
+
+  const emptyState =
+    document.getElementById(
+      "managerManagementIdeaEmpty"
+    );
+
+  if (
+    !ideaList ||
+    !emptyState
+  ) {
+    return;
+  }
+
+  const ideas =
+    Array.isArray(appState.ideas)
+      ? appState.ideas
+      : [];
+
+  ideaList.innerHTML = "";
+
+  emptyState.classList.toggle(
+    "hidden",
+    ideas.length !== 0
+  );
+
+  ideas.forEach(function(
+    idea,
+    index
+  ) {
+    const ideaCard =
+      document.createElement(
+        "article"
+      );
+
+    ideaCard.className =
+      "manager-management-idea";
+
+    ideaCard.innerHTML = `
+      <div class="manager-management-idea-top">
+
+        <div>
+
+          <span>
+            ${escapeHTML(
+              idea.category ||
+              "Overig"
+            )}
+          </span>
+
+          <h3>
+            ${escapeHTML(
+              idea.title
+            )}
+          </h3>
+
+        </div>
+
+        <span class="tag ${getManagerIdeaStatusClass(
+          idea.status
+        )}">
+          ${escapeHTML(
+            idea.status ||
+            "Nieuw"
+          )}
+        </span>
+
+      </div>
+
+      <p>
+        ${escapeHTML(
+          idea.problem ||
+          "Geen probleembeschrijving toegevoegd."
+        )}
+      </p>
+
+      <div class="manager-management-solution">
+
+        <strong>
+          Voorgestelde oplossing
+        </strong>
+
+        <p>
+          ${escapeHTML(
+            idea.solution ||
+            "Nog geen oplossing toegevoegd."
+          )}
+        </p>
+
+      </div>
+
+      <div class="manager-management-idea-actions">
+
+        <button
+          onclick="updateManagerIdeaStatus(${index}, 'In behandeling')"
+        >
+          Behandelen
+        </button>
+
+        <button
+          onclick="updateManagerIdeaStatus(${index}, 'In test')"
+        >
+          Testen
+        </button>
+
+        <button
+          onclick="updateManagerIdeaStatus(${index}, 'Afgerond')"
+        >
+          Afronden
+        </button>
+
+      </div>
+    `;
+
+    ideaList.appendChild(
+      ideaCard
+    );
+  });
+}
+
+function getManagerIdeaStatusClass(
+  status
+) {
+  if (status === "Afgerond") {
+    return "tag-green";
+  }
+
+  if (status === "In test") {
+    return "tag-purple";
+  }
+
+  if (
+    status ===
+    "In behandeling"
+  ) {
+    return "tag-orange";
+  }
+
+  return "tag-blue";
+}
+
+function updateManagerIdeaStatus(
+  ideaIndex,
+  newStatus
+) {
+  if (
+    !appState.ideas[
+      ideaIndex
+    ]
+  ) {
+    return;
+  }
+
+  const selectedIdea =
+    appState.ideas[
+      ideaIndex
+    ];
+
+  selectedIdea.status =
+    newStatus;
+
+  addManagerActivity({
+    type: "idea-status",
+    icon: "💡",
+    title:
+      "Status verbeteridee gewijzigd",
+    description:
+      "‘" +
+      selectedIdea.title +
+      "’ heeft nu de status " +
+      newStatus +
+      ".",
+    tag: newStatus,
+    tagClass:
+      getManagerIdeaStatusClass(
+        newStatus
+      )
+  });
+
+  saveState();
+  renderManagerManagement();
+  renderManagerHome();
+
+  showToast(
+    "Status gewijzigd naar " +
+    newStatus +
+    "."
+  );
+}
+
+function openManagerResetConfirmation() {
+  openModal(`
+    <h2>Demo opnieuw instellen?</h2>
+
+    <p>
+      Alle lokaal opgeslagen voortgang,
+      orders, foutscans en activiteiten
+      worden teruggezet naar de
+      oorspronkelijke demogegevens.
+    </p>
+
+    <button
+      class="danger-button"
+      style="margin-top:16px;"
+      onclick="resetDemo()"
+    >
+      Demo opnieuw instellen
+    </button>
+
+    <button
+      class="secondary-button"
+      style="margin-top:9px;"
+      onclick="closeModal()"
+    >
+      Annuleren
     </button>
   `);
 }
