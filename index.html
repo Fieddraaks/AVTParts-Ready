@@ -3132,6 +3132,464 @@
       padding: 5px 8px;
       font-size: 8px;
     }
+        .manager-employees-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 19px;
+      border: 1px solid #c7e5f2;
+      border-radius: var(--radius-large);
+      background:
+        radial-gradient(
+          circle at 94% 4%,
+          rgba(255, 255, 255, 0.96),
+          transparent 36%
+        ),
+        linear-gradient(
+          145deg,
+          #dff5ff,
+          #f9fdff
+        );
+      box-shadow: var(--shadow-medium);
+    }
+
+    .manager-employees-hero::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      bottom: -100px;
+      width: 205px;
+      height: 205px;
+      border-radius: 50%;
+      background:
+        rgba(17, 141, 194, 0.07);
+    }
+
+    .manager-employees-hero-top {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .manager-employees-hero-top h1 {
+      margin-top: 10px;
+      font-size: 24px;
+      line-height: 1.15;
+      letter-spacing: -0.45px;
+    }
+
+    .manager-employees-hero-top p {
+      max-width: 270px;
+      margin-top: 6px;
+      color: var(--text-soft);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .manager-employees-summary {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns:
+        repeat(4, 1fr);
+      gap: 7px;
+      margin-top: 18px;
+    }
+
+    .manager-employees-summary > div {
+      padding: 12px 5px;
+      border: 1px solid
+        rgba(190, 220, 233, 0.9);
+      border-radius: 14px;
+      background:
+        rgba(255, 255, 255, 0.86);
+      text-align: center;
+    }
+
+    .manager-employees-summary strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .manager-employees-summary span {
+      display: block;
+      margin-top: 5px;
+      color: var(--text-soft);
+      font-size: 7px;
+      font-weight: 800;
+    }
+
+    .manager-employee-filter-row {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 14px;
+      padding: 4px;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: white;
+      box-shadow: var(--shadow-small);
+    }
+
+    .manager-employee-filter {
+      min-height: 38px;
+      flex: 1 0 auto;
+      padding: 9px 12px;
+      border: none;
+      border-radius: 11px;
+      background: transparent;
+      color: var(--text-soft);
+      font-size: 9px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .manager-employee-filter.active {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    .manager-employee-overview-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .manager-employee-card {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-large);
+      background: white;
+      box-shadow: var(--shadow-small);
+    }
+
+    .manager-employee-card-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .manager-employee-avatar {
+      width: 45px;
+      height: 45px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border: 3px solid var(--primary-light);
+      border-radius: 50%;
+      background: white;
+      color: var(--primary-dark);
+      font-size: 12px;
+      font-weight: 900;
+      box-shadow: var(--shadow-small);
+    }
+
+    .manager-employee-identity {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .manager-employee-identity strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .manager-employee-identity span {
+      display: block;
+      margin-top: 4px;
+      overflow: hidden;
+      color: var(--text-soft);
+      font-size: 8px;
+      line-height: 1.4;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .manager-employee-card-top > .tag {
+      flex: 0 0 auto;
+      min-height: 25px;
+      padding: 5px 8px;
+      font-size: 8px;
+    }
+
+    .manager-employee-tag-offline {
+      background: #edf1f3;
+      color: #71838d;
+    }
+
+    .manager-employee-current {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--surface-blue);
+    }
+
+    .manager-employee-current-icon {
+      width: 35px;
+      height: 35px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: white;
+      font-size: 17px;
+      box-shadow: var(--shadow-small);
+    }
+
+    .manager-employee-current > div:last-child {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .manager-employee-current span {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: 0.7px;
+    }
+
+    .manager-employee-current strong {
+      display: block;
+      margin-top: 4px;
+      font-size: 10px;
+      line-height: 1.4;
+    }
+
+    .manager-employee-current p {
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 8px;
+    }
+
+    .manager-employee-stat-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(3, 1fr);
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .manager-employee-stat-grid > div {
+      padding: 11px 5px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: var(--surface-soft);
+      text-align: center;
+    }
+
+    .manager-employee-stat-grid strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .manager-employee-stat-grid span {
+      display: block;
+      margin-top: 5px;
+      color: var(--text-soft);
+      font-size: 7px;
+      line-height: 1.3;
+    }
+
+    .manager-employee-detail-button {
+      width: 100%;
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 12px;
+      border: 1px solid var(--border-dark);
+      border-radius: 13px;
+      background: white;
+      color: var(--primary-dark);
+      font-size: 9px;
+      font-weight: 900;
+    }
+
+    .manager-employee-detail-button:active {
+      transform: scale(0.98);
+    }
+
+    .manager-employee-empty {
+      padding: 30px 18px;
+      border: 1px dashed var(--border-dark);
+      border-radius: var(--radius-large);
+      background: white;
+      text-align: center;
+    }
+
+    .manager-employee-empty > div {
+      font-size: 43px;
+    }
+
+    .manager-employee-empty h2 {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .manager-employee-empty p {
+      max-width: 270px;
+      margin: 6px auto 16px;
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    .manager-employees-information {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 13px;
+      border: 1px solid #cde8f5;
+      border-radius: 16px;
+      background: var(--surface-blue);
+    }
+
+    .manager-employees-information > div {
+      flex: 0 0 auto;
+      font-size: 18px;
+    }
+
+    .manager-employees-information p {
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.5;
+    }
+
+    .manager-employee-modal-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .manager-employee-modal-avatar {
+      width: 55px;
+      height: 55px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border: 4px solid var(--primary-light);
+      border-radius: 50%;
+      background: white;
+      color: var(--primary-dark);
+      font-size: 14px;
+      font-weight: 900;
+      box-shadow: var(--shadow-small);
+    }
+
+    .manager-employee-modal-header > div:last-child {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .manager-employee-modal-header span {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: 0.7px;
+    }
+
+    .manager-employee-modal-header h2 {
+      margin-top: 4px;
+    }
+
+    .manager-employee-modal-header p {
+      margin-top: 3px;
+      color: var(--text-soft);
+      font-size: 9px;
+    }
+
+    .manager-employee-modal-status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 15px;
+      padding: 11px;
+      border-radius: 14px;
+      background: var(--surface-blue);
+    }
+
+    .manager-employee-modal-status > span:last-child {
+      flex: 1;
+      color: var(--text-soft);
+      font-size: 9px;
+      line-height: 1.4;
+    }
+
+    .manager-employee-modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .manager-employee-modal-grid > div {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface-soft);
+    }
+
+    .manager-employee-modal-grid strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 18px;
+    }
+
+    .manager-employee-modal-grid span {
+      display: block;
+      margin-top: 4px;
+      color: var(--text-soft);
+      font-size: 8px;
+    }
+
+    .manager-employee-progress {
+      margin-top: 14px;
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .manager-employee-progress > div:first-child {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 9px;
+    }
+
+    .manager-employee-detail-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 14px;
+      background: var(--warning-bg);
+    }
+
+    .manager-employee-detail-note span {
+      flex: 0 0 auto;
+      font-size: 16px;
+    }
+
+    .manager-employee-detail-note p {
+      color: #765a29;
+      font-size: 9px;
+      line-height: 1.5;
+    }
     
     .manager-kpi-grid {
       display: grid;
@@ -6569,7 +7027,7 @@
 
           <button
             class="manager-home-action"
-            onclick="showManagerNavigationMessage('managerNavEmployees', 'Medewerkers')"
+                        onclick="openManagerEmployees()"
           >
 
             <div class="manager-home-action-icon">
@@ -7256,7 +7714,226 @@
       </div>
 
     </section>
+    <!-- MANAGER MEDEWERKERS -->
 
+    <section
+      id="managerEmployeesScreen"
+      class="screen"
+    >
+
+      <header class="page-header dashboard-logo-header">
+
+        <button
+          class="dashboard-back-button"
+          onclick="openManagerHome()"
+          aria-label="Terug naar Manager Home"
+        >
+          ←
+        </button>
+
+        <button
+          class="dashboard-logo-button"
+          onclick="openManagerEmployees()"
+          aria-label="Medewerkersoverzicht herladen"
+        >
+
+          <img
+            class="dashboard-logo"
+            src="avt-ready-logo.PNG"
+            alt="AVT Ready"
+          >
+
+        </button>
+
+      </header>
+
+      <div class="page-content">
+
+        <article class="manager-employees-hero">
+
+          <div class="manager-employees-hero-top">
+
+            <div>
+
+              <span class="tag tag-blue">
+                Teamoverzicht
+              </span>
+
+              <h1>
+                Medewerkers
+              </h1>
+
+              <p>
+                Bekijk de actuele inzet,
+                werkstatus en voortgang van het team.
+              </p>
+
+            </div>
+
+            <button
+              class="manager-performance-refresh"
+              onclick="renderManagerEmployees(); showToast('Medewerkersoverzicht bijgewerkt.')"
+              aria-label="Medewerkers vernieuwen"
+            >
+              ↻
+            </button>
+
+          </div>
+
+          <div class="manager-employees-summary">
+
+            <div>
+
+              <strong id="managerEmployeeTotal">
+                0
+              </strong>
+
+              <span>
+                Totaal
+              </span>
+
+            </div>
+
+            <div>
+
+              <strong id="managerEmployeeActive">
+                0
+              </strong>
+
+              <span>
+                Actief
+              </span>
+
+            </div>
+
+            <div>
+
+              <strong id="managerEmployeeAvailable">
+                0
+              </strong>
+
+              <span>
+                Beschikbaar
+              </span>
+
+            </div>
+
+            <div>
+
+              <strong id="managerEmployeeBreak">
+                0
+              </strong>
+
+              <span>
+                Pauze
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <div class="section-heading">
+
+          <h2>
+            Teamstatus
+          </h2>
+
+          <button
+            onclick="setManagerEmployeeFilter('all')"
+          >
+            Alles tonen
+          </button>
+
+        </div>
+
+        <div class="manager-employee-filter-row">
+
+          <button
+            id="managerEmployeeFilter-all"
+            class="manager-employee-filter active"
+            onclick="setManagerEmployeeFilter('all')"
+          >
+            Iedereen
+          </button>
+
+          <button
+            id="managerEmployeeFilter-active"
+            class="manager-employee-filter"
+            onclick="setManagerEmployeeFilter('active')"
+          >
+            Actief
+          </button>
+
+          <button
+            id="managerEmployeeFilter-available"
+            class="manager-employee-filter"
+            onclick="setManagerEmployeeFilter('available')"
+          >
+            Beschikbaar
+          </button>
+
+          <button
+            id="managerEmployeeFilter-break"
+            class="manager-employee-filter"
+            onclick="setManagerEmployeeFilter('break')"
+          >
+            Pauze
+          </button>
+
+        </div>
+
+        <div
+          id="managerEmployeeOverviewList"
+          class="manager-employee-overview-list"
+        ></div>
+
+        <div
+          id="managerEmployeeEmptyState"
+          class="manager-employee-empty hidden"
+        >
+
+          <div>
+            👥
+          </div>
+
+          <h2>
+            Geen medewerkers gevonden
+          </h2>
+
+          <p>
+            Binnen deze status zijn momenteel
+            geen medewerkers zichtbaar.
+          </p>
+
+          <button
+            class="secondary-button"
+            onclick="setManagerEmployeeFilter('all')"
+          >
+            Toon alle medewerkers
+          </button>
+
+        </div>
+
+        <article class="manager-employees-information">
+
+          <div>
+            ℹ️
+          </div>
+
+          <p>
+            De gegevens in dit prototype zijn
+            demonstratiegegevens. Het overzicht is bedoeld
+            voor coaching, ondersteuning en werkverdeling.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+    
   <!-- NAVIGATIE ORDERPICKER -->
 
 <nav
@@ -7372,7 +8049,7 @@
   <button
     id="managerNavEmployees"
     class="nav-item"
-    onclick="showManagerNavigationMessage('managerNavEmployees', 'Medewerkers')"
+        onclick="openManagerEmployees()"
   >
 
     <div class="nav-icon-wrap">
@@ -8368,6 +9045,613 @@ function openManagerDashboard(
   renderManagerPerformanceKpis();
   renderManagerOrderStatus();
   renderManagerActivityFeed();
+}
+  let managerEmployeeFilter = "all";
+
+const managerEmployees = [
+  {
+    id: "kevin-jansen",
+    initials: "KJ",
+    name: "Kevin Jansen",
+    role: "Orderpicker",
+    zone: "Remmen & wielonderdelen",
+    status: "active",
+    statusLabel: "Actief",
+    currentOrder: "AVT-240719",
+    currentActivity: "Order wordt gepickt",
+    completedOrders: 8,
+    averagePickTime: 13,
+    wrongScans: 1,
+    knowledge: 68,
+    activeDays: 5
+  },
+
+  {
+    id: "sam-de-bruin",
+    initials: "SB",
+    name: "Sam de Bruin",
+    role: "Orderpicker",
+    zone: "Luchtvering",
+    status: "available",
+    statusLabel: "Beschikbaar",
+    currentOrder: "Geen actieve order",
+    currentActivity: "Beschikbaar voor nieuwe picklijst",
+    completedOrders: 11,
+    averagePickTime: 12,
+    wrongScans: 0,
+    knowledge: 54,
+    activeDays: 3
+  },
+
+  {
+    id: "youssef-van-dijk",
+    initials: "YV",
+    name: "Youssef van Dijk",
+    role: "Orderpicker",
+    zone: "Verlichting",
+    status: "break",
+    statusLabel: "Pauze",
+    currentOrder: "AVT-240724",
+    currentActivity: "Pickproces tijdelijk gepauzeerd",
+    completedOrders: 7,
+    averagePickTime: 15,
+    wrongScans: 1,
+    knowledge: 73,
+    activeDays: 6
+  },
+
+  {
+    id: "lisa-de-jong",
+    initials: "LJ",
+    name: "Lisa de Jong",
+    role: "Magazijnmedewerker",
+    zone: "Filters & onderhoud",
+    status: "active",
+    statusLabel: "Actief",
+    currentOrder: "AVT-240728",
+    currentActivity: "Bezig in het pickmagazijn",
+    completedOrders: 9,
+    averagePickTime: 14,
+    wrongScans: 0,
+    knowledge: 61,
+    activeDays: 4
+  },
+
+  {
+    id: "milan-bakker",
+    initials: "MB",
+    name: "Milan Bakker",
+    role: "Orderpicker",
+    zone: "Accu’s & zware onderdelen",
+    status: "offline",
+    statusLabel: "Niet actief",
+    currentOrder: "Geen actieve order",
+    currentActivity: "Vandaag nog niet ingelogd",
+    completedOrders: 0,
+    averagePickTime: 0,
+    wrongScans: 0,
+    knowledge: 47,
+    activeDays: 0
+  }
+];
+
+function openManagerEmployees() {
+  openScreen("managerEmployeesScreen");
+
+  setManagerNavigationActive(
+    "managerNavEmployees"
+  );
+
+  renderManagerEmployees();
+}
+
+function setManagerEmployeeFilter(
+  filterName
+) {
+  managerEmployeeFilter = filterName;
+
+  document
+    .querySelectorAll(
+      ".manager-employee-filter"
+    )
+    .forEach(function(button) {
+      button.classList.remove("active");
+    });
+
+  const activeFilter =
+    document.getElementById(
+      "managerEmployeeFilter-" +
+      filterName
+    );
+
+  if (activeFilter) {
+    activeFilter.classList.add("active");
+  }
+
+  renderManagerEmployees();
+}
+
+function renderManagerEmployees() {
+  const employeeList =
+    document.getElementById(
+      "managerEmployeeOverviewList"
+    );
+
+  const emptyState =
+    document.getElementById(
+      "managerEmployeeEmptyState"
+    );
+
+  if (!employeeList || !emptyState) {
+    return;
+  }
+
+  const employees =
+    managerEmployees.map(function(
+      employee
+    ) {
+      if (
+        employee.id !== "kevin-jansen"
+      ) {
+        return employee;
+      }
+
+      const activeOrder =
+        appState.orders.find(function(
+          order
+        ) {
+          return (
+            order.id ===
+            appState.currentPickingOrderId
+          );
+        });
+
+      const completedOrders =
+        appState.orders.filter(function(
+          order
+        ) {
+          return (
+            order.received ===
+            "Volledig gepickt"
+          );
+        }).length;
+
+      const wrongScans =
+        appState.activities.filter(function(
+          activity
+        ) {
+          return (
+            activity.type === "warning" &&
+            activity.description.includes(
+              "Kevin Jansen"
+            )
+          );
+        }).length;
+
+      return {
+        ...employee,
+        status:
+          activeOrder
+            ? "active"
+            : "available",
+        statusLabel:
+          activeOrder
+            ? "Actief"
+            : "Beschikbaar",
+        currentOrder:
+          activeOrder
+            ? activeOrder.orderNumber
+            : "Geen actieve order",
+        currentActivity:
+          activeOrder
+            ? "Order wordt momenteel gepickt"
+            : "Beschikbaar voor nieuwe picklijst",
+        completedOrders:
+          Math.max(
+            employee.completedOrders,
+            completedOrders
+          ),
+        wrongScans: wrongScans
+      };
+    });
+
+  const visibleEmployees =
+    employees.filter(function(employee) {
+      if (
+        managerEmployeeFilter === "all"
+      ) {
+        return true;
+      }
+
+      return (
+        employee.status ===
+        managerEmployeeFilter
+      );
+    });
+
+  const activeEmployees =
+    employees.filter(function(employee) {
+      return employee.status === "active";
+    }).length;
+
+  const availableEmployees =
+    employees.filter(function(employee) {
+      return (
+        employee.status === "available"
+      );
+    }).length;
+
+  const breakEmployees =
+    employees.filter(function(employee) {
+      return employee.status === "break";
+    }).length;
+
+  setManagerEmployeeText(
+    "managerEmployeeTotal",
+    employees.length
+  );
+
+  setManagerEmployeeText(
+    "managerEmployeeActive",
+    activeEmployees
+  );
+
+  setManagerEmployeeText(
+    "managerEmployeeAvailable",
+    availableEmployees
+  );
+
+  setManagerEmployeeText(
+    "managerEmployeeBreak",
+    breakEmployees
+  );
+
+  employeeList.innerHTML = "";
+
+  emptyState.classList.toggle(
+    "hidden",
+    visibleEmployees.length !== 0
+  );
+
+  visibleEmployees.forEach(function(
+    employee
+  ) {
+    const employeeCard =
+      document.createElement("article");
+
+    employeeCard.className =
+      "manager-employee-card";
+
+    employeeCard.innerHTML = `
+      <div class="manager-employee-card-top">
+
+        <div class="manager-employee-avatar">
+          ${escapeHTML(employee.initials)}
+        </div>
+
+        <div class="manager-employee-identity">
+
+          <strong>
+            ${escapeHTML(employee.name)}
+          </strong>
+
+          <span>
+            ${escapeHTML(employee.role)}
+            ·
+            ${escapeHTML(employee.zone)}
+          </span>
+
+        </div>
+
+        <span class="tag ${getManagerEmployeeStatusClass(
+          employee.status
+        )}">
+          <span class="status-dot"></span>
+          ${escapeHTML(employee.statusLabel)}
+        </span>
+
+      </div>
+
+      <div class="manager-employee-current">
+
+        <div class="manager-employee-current-icon">
+          ${
+            employee.status === "active"
+              ? "📦"
+              : employee.status === "break"
+                ? "☕"
+                : employee.status === "available"
+                  ? "✓"
+                  : "○"
+          }
+        </div>
+
+        <div>
+
+          <span>
+            HUIDIGE ACTIVITEIT
+          </span>
+
+          <strong>
+            ${escapeHTML(
+              employee.currentActivity
+            )}
+          </strong>
+
+          <p>
+            ${escapeHTML(
+              employee.currentOrder
+            )}
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="manager-employee-stat-grid">
+
+        <div>
+
+          <strong>
+            ${employee.completedOrders}
+          </strong>
+
+          <span>
+            Orders afgerond
+          </span>
+
+        </div>
+
+        <div>
+
+          <strong>
+            ${
+              employee.averagePickTime > 0
+                ? employee.averagePickTime +
+                  " min"
+                : "—"
+            }
+          </strong>
+
+          <span>
+            Gem. picktijd
+          </span>
+
+        </div>
+
+        <div>
+
+          <strong>
+            ${employee.wrongScans}
+          </strong>
+
+          <span>
+            Foutscans
+          </span>
+
+        </div>
+
+      </div>
+
+      <button
+        class="manager-employee-detail-button"
+        onclick="openManagerEmployeeDetail('${employee.id}')"
+      >
+        Medewerker bekijken
+        <span>→</span>
+      </button>
+    `;
+
+    employeeList.appendChild(
+      employeeCard
+    );
+  });
+}
+
+function setManagerEmployeeText(
+  elementId,
+  value
+) {
+  const element =
+    document.getElementById(elementId);
+
+  if (element) {
+    element.textContent = value;
+  }
+}
+
+function getManagerEmployeeStatusClass(
+  status
+) {
+  if (status === "active") {
+    return "tag-green";
+  }
+
+  if (status === "available") {
+    return "tag-blue";
+  }
+
+  if (status === "break") {
+    return "tag-orange";
+  }
+
+  return "manager-employee-tag-offline";
+}
+
+function openManagerEmployeeDetail(
+  employeeId
+) {
+  const employee =
+    managerEmployees.find(function(
+      item
+    ) {
+      return item.id === employeeId;
+    });
+
+  if (!employee) {
+    showToast(
+      "De medewerker kon niet worden gevonden."
+    );
+
+    return;
+  }
+
+  openModal(`
+    <div class="manager-employee-modal-header">
+
+      <div class="manager-employee-modal-avatar">
+        ${escapeHTML(employee.initials)}
+      </div>
+
+      <div>
+
+        <span>
+          MEDEWERKERSPROFIEL
+        </span>
+
+        <h2>
+          ${escapeHTML(employee.name)}
+        </h2>
+
+        <p>
+          ${escapeHTML(employee.role)}
+          ·
+          ${escapeHTML(employee.zone)}
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="manager-employee-modal-status">
+
+      <span class="tag ${getManagerEmployeeStatusClass(
+        employee.status
+      )}">
+        <span class="status-dot"></span>
+        ${escapeHTML(employee.statusLabel)}
+      </span>
+
+      <span>
+        ${escapeHTML(employee.currentActivity)}
+      </span>
+
+    </div>
+
+    <div class="manager-employee-modal-grid">
+
+      <div>
+
+        <strong>
+          ${employee.completedOrders}
+        </strong>
+
+        <span>
+          Afgeronde orders
+        </span>
+
+      </div>
+
+      <div>
+
+        <strong>
+          ${
+            employee.averagePickTime > 0
+              ? employee.averagePickTime +
+                " min"
+              : "—"
+          }
+        </strong>
+
+        <span>
+          Gem. picktijd
+        </span>
+
+      </div>
+
+      <div>
+
+        <strong>
+          ${employee.wrongScans}
+        </strong>
+
+        <span>
+          Foutscans
+        </span>
+
+      </div>
+
+      <div>
+
+        <strong>
+          ${employee.knowledge}%
+        </strong>
+
+        <span>
+          Productkennis
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="manager-employee-progress">
+
+      <div>
+
+        <span>
+          Productkennis
+        </span>
+
+        <strong>
+          ${employee.knowledge}%
+        </strong>
+
+      </div>
+
+      <div class="progress-track">
+
+        <div
+          class="progress-fill"
+          style="width:${employee.knowledge}%;"
+        ></div>
+
+      </div>
+
+    </div>
+
+    <div class="manager-employee-detail-note">
+
+      <span>
+        ℹ️
+      </span>
+
+      <p>
+        Dit overzicht is bedoeld voor ondersteuning,
+        coaching en werkverdeling. Niet als individueel
+        afrekeninstrument.
+      </p>
+
+    </div>
+
+    <button
+      class="primary-button"
+      style="margin-top:16px;"
+      onclick="closeModal(); showToast('Begeleidingsactie geopend voor ${escapeHTML(
+        employee.name
+      )}.')"
+    >
+      Begeleidingsactie starten
+    </button>
+
+    <button
+      class="secondary-button"
+      style="margin-top:9px;"
+      onclick="closeModal()"
+    >
+      Sluiten
+    </button>
+  `);
 }
     
 function showManagerNavigationMessage(
